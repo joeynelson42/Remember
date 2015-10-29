@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
-		63CF66711BE18FC50042DC37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66701BE18FC50042DC37 /* ViewController.swift */; };
-		63CF66741BE18FC50042DC37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66721BE18FC50042DC37 /* Main.storyboard */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
 		63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */; };
@@ -31,6 +29,16 @@
 		63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */; };
 		63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */; };
 		63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009441BE1B0BE009A0FA8 /* Memory.swift */; };
+		63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */; };
+		63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */; };
+		63E0094C1BE1B7B4009A0FA8 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */; };
+		63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0094D1BE1B7C2009A0FA8 /* FriendsListViewController.swift */; };
+		63E009501BE1B7CE009A0FA8 /* AddMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0094F1BE1B7CE009A0FA8 /* AddMemoryViewController.swift */; };
+		63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009511BE1B7E1009A0FA8 /* UserProfileViewController.swift */; };
+		63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009531BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift */; };
+		63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009551BE1C39F009A0FA8 /* LoadingView.swift */; };
+		63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */; };
+		63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */; };
 		F9D7A88596C8C0F2168AE0A9 /* Pods_Remember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +63,6 @@
 		2B1A75A0A524D21BDEC50421 /* Pods-Remember.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.debug.xcconfig"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63CF66701BE18FC50042DC37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63CF66731BE18FC50042DC37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63CF66761BE18FC50042DC37 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
 		63CF66781BE18FC50042DC37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63CF667B1BE18FC50042DC37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,6 +89,16 @@
 		63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseServerProxy.swift; sourceTree = "<group>"; };
 		63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Memory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		63E009441BE1B0BE009A0FA8 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
+		63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
+		63E0094D1BE1B7C2009A0FA8 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		63E0094F1BE1B7CE009A0FA8 /* AddMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryViewController.swift; sourceTree = "<group>"; };
+		63E009511BE1B7E1009A0FA8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		63E009531BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		63E009551BE1C39F009A0FA8 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Remember.swift"; sourceTree = "<group>"; };
+		63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGColor+Remember.swift"; sourceTree = "<group>"; };
 		C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Remember.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +181,7 @@
 				63E009401BE1A0F6009A0FA8 /* Controllers */,
 				63E0093E1BE1A0DE009A0FA8 /* Views */,
 				63E0093F1BE1A0EB009A0FA8 /* Model */,
+				63E009571BE1C48D009A0FA8 /* Utility Extensions */,
 			);
 			path = Remember;
 			sourceTree = "<group>";
@@ -226,9 +243,10 @@
 		63E0093E1BE1A0DE009A0FA8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				63CF66721BE18FC50042DC37 /* Main.storyboard */,
 				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
 				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
+				63E009531BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift */,
+				63E009551BE1C39F009A0FA8 /* LoadingView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -247,9 +265,23 @@
 		63E009401BE1A0F6009A0FA8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				63CF66701BE18FC50042DC37 /* ViewController.swift */,
+				63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */,
+				63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */,
+				63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */,
+				63E0094D1BE1B7C2009A0FA8 /* FriendsListViewController.swift */,
+				63E0094F1BE1B7CE009A0FA8 /* AddMemoryViewController.swift */,
+				63E009511BE1B7E1009A0FA8 /* UserProfileViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		63E009571BE1C48D009A0FA8 /* Utility Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */,
+				63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */,
+			);
+			name = "Utility Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,7 +394,6 @@
 				63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */,
 				63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */,
 				63E0093C1BE19F81009A0FA8 /* Podfile in Resources */,
-				63CF66741BE18FC50042DC37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,12 +466,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */,
 				63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */,
 				63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */,
-				63CF66711BE18FC50042DC37 /* ViewController.swift in Sources */,
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
+				63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */,
+				63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,
+				63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */,
+				63E0094C1BE1B7B4009A0FA8 /* MemoryViewController.swift in Sources */,
+				63E009501BE1B7CE009A0FA8 /* AddMemoryViewController.swift in Sources */,
 				63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */,
+				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
+				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
+				63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */,
+				63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,14 +516,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		63CF66721BE18FC50042DC37 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63CF66731BE18FC50042DC37 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
