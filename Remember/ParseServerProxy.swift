@@ -66,7 +66,18 @@ class ParseServerProxy{
         
         
         //TODO: SAVING MEMORY ON DEVICE----------------------------
+        let newCDMemory = Memory()
         
+        
+        
+        
+        
+        
+        do {
+            try context?.save()
+        } catch let err as NSError{
+            print(err)
+        }
         
         //----------------------------------------------------
         

@@ -26,7 +26,7 @@ class LoginViewController: UIViewController{
         if success{
             let mainVC = MemoryCollectionViewController()
             mainVC.user = PFUser.currentUser()
-            mainVC.memories = ParseServerProxy.parseProxy.getUsersMemories("userID goes here")
+            mainVC.memories = ParseServerProxy.parseProxy.getMemoriesOfUser("userID goes here")
             self.presentViewController(mainVC, animated: true, completion: nil)
         }
         else{

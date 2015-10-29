@@ -14,8 +14,6 @@ class FriendsListViewController: UIViewController, UICollectionViewDelegate, UIC
     
     var friends = [PFUser]()
     
-    
-    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -28,5 +26,14 @@ class FriendsListViewController: UIViewController, UICollectionViewDelegate, UIC
         let cell = FriendCollectionCell()
         cell.user = friends[indexPath.row]
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let userProfileVC = UserProfileViewController()
+        self.presentViewController(userProfileVC, animated: true, completion: nil)
+    }
+    
+    func addFriend(){
+        
     }
 }
