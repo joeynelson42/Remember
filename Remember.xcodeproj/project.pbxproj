@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30DE0A1B1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE0A1A1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift */; };
+		30DE0A1D1BE2ACCE00F8DCEC /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE0A1C1BE2ACCE00F8DCEC /* FriendCollectionCell.swift */; };
+		30DE0A1F1BE2B13F00F8DCEC /* String+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE0A1E1BE2B13F00F8DCEC /* String+Remember.swift */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 
 /* Begin PBXFileReference section */
 		2B1A75A0A524D21BDEC50421 /* Pods-Remember.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.debug.xcconfig"; sourceTree = "<group>"; };
+		30DE0A1A1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryImageCollectionCell.swift; sourceTree = "<group>"; };
+		30DE0A1C1BE2ACCE00F8DCEC /* FriendCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
+		30DE0A1E1BE2B13F00F8DCEC /* String+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Remember.swift"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CF66761BE18FC50042DC37 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -284,6 +290,7 @@
 			children = (
 				63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */,
 				63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */,
+				30DE0A1E1BE2B13F00F8DCEC /* String+Remember.swift */,
 			);
 			name = "Utility Extensions";
 			sourceTree = "<group>";
@@ -293,6 +300,8 @@
 			children = (
 				63E009531BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift */,
 				63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */,
+				30DE0A1A1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift */,
+				30DE0A1C1BE2ACCE00F8DCEC /* FriendCollectionCell.swift */,
 			);
 			name = "Custom Cells/Layouts";
 			sourceTree = "<group>";
@@ -490,12 +499,14 @@
 			files = (
 				63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */,
 				63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */,
+				30DE0A1D1BE2ACCE00F8DCEC /* FriendCollectionCell.swift in Sources */,
 				63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */,
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
 				63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */,
 				63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */,
 				63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,
+				30DE0A1F1BE2B13F00F8DCEC /* String+Remember.swift in Sources */,
 				63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */,
 				63E0094C1BE1B7B4009A0FA8 /* MemoryViewController.swift in Sources */,
 				63E009501BE1B7CE009A0FA8 /* AddMemoryViewController.swift in Sources */,
@@ -504,6 +515,7 @@
 				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
 				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
 				63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */,
+				30DE0A1B1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift in Sources */,
 				63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

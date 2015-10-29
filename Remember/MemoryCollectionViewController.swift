@@ -11,15 +11,15 @@ import UIKit
 import Parse
 
 enum listType{
-    case large
-    case small
+    case fullCells
+    case reducedCells
 }
 
 class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var user: PFObject!
     var memories: [Memory]!
-    var listView = listType.large
+    var listView = listType.fullCells
     
     
     override func viewDidLoad() {
@@ -49,15 +49,15 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func openSideMenu(){
-        
+        //TODO: import SideMenuTiles but convert it to non-storyboard
     }
     
     func changeCollectionViewType(){
-        if(listView == .large){
-            listView = .small
+        if(listView == .fullCells){
+            listView = .reducedCells
         }
         else{
-            listView = .large
+            listView = .fullCells
         }
     }
     

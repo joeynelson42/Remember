@@ -8,7 +8,10 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class UserProfileViewController: UIViewController{
+    var user: PFUser!
+    
     
 }

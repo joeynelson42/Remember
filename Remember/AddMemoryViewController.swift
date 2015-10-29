@@ -11,4 +11,5 @@ import UIKit
 
 class AddMemoryViewController: UIViewController{
     
+    var memory: Memory!
 }

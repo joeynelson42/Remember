@@ -8,7 +8,25 @@
 
 import Foundation
 import UIKit
+import Parse
 
-class FriendsListViewController: UIViewController{
+class FriendsListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
+    var friends = [PFUser]()
+    
+    
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return friends.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = FriendCollectionCell()
+        cell.user = friends[indexPath.row]
+        return cell
+    }
 }

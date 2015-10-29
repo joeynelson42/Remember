@@ -9,11 +9,18 @@
 import Foundation
 import Parse
 import ParseFacebookUtilsV4
+import CoreData
 
 class ParseServerProxy{
     
     //get this using ParseServerProxy.parseProxy
     static let parseProxy = ParseServerProxy()
+    
+    let context: NSManagedObjectContext!
+    
+    init(){
+        context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    }
     
     func login() -> Bool{
         return true
@@ -38,12 +45,30 @@ class ParseServerProxy{
         return success
     }
     
-    func createMemory(memoryID: String, title: String, imageURLs: [UIImage], startDate: NSDate, endDate: NSDate, story: String, quotes: [String], taggedIDs: String){
+    func createMemory(memoryID: String, title: String, images: [UIImage], startDate: NSDate, endDate: NSDate, story: String, quotes: [String], taggedIDs: [String]){
+        
+        
+        // SAVING MEMORY IN PARSE-----------------------------
+        let imageFiles = imagesToParseObjects(images)
+        let newMemory = PFObject(className: "Memory")
+        newMemory["memoryID"] = memoryID
+        newMemory["title"] = title
+        newMemory["images"] = imageFiles
+        newMemory["story"] = story
+        newMemory["startDate"] = NSDateToString(startDate)
+        newMemory["endDate"] = NSDateToString(endDate)
+        newMemory["quotes"] = quotes
+        newMemory["taggedIDs"] = taggedIDs
+        newMemory.saveInBackground()
+        //----------------------------------------------------
         
         
         
         
+        //TODO: SAVING MEMORY ON DEVICE----------------------------
         
+        
+        //----------------------------------------------------
         
         
         
@@ -62,12 +87,27 @@ class ParseServerProxy{
 //        }
     }
     
-    func getUsersMemories(userID: String) -> [Memory]{
-        var memories = [Memory]()
-        return memories
-        
-        
+    func imagesToParseObjects(images: [UIImage]) -> [PFFile]{
+        //TODO:
+        let imageFiles = [PFFile]()
+        return imageFiles
     }
     
+    func NSDateToString(date: NSDate) -> String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "mm:dd:yyy"
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    func getMemoriesOfUser(userID: String) -> [Memory]{
+        let memories = [Memory]()
+        return memories
+    }
+    
+    
+    func getFriendsOfUser(userID: String) -> [PFUser]{
+        let friends = [PFUser]()
+        return friends
+    }
     
 }
