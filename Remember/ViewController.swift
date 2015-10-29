@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Parse
+import Bolts
+import ParseUI
+import ParseFacebookUtilsV4
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PFLogInViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let logInViewController = PFLogInViewController()
+        logInViewController.delegate = self
+        logInViewController.fields = [.UsernameAndPassword, .Facebook, .DismissButton]
+        presentViewController(logInViewController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

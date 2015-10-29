@@ -15,9 +15,6 @@
 		63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */; };
 		63CF66871BE18FC50042DC37 /* RememberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66861BE18FC50042DC37 /* RememberTests.swift */; };
 		63CF66921BE18FC50042DC37 /* RememberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66911BE18FC50042DC37 /* RememberUITests.swift */; };
-		63CF66A21BE191860042DC37 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF669F1BE191860042DC37 /* FBSDKCoreKit.framework */; };
-		63CF66A31BE191860042DC37 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66A01BE191860042DC37 /* FBSDKLoginKit.framework */; };
-		63CF66A41BE191860042DC37 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66A11BE191860042DC37 /* FBSDKShareKit.framework */; };
 		63CF66A81BE192F00042DC37 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66A61BE192F00042DC37 /* Bolts.framework */; };
 		63CF66A91BE192F00042DC37 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66A71BE192F00042DC37 /* Parse.framework */; };
 		63CF66AC1BE193120042DC37 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66AB1BE193120042DC37 /* AudioToolbox.framework */; };
@@ -30,6 +27,9 @@
 		63CF66BA1BE1933F0042DC37 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66B91BE1933F0042DC37 /* SystemConfiguration.framework */; };
 		63CF66BC1BE193460042DC37 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66BB1BE193460042DC37 /* libz.tbd */; };
 		63CF66BE1BE1934E0042DC37 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66BD1BE1934E0042DC37 /* libsqlite3.tbd */; };
+		63E0093C1BE19F81009A0FA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 63E0093B1BE19F81009A0FA8 /* Podfile */; };
+		63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */; };
+		F9D7A88596C8C0F2168AE0A9 /* Pods_Remember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B1A75A0A524D21BDEC50421 /* Pods-Remember.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.debug.xcconfig"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CF66701BE18FC50042DC37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,9 +65,6 @@
 		63CF668D1BE18FC50042DC37 /* RememberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RememberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF66911BE18FC50042DC37 /* RememberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberUITests.swift; sourceTree = "<group>"; };
 		63CF66931BE18FC50042DC37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63CF669F1BE191860042DC37 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		63CF66A01BE191860042DC37 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		63CF66A11BE191860042DC37 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		63CF66A61BE192F00042DC37 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		63CF66A71BE192F00042DC37 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		63CF66AB1BE193120042DC37 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -79,6 +77,10 @@
 		63CF66B91BE1933F0042DC37 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		63CF66BB1BE193460042DC37 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		63CF66BD1BE1934E0042DC37 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		63E0093B1BE19F81009A0FA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseServerProxy.swift; sourceTree = "<group>"; };
+		C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Remember.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,11 +98,9 @@
 				63CF66B01BE1931C0042DC37 /* CoreGraphics.framework in Frameworks */,
 				63CF66AE1BE193170042DC37 /* CFNetwork.framework in Frameworks */,
 				63CF66AC1BE193120042DC37 /* AudioToolbox.framework in Frameworks */,
-				63CF66A31BE191860042DC37 /* FBSDKLoginKit.framework in Frameworks */,
-				63CF66A21BE191860042DC37 /* FBSDKCoreKit.framework in Frameworks */,
-				63CF66A41BE191860042DC37 /* FBSDKShareKit.framework in Frameworks */,
 				63CF66A81BE192F00042DC37 /* Bolts.framework in Frameworks */,
 				63CF66A91BE192F00042DC37 /* Parse.framework in Frameworks */,
+				F9D7A88596C8C0F2168AE0A9 /* Pods_Remember.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,16 +121,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4497D33F2C2AA40A8F3CFE7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B1A75A0A524D21BDEC50421 /* Pods-Remember.debug.xcconfig */,
+				D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		63CF66621BE18FC50042DC37 = {
 			isa = PBXGroup;
 			children = (
+				63E0093B1BE19F81009A0FA8 /* Podfile */,
 				63CF66BF1BE193570042DC37 /* Frameworks */,
 				63CF66AA1BE192F60042DC37 /* ParseSDK */,
-				63CF66A51BE1919A0042DC37 /* FacebookSDK */,
 				63CF666D1BE18FC50042DC37 /* Remember */,
 				63CF66851BE18FC50042DC37 /* RememberTests */,
 				63CF66901BE18FC50042DC37 /* RememberUITests */,
 				63CF666C1BE18FC50042DC37 /* Products */,
+				4497D33F2C2AA40A8F3CFE7D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,13 +157,10 @@
 		63CF666D1BE18FC50042DC37 /* Remember */ = {
 			isa = PBXGroup;
 			children = (
-				63CF666E1BE18FC50042DC37 /* AppDelegate.swift */,
-				63CF66701BE18FC50042DC37 /* ViewController.swift */,
-				63CF66721BE18FC50042DC37 /* Main.storyboard */,
-				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
-				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
-				63CF667D1BE18FC50042DC37 /* Info.plist */,
-				63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */,
+				63E0093D1BE1A0D3009A0FA8 /* Supporting Files */,
+				63E009401BE1A0F6009A0FA8 /* Controllers */,
+				63E0093E1BE1A0DE009A0FA8 /* Views */,
+				63E0093F1BE1A0EB009A0FA8 /* Model */,
 			);
 			path = Remember;
 			sourceTree = "<group>";
@@ -174,16 +181,6 @@
 				63CF66931BE18FC50042DC37 /* Info.plist */,
 			);
 			path = RememberUITests;
-			sourceTree = "<group>";
-		};
-		63CF66A51BE1919A0042DC37 /* FacebookSDK */ = {
-			isa = PBXGroup;
-			children = (
-				63CF669F1BE191860042DC37 /* FBSDKCoreKit.framework */,
-				63CF66A01BE191860042DC37 /* FBSDKLoginKit.framework */,
-				63CF66A11BE191860042DC37 /* FBSDKShareKit.framework */,
-			);
-			name = FacebookSDK;
 			sourceTree = "<group>";
 		};
 		63CF66AA1BE192F60042DC37 /* ParseSDK */ = {
@@ -208,8 +205,45 @@
 				63CF66AF1BE1931C0042DC37 /* CoreGraphics.framework */,
 				63CF66AD1BE193170042DC37 /* CFNetwork.framework */,
 				63CF66AB1BE193120042DC37 /* AudioToolbox.framework */,
+				C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63E0093D1BE1A0D3009A0FA8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63CF666E1BE18FC50042DC37 /* AppDelegate.swift */,
+				63CF667D1BE18FC50042DC37 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63E0093E1BE1A0DE009A0FA8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63CF66721BE18FC50042DC37 /* Main.storyboard */,
+				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
+				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		63E0093F1BE1A0EB009A0FA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */,
+				63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		63E009401BE1A0F6009A0FA8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63CF66701BE18FC50042DC37 /* ViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63CF66961BE18FC50042DC37 /* Build configuration list for PBXNativeTarget "Remember" */;
 			buildPhases = (
+				D692103549298EC61C0C71BB /* Check Pods Manifest.lock */,
 				63CF66671BE18FC50042DC37 /* Sources */,
 				63CF66681BE18FC50042DC37 /* Frameworks */,
 				63CF66691BE18FC50042DC37 /* Resources */,
+				5AB010ECB8408A35AC564E92 /* Embed Pods Frameworks */,
+				F95687112375C4C439751449 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -318,6 +355,7 @@
 			files = (
 				63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */,
 				63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */,
+				63E0093C1BE19F81009A0FA8 /* Podfile in Resources */,
 				63CF66741BE18FC50042DC37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,12 +376,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5AB010ECB8408A35AC564E92 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Remember/Pods-Remember-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D692103549298EC61C0C71BB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F95687112375C4C439751449 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Remember/Pods-Remember-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		63CF66671BE18FC50042DC37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				63CF66711BE18FC50042DC37 /* ViewController.swift in Sources */,
+				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,
 				63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */,
 			);
@@ -483,6 +570,7 @@
 		};
 		63CF66971BE18FC50042DC37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B1A75A0A524D21BDEC50421 /* Pods-Remember.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -498,6 +586,7 @@
 		};
 		63CF66981BE18FC50042DC37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -578,6 +667,7 @@
 				63CF66981BE18FC50042DC37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63CF66991BE18FC50042DC37 /* Build configuration list for PBXNativeTarget "RememberTests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +676,7 @@
 				63CF669B1BE18FC50042DC37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63CF669C1BE18FC50042DC37 /* Build configuration list for PBXNativeTarget "RememberUITests" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +685,7 @@
 				63CF669E1BE18FC50042DC37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
