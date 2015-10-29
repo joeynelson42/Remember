@@ -1,5 +1,5 @@
 //
-//  FriendsListViewController.swift
+//  MemoryCollectionCell.swift
 //  Remember
 //
 //  Created by Joey on 10/28/15.
@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
-class FriendsListViewController: UIViewController{
+class MemoryCollectionCell: UICollectionViewCell {
     
+    var memory: Memory!
 }

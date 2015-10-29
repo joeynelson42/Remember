@@ -39,6 +39,8 @@
 		63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009551BE1C39F009A0FA8 /* LoadingView.swift */; };
 		63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */; };
 		63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */; };
+		63E0095E1BE1CD65009A0FA8 /* MemoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */; };
+		63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009611BE1D122009A0FA8 /* SideMenuView.swift */; };
 		F9D7A88596C8C0F2168AE0A9 /* Pods_Remember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		63E009551BE1C39F009A0FA8 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Remember.swift"; sourceTree = "<group>"; };
 		63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGColor+Remember.swift"; sourceTree = "<group>"; };
+		63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCollectionCell.swift; sourceTree = "<group>"; };
+		63E009611BE1D122009A0FA8 /* SideMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Remember.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,10 +247,10 @@
 		63E0093E1BE1A0DE009A0FA8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
-				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
-				63E009531BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift */,
+				63E0095C1BE1CD4C009A0FA8 /* Custom Cells/Layouts */,
 				63E009551BE1C39F009A0FA8 /* LoadingView.swift */,
+				63E009611BE1D122009A0FA8 /* SideMenuView.swift */,
+				63E009651BE1D146009A0FA8 /* Misc. Views */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -282,6 +286,24 @@
 				63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */,
 			);
 			name = "Utility Extensions";
+			sourceTree = "<group>";
+		};
+		63E0095C1BE1CD4C009A0FA8 /* Custom Cells/Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				63E009531BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift */,
+				63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */,
+			);
+			name = "Custom Cells/Layouts";
+			sourceTree = "<group>";
+		};
+		63E009651BE1D146009A0FA8 /* Misc. Views */ = {
+			isa = PBXGroup;
+			children = (
+				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
+				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
+			);
+			name = "Misc. Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,10 +494,12 @@
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
 				63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */,
 				63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */,
+				63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,
 				63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */,
 				63E0094C1BE1B7B4009A0FA8 /* MemoryViewController.swift in Sources */,
 				63E009501BE1B7CE009A0FA8 /* AddMemoryViewController.swift in Sources */,
+				63E0095E1BE1CD65009A0FA8 /* MemoryCollectionCell.swift in Sources */,
 				63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */,
 				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
 				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
