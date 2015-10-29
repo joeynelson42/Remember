@@ -29,6 +29,8 @@
 		63CF66BE1BE1934E0042DC37 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66BD1BE1934E0042DC37 /* libsqlite3.tbd */; };
 		63E0093C1BE19F81009A0FA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 63E0093B1BE19F81009A0FA8 /* Podfile */; };
 		63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */; };
+		63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */; };
+		63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009441BE1B0BE009A0FA8 /* Memory.swift */; };
 		F9D7A88596C8C0F2168AE0A9 /* Pods_Remember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		63CF66BD1BE1934E0042DC37 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		63E0093B1BE19F81009A0FA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseServerProxy.swift; sourceTree = "<group>"; };
+		63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Memory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		63E009441BE1B0BE009A0FA8 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Remember.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,6 +236,8 @@
 		63E0093F1BE1A0EB009A0FA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */,
+				63E009441BE1B0BE009A0FA8 /* Memory.swift */,
 				63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */,
 				63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */,
 			);
@@ -429,6 +435,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */,
+				63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */,
 				63CF66711BE18FC50042DC37 /* ViewController.swift in Sources */,
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,

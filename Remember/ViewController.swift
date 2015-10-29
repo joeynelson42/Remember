@@ -12,19 +12,18 @@ import Bolts
 import ParseUI
 import ParseFacebookUtilsV4
 
-class ViewController: UIViewController, PFLogInViewControllerDelegate {
+class ViewController: UIViewController {
+    
+    var parseProxy: ParseServerProxy!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logInViewController = PFLogInViewController()
-        logInViewController.delegate = self
-        logInViewController.fields = [.UsernameAndPassword, .Facebook, .DismissButton]
-        presentViewController(logInViewController, animated: true, completion: nil)
+        
+        parseProxy = ParseServerProxy()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
