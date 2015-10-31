@@ -10,7 +10,16 @@ import Foundation
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController{
+class LoginViewController: UIViewController, UITextFieldDelegate{
+    
+    @IBOutlet var loginView: LoginView!
+    
+    var keyboardHeight: CGFloat!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerForKeyboardNotifications()
+    }
     
     func login(username: String, password: String){
         let success = ParseServerProxy.parseProxy.login()
@@ -40,5 +49,28 @@ class LoginViewController: UIViewController{
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
+    }
+    
+    func keyboardShown(notification: NSNotification) {
+        let info  = notification.userInfo!
+        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
+        
+        let rawFrame = value.CGRectValue
+        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
+        
+        keyboardHeight = keyboardFrame.height
+        
+        self.loginView.moveContainer(true, keyboardHeight: keyboardHeight)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.loginView.moveContainer(false, keyboardHeight: keyboardHeight)
+    }
+    
+    
 }
 

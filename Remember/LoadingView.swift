@@ -9,3 +9,4 @@
 import Foundation
 
 // ideas for a waiting symbol: puslating R fading in and out, something oribiting the R, the R drawing and redrawing itself...
+

@@ -1,6 +1,6 @@
 //
-//  SideMenuView.swift
-//  Remember
+//  SideMenu.swift
+//  SideMenuDemo
 //
 //  Created by Joey on 10/28/15.
 //  Copyright © 2015 NelsonJE. All rights reserved.
@@ -9,44 +9,67 @@
 import Foundation
 import UIKit
 
-enum boxType{
-    case settings
-    case friends
-    case user
-    case notifications
-    case list
+enum viewStatus{
+    case open
+    case closed
 }
 
 class SideMenuView: UIView {
     
-    var boxes: [SideMenuBox]!
-    var boxTypes = [boxType.list, boxType.notifications, boxType.user, boxType.friends, boxType.settings]
-    var boxSize = CGRect(x: 0, y: 0, width: 85, height: 85)
+    var tiles = [SideMenuTile]()
+    var status = viewStatus.open
     
-    init(frame: CGRect, boxCount: Int) {
-        super.init(frame: frame)
-        boxes = [SideMenuBox]()
-        for boxType in boxTypes{
-            let box = SideMenuBox(frame: boxSize, boxtype: boxType)
-            boxes.append(box)
-            self.addSubview((box as UIView))
-            //constrain box to the previous box? or just to SideMenuView?
+    //MARK: -----Delay constant: time bewteen each tile sliding in--------------
+    let DELAY_INC = 0.1
+    
+    func toggleMenu(){
+        if status == .closed {
+            slideIn()
+            status = .open
+        }
+        else{
+            status = .closed
+            slideOut()
         }
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    func hideMenu(){
+        status = viewStatus.closed
+        let delay: NSTimeInterval = 0
+        for (i, tile) in tiles.enumerate(){
+            if tile != tiles.last {
+                tile.slideTileOut(delay, slideNext: {self.tiles[i+1].slideTileOut(delay)})
+            }
+            else{
+                tile.slideTileOut(delay)
+            }
+        }
     }
     
-    func openMenu(){
-        
+    func slideIn(){
+        var delay: NSTimeInterval = 0
+        for (i, tile) in tiles.enumerate(){
+            if tile != tiles.last {
+                tile.slideTileIn(delay, slideNext: {self.tiles[i+1].slideTileIn(delay)})
+                delay += DELAY_INC
+            }
+            else{
+                tile.slideTileIn(delay)
+            }
+        }
     }
     
-    func slideIn(slideNext: () -> ()){
-        
-    }
-    
-    func slideOut(slideNext: () -> ()){
+    func slideOut(){
+        var delay: NSTimeInterval = 0
+        for (i, tile) in tiles.enumerate(){
+            if tile != tiles.last {
+                tile.slideTileOut(delay, slideNext: {self.tiles[i+1].slideTileOut(delay)})
+                delay += DELAY_INC
+            }
+            else{
+                tile.slideTileOut(delay)
+            }
+        }
         
     }
     
@@ -54,40 +77,51 @@ class SideMenuView: UIView {
     
 }
 
-class SideMenuBox: UIView{
-    var type: boxType!
+class SideMenuTile: UIView{
     
-    init(frame: CGRect, boxtype: boxType){
-        type = boxtype
-        super.init(frame: frame)
-    }
+    
+    //MARK: -----Animation Constants---------------------
+    let DURATION: NSTimeInterval = 0.2
+    let INITIAL_SPRING: CGFloat = 0.2
+    let DAMPING: CGFloat = 0.5
+    let ANIMATION_OPTION = UIViewAnimationOptions.CurveEaseInOut
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
-    func slideBoxIn(){
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
-            self.transform = CGAffineTransformMakeTranslation(90, 0)
+    func slideTileIn(delay: NSTimeInterval){
+        UIView.animateWithDuration(0.5, delay: delay, usingSpringWithDamping: self.DAMPING, initialSpringVelocity: self.INITIAL_SPRING, options: self.ANIMATION_OPTION, animations: ({
+            self.transform = CGAffineTransformMakeTranslation(0, 0)
         }), completion: nil)
     }
     
-    func slideBoxOut(){
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
-            self.transform = CGAffineTransformMakeTranslation(-90, 0)
+    func slideTileIn(delay: NSTimeInterval, slideNext: () -> ()){
+        UIView.animateWithDuration(0.5, delay: delay, usingSpringWithDamping: self.DAMPING, initialSpringVelocity: self.INITIAL_SPRING, options: self.ANIMATION_OPTION, animations: ({
+            self.transform = CGAffineTransformMakeTranslation(0, 0)
+        }), completion: { finished in
+            slideNext()
+        })
+    }
+    
+    func slideTileOut(delay: NSTimeInterval){
+        UIView.animateWithDuration(0.5, delay: delay, usingSpringWithDamping: self.DAMPING, initialSpringVelocity: self.INITIAL_SPRING, options: self.ANIMATION_OPTION, animations: ({
+            self.transform = CGAffineTransformMakeTranslation(-100, 0)
         }), completion: nil)
+    }
+    
+    func slideTileOut(delay: NSTimeInterval, slideNext: () -> ()){
+        UIView.animateWithDuration(0.5, delay: delay, usingSpringWithDamping: self.DAMPING, initialSpringVelocity: self.INITIAL_SPRING, options: self.ANIMATION_OPTION, animations: ({
+            self.transform = CGAffineTransformMakeTranslation(-100, 0)
+        }), completion: { finished in
+            slideNext()
+            
+        })
+    }
+    
+    func tappedAnimation(){
+        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseOut, animations: ({
+            self.transform = CGAffineTransformMakeScale(0.85, 0.85)
+        }), completion: {finished in
+            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
+                self.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            }), completion: nil)
+        })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
