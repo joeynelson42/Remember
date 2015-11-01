@@ -21,6 +21,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         registerForKeyboardNotifications()
     }
     
+    @IBAction func loginButtonAction(sender: AnyObject) {
+        login(loginView.emailTextField.text!, password: loginView.passwordTextField.text!)
+    }
+    
+    @IBAction func signUpButtonAction(sender: AnyObject) {
+        signUp()
+    }
+    
     func login(username: String, password: String){
         let success = ParseServerProxy.parseProxy.login()
         enterApp(success)
@@ -33,9 +41,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     func enterApp(success: Bool){
         if success{
-            let mainVC = MemoryCollectionViewController()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let mainVC = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
             mainVC.user = PFUser.currentUser()
-            mainVC.memories = ParseServerProxy.parseProxy.getMemoriesOfUser("userID goes here")
+//            mainVC.memories = ParseServerProxy.parseProxy.getMemoriesOfUser("userID goes here")
             self.presentViewController(mainVC, animated: true, completion: nil)
         }
         else{

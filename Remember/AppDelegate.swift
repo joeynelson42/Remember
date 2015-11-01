@@ -34,6 +34,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
+//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        var initialViewController = UIViewController()
+//        if let _ = PFUser.currentUser(){
+//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
+//        }
+//        else{
+//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+//        }
+//        
+//        
+//        self.window?.rootViewController = initialViewController
+//        self.window?.makeKeyAndVisible()
+        
         return true
     }
     

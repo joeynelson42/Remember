@@ -16,7 +16,7 @@ enum imageOrientation{
 
 class MemoryImageCollectionCell: UICollectionViewCell {
     
-    var imageView = UIImageView()
+    @IBOutlet weak var imageView: UIImageView!
     var orientation: imageOrientation!
     
     
