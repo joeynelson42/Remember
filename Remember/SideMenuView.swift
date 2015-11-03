@@ -70,12 +70,11 @@ class SideMenuView: UIView {
                 tile.slideTileOut(delay)
             }
         }
-        
     }
-    
-    
-    
 }
+
+
+
 
 class SideMenuTile: UIView{
     
@@ -111,7 +110,6 @@ class SideMenuTile: UIView{
             self.transform = CGAffineTransformMakeTranslation(-100, 0)
         }), completion: { finished in
             slideNext()
-            
         })
     }
     

@@ -39,6 +39,7 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //TODO: expand photo to full screen
+        
     }
     
     func toggleInformation(){
