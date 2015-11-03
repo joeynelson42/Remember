@@ -80,12 +80,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        
-        if(indexPath.row == images.count){
-            return CGSize(width: 130, height: 230)
-        }
-        else if indexPath.row == images.count - 1 {
-            return images[indexPath.row].size
+        if indexPath.row == images.count {
+            return UIImage(named: "AddPhotoIcon")!.size
         }
         else if images[indexPath.row].size.height > images[indexPath.row].size.width{
             return CGSize(width: 130, height: 230)
