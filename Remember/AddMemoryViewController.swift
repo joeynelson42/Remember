@@ -12,39 +12,38 @@ import UIKit
 class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var memory: Memory!
-    var images: [UIImage]!
+    var images = [UIImage]()
     let imagePicker = UIImagePickerController()
+    let PORTRAIT_IMAGE_SIZE = CGSize(width: 130, height: 230)
+    let LANDSCAPE_IMAGE_SIZE = CGSize(width: 230, height: 130)
+    var keyboardHeight: CGFloat!
+
     
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet var addMemoryView: AddMemoryView!
     
     override func viewDidLoad() {
-        
         imagePicker.delegate = self
-        loadDummyImages()
+        registerForKeyboardNotifications()
         addMemoryView.addTitleField.attributedPlaceholder = NSAttributedString(string:"Add Title...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         
         
-        if let mem = memory{
-            //edit mode: load the memory into the editable fields
-        }
-        else{
-            //add new memory: show empty fields
-        }
+//        if let mem = memory{
+//            //edit mode: load the memory into the editable fields
+//        }
+//        else{
+//            //add new memory: show empty fields
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {
         if addMemoryView.calendarVisible{
+            addMemoryView.calculateAnimationDistance()
             addMemoryView.toggleCalendar()
         }
     }
-    
-    func loadDummyImages(){
-        images = [UIImage(named: "wedding")!, UIImage(named: "cabin")!, UIImage(named: "fearmonth")!, UIImage(named: "sammyAtAirport")!, UIImage(named: "stitches")!]
-    }
-    
     
     //MARK: Image Collection View
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -79,15 +78,24 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
+    
         if indexPath.row == images.count {
-            return UIImage(named: "AddPhotoIcon")!.size
+            return PORTRAIT_IMAGE_SIZE
         }
         else if images[indexPath.row].size.height > images[indexPath.row].size.width{
-            return CGSize(width: 130, height: 230)
+            return PORTRAIT_IMAGE_SIZE
         }
         else{
-            return CGSize(width: 230, height: 130)
+            return LANDSCAPE_IMAGE_SIZE
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if images.count == 0{
+            return PORTRAIT_IMAGE_SIZE
+        }
+        else{
+            return CGSize(width: 5, height: 0)
         }
     }
     
@@ -114,10 +122,10 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         
         var transformScale: CGFloat = 0.0
         if chosenImage.size.height > chosenImage.size.width{
-            transformScale = 230/chosenImage.size.height
+            transformScale = PORTRAIT_IMAGE_SIZE.height/chosenImage.size.height
         }
         else{
-            transformScale = 130/chosenImage.size.height
+            transformScale = PORTRAIT_IMAGE_SIZE.width/chosenImage.size.height
         }
         
         let size = CGSizeApplyAffineTransform(chosenImage.size, CGAffineTransformMakeScale(transformScale, transformScale))
@@ -163,21 +171,42 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             textField.attributedPlaceholder = NSAttributedString(string:"Add Title...",
                 attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         }
+        
+        self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
         if(textView.text == "Write the story..."){
             textView.text = ""
         }
+        self.addMemoryView.moveContainer(true, keyboardHeight: keyboardHeight)
+
     }
     
     func textViewDidEndEditing(textView: UITextView) {
         if(textView.text == ""){
             textView.text = "Write the story..."
         }
+        self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
+
     }
     
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
+    }
     
+    func keyboardShown(notification: NSNotification) {
+        let info  = notification.userInfo!
+        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
+        
+        let rawFrame = value.CGRectValue
+        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
+        
+        keyboardHeight = keyboardFrame.height
+        addMemoryView.keyboardHeight = keyboardHeight
+        
+    }
     
     func removeQuote(){
         

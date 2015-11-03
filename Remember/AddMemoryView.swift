@@ -19,10 +19,9 @@ class AddMemoryView: UIView{
     @IBOutlet weak var storyButton: UIButton!
     @IBOutlet weak var quotesButton: UIButton!
     @IBOutlet weak var story: UITextView!
+    @IBOutlet weak var moveStoryDownbutton: UIButton!
     
-    @IBOutlet weak var blurViewContainer: UIView!
-    
-    
+    @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var startDateButton: UIButton!
     
     @IBOutlet weak var endDateButton: UIButton!
@@ -32,13 +31,13 @@ class AddMemoryView: UIView{
     var calendarVisible = true
     var endDateVisible = false
     
+    var CALENDAR_MOVE_DISTANCE: CGFloat!
+    var END_DATE_MOVE_DISTANCE: CGFloat!
+    
+    var keyboardHeight: CGFloat!
+    
+    
     override func layoutSubviews() {
-        
-        blurViewContainer.hidden = true
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
-        visualEffectView.frame = blurViewContainer.bounds
-        blurViewContainer.addSubview(visualEffectView)
-
         
         calendarContainer.layer.cornerRadius = 3.0
         calendarContainer.layer.zPosition = CGFloat(MAXFLOAT - 1)
@@ -54,14 +53,37 @@ class AddMemoryView: UIView{
 //        startDateView.layer.shadowOffset = CGSize(width: 3, height: -4)
 //        startDateView.layer.shadowOpacity = 0.2
 //        startDateView.layer.shadowRadius = 0.9
+        
+        story.layer.cornerRadius = 3.0
+    }
+    
+    func calculateAnimationDistance(){
+        let modelName = UIDevice.currentDevice().modelName
+        switch modelName{
+        case "iPhone 5", "iPhone 5s":
+            CALENDAR_MOVE_DISTANCE = 500
+            END_DATE_MOVE_DISTANCE = -150
+        case "iPhone 6", "iPhone 6s":
+            CALENDAR_MOVE_DISTANCE = 500
+            END_DATE_MOVE_DISTANCE = -150
+        case "iPhone 6 Plus", "iPhone 6s Plus":
+            CALENDAR_MOVE_DISTANCE = 500
+            END_DATE_MOVE_DISTANCE = -150
+        case "Simulator":
+            CALENDAR_MOVE_DISTANCE = 500
+            END_DATE_MOVE_DISTANCE = -150
+        default:
+            return
+        }
     }
     
     
-    
+    //MARK: Story/Quotes
     @IBAction func toggleStory(sender: UIButton) {
         storyButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
         quotesButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         story.hidden = false
+        self.endEditing(true)
     }
     
     
@@ -69,9 +91,57 @@ class AddMemoryView: UIView{
         quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
         storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         story.hidden = true
+        self.endEditing(true)
+
+    }
+    
+    func moveContainer(moveUp: Bool, keyboardHeight: CGFloat){
+        if moveUp{
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: {(
+                self.moveStoryDownbutton.transform = CGAffineTransformMakeTranslation(0, -keyboardHeight),
+                self.story.transform = CGAffineTransformMakeTranslation(0, -keyboardHeight),
+                self.moveStoryDownbutton.alpha = 1.0
+                )}, completion: nil)
+        }
+        else{
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: {(
+                self.moveStoryDownbutton.transform = CGAffineTransformMakeTranslation(0, 0),
+                self.story.transform = CGAffineTransformMakeTranslation(0, 0),
+                self.moveStoryDownbutton.alpha = 0.0
+                )}, completion: nil)
+        }
+    }
+    
+    @IBAction func moveStoryDown(sender: UIButton) {
+        moveContainer(false, keyboardHeight: keyboardHeight)
+        self.endEditing(true)
+    }
+    
+    //MARK: Calendar
+    
+    func setDate(){
+        let startDate = startPicker.date
+        let endDate = endPicker.date
+        var date = ""
+        
+        if(startDate == endDate || !endDateVisible){
+            date = "\(startDate.fullDate())"
+        }
+        else if(startDate.year() != endDate.year()){
+            date = "\(startDate.monthAbbrev()) \(startDate.day()), \(startDate.year()) - \(endDate.monthAbbrev()) \(endDate.day()), \(endDate.year())"
+        }
+        else if startDate.month() == endDate.month(){
+            date = "\(startDate.monthName()) \(startDate.day())-\(endDate.day()), \(startDate.year())"
+        }
+        else{
+            date = "\(startDate.monthAbbrev()) \(startDate.day())-\(endDate.monthAbbrev()) \(endDate.day()), \(startDate.year())"
+        }
+        
+        dateButton.setTitle("\(date)", forState: .Normal)
     }
     
     func toggleCalendar(){
+        self.endEditing(true)
         if calendarVisible{
             hideCalendar()
         }
@@ -84,11 +154,17 @@ class AddMemoryView: UIView{
     
     @IBAction func toggleCalendarContainer(sender: UIButton) {
         toggleCalendar()
+        if !calendarVisible{
+            setDate()
+        }
     }
     
     @IBAction func toggleStartDate(sender: UIButton) {
         //TODO: Move the calender view up to show the start date view
         toggleCalendar()
+        if !calendarVisible{
+            setDate()
+        }
     }
     
     @IBAction func toggleEndDate(sender: UIButton) {
@@ -106,7 +182,7 @@ class AddMemoryView: UIView{
     
     func hideCalendar(){
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
-            self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, 500)
+            self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, self.CALENDAR_MOVE_DISTANCE)
         }), completion: nil)
         
     }
@@ -119,7 +195,7 @@ class AddMemoryView: UIView{
     
     func showEndDate(){
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
-            self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, -150)
+            self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, self.END_DATE_MOVE_DISTANCE)
         }), completion: nil)
     }
     
@@ -128,6 +204,10 @@ class AddMemoryView: UIView{
             self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, 0)
         }), completion: nil)
     }
+    
+    
+    
+    
     
     
 }

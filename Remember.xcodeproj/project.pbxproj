@@ -14,6 +14,8 @@
 		6333678E1BE41C1A00DBD743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6333678D1BE41C1A00DBD743 /* Main.storyboard */; };
 		633367901BE427CA00DBD743 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333678F1BE427CA00DBD743 /* LoginView.swift */; };
 		636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */; };
+		636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */; };
+		636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		633367931BE4295500DBD743 /* Existence-StencilLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-StencilLight.otf"; sourceTree = "<group>"; };
 		633367941BE4295500DBD743 /* Existence-UnicaseLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-UnicaseLight.otf"; sourceTree = "<group>"; };
 		636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryView.swift; sourceTree = "<group>"; };
+		636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Remember.swift"; sourceTree = "<group>"; };
+		636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Remember.swift"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CF66761BE18FC50042DC37 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -315,8 +319,10 @@
 			isa = PBXGroup;
 			children = (
 				63E009581BE1C4A0009A0FA8 /* UIColor+Remember.swift */,
+				636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */,
 				63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */,
 				30DE0A1E1BE2B13F00F8DCEC /* String+Remember.swift */,
+				636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */,
 			);
 			name = "Utility Extensions";
 			sourceTree = "<group>";
@@ -526,10 +532,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */,
+				636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */,
 				63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */,
 				30DE0A1D1BE2ACCE00F8DCEC /* FriendCollectionCell.swift in Sources */,
 				63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */,
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
+				636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */,
 				63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */,
 				63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */,
 				63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */,
