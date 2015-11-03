@@ -164,6 +164,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhl-S8-pn1" userLabel="Background Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                            </imageView>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-gp-1XW" userLabel="Background Fade">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fH2-l4-zF6" userLabel="Navbar">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="64"/>
                                 <subviews>
@@ -310,7 +319,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
                                 <state key="normal" title="Story">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="toggleStory:" destination="ISk-hI-mrB" eventType="touchUpInside" id="aJT-qy-Zf7"/>
@@ -443,19 +452,26 @@
                         <animations/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="Yhl-S8-pn1" secondAttribute="bottom" id="0Ja-Hb-lmJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="c3a-lg-7s5" secondAttribute="trailing" constant="-20" id="0rb-Wq-hS6"/>
                             <constraint firstItem="1rX-pB-yCg" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="6hx-gf-miA"/>
                             <constraint firstItem="wNU-km-lHn" firstAttribute="top" secondItem="CpR-BP-8VJ" secondAttribute="bottom" constant="-8" id="7Jr-0q-GeI"/>
                             <constraint firstItem="aCA-p1-dy7" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="9Q0-BN-hDA"/>
+                            <constraint firstItem="Yhl-S8-pn1" firstAttribute="top" secondItem="ISk-hI-mrB" secondAttribute="topMargin" id="AHL-5W-GCD"/>
                             <constraint firstItem="c3a-lg-7s5" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="KC8-Gm-IVa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C9h-fz-EXg" secondAttribute="trailing" constant="17" id="Muh-v9-R6g"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="O2L-9l-VBO"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="-20" id="SJ6-t2-t7d"/>
+                            <constraint firstItem="ufZ-gp-1XW" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="-20" id="TbD-f4-VKl"/>
+                            <constraint firstItem="ufZ-gp-1XW" firstAttribute="top" secondItem="ISk-hI-mrB" secondAttribute="topMargin" id="XuK-SB-9G1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yhl-S8-pn1" secondAttribute="trailing" constant="-20" id="Zse-KZ-tag"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ufZ-gp-1XW" secondAttribute="trailing" constant="-20" id="Zyn-p7-6Ka"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wNU-km-lHn" secondAttribute="trailing" constant="17" id="cZp-FM-aPj"/>
                             <constraint firstItem="iXJ-rh-r3O" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="dZG-tf-DLO"/>
                             <constraint firstItem="E2F-cv-Dfi" firstAttribute="top" secondItem="fH2-l4-zF6" secondAttribute="bottom" constant="2" id="dn9-Wf-tDh"/>
                             <constraint firstItem="wNU-km-lHn" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="16" id="ewX-VP-iPq"/>
                             <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="wNU-km-lHn" secondAttribute="bottom" constant="20" id="gVy-f6-aqh"/>
+                            <constraint firstItem="Yhl-S8-pn1" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="-20" id="hu9-wk-2VU"/>
                             <constraint firstItem="E2F-cv-Dfi" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="hyX-io-iC8"/>
                             <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="aCA-p1-dy7" secondAttribute="bottom" constant="-185" id="i0v-1l-7fI"/>
                             <constraint firstItem="c3a-lg-7s5" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="-20" id="iQU-Fp-ny9"/>
@@ -463,16 +479,20 @@
                             <constraint firstItem="1rX-pB-yCg" firstAttribute="top" secondItem="fH2-l4-zF6" secondAttribute="bottom" constant="36" id="lsZ-Ri-4eR"/>
                             <constraint firstItem="dbS-Rl-P5N" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="16" id="oO1-bQ-byX"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="top" secondItem="o3j-4E-6fs" secondAttribute="bottom" constant="-20" id="xvB-FH-73j"/>
+                            <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="ufZ-gp-1XW" secondAttribute="bottom" id="yDh-HL-naI"/>
                             <constraint firstItem="CpR-BP-8VJ" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="ygk-kM-CVR"/>
                         </constraints>
                         <connections>
                             <outlet property="addTitleField" destination="E2F-cv-Dfi" id="gc6-tV-fZL"/>
+                            <outlet property="backgroundImageView" destination="Yhl-S8-pn1" id="avF-ls-eTl"/>
                             <outlet property="calendarContainer" destination="aCA-p1-dy7" id="YrI-Q0-pBR"/>
                             <outlet property="dateButton" destination="1rX-pB-yCg" id="ThV-Ve-mfk"/>
                             <outlet property="endDateButton" destination="5Kf-K9-llc" id="And-c7-kYg"/>
                             <outlet property="endDateView" destination="4E9-PV-SgK" id="BLP-pd-tUq"/>
                             <outlet property="endPicker" destination="l99-0P-bWe" id="l5m-bb-aKC"/>
+                            <outlet property="imageCollectionView" destination="c3a-lg-7s5" id="RIm-xC-5rg"/>
                             <outlet property="moveStoryDownbutton" destination="CpR-BP-8VJ" id="ehu-GW-Cdn"/>
+                            <outlet property="navBar" destination="fH2-l4-zF6" id="aKJ-sw-421"/>
                             <outlet property="quotesButton" destination="C9h-fz-EXg" id="hYN-Lf-1eW"/>
                             <outlet property="startDateButton" destination="sn4-8W-nqP" id="3yn-tP-3kE"/>
                             <outlet property="startDateView" destination="UJr-ZD-unp" id="sd3-Yd-fBr"/>

@@ -28,6 +28,10 @@ class AddMemoryView: UIView{
     @IBOutlet weak var startPicker: UIDatePicker!
     @IBOutlet weak var endPicker: UIDatePicker!
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var navBar: UIView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    
     var calendarVisible = true
     var endDateVisible = false
     
@@ -36,8 +40,12 @@ class AddMemoryView: UIView{
     
     var keyboardHeight: CGFloat!
     
-    
     override func layoutSubviews() {
+        
+        navBar.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
+        imageCollectionView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.5)
+
+        
         
         calendarContainer.layer.cornerRadius = 3.0
         calendarContainer.layer.zPosition = CGFloat(MAXFLOAT - 1)
@@ -63,15 +71,19 @@ class AddMemoryView: UIView{
         case "iPhone 5", "iPhone 5s":
             CALENDAR_MOVE_DISTANCE = 500
             END_DATE_MOVE_DISTANCE = -150
+            keyboardHeight = 253
         case "iPhone 6", "iPhone 6s":
             CALENDAR_MOVE_DISTANCE = 500
             END_DATE_MOVE_DISTANCE = -150
+            keyboardHeight = 225
         case "iPhone 6 Plus", "iPhone 6s Plus":
             CALENDAR_MOVE_DISTANCE = 500
             END_DATE_MOVE_DISTANCE = -150
+            keyboardHeight = 271
         case "Simulator":
             CALENDAR_MOVE_DISTANCE = 500
             END_DATE_MOVE_DISTANCE = -150
+            keyboardHeight = 225
         default:
             return
         }
@@ -97,17 +109,20 @@ class AddMemoryView: UIView{
     
     func moveContainer(moveUp: Bool, keyboardHeight: CGFloat){
         if moveUp{
+            
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: {(
                 self.moveStoryDownbutton.transform = CGAffineTransformMakeTranslation(0, -keyboardHeight),
+                self.moveStoryDownbutton.alpha = 1.0,
                 self.story.transform = CGAffineTransformMakeTranslation(0, -keyboardHeight),
-                self.moveStoryDownbutton.alpha = 1.0
+                self.story.backgroundColor = UIColor.fromHex(0x646363, alpha: 1.0)
                 )}, completion: nil)
         }
         else{
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: {(
                 self.moveStoryDownbutton.transform = CGAffineTransformMakeTranslation(0, 0),
+                self.moveStoryDownbutton.alpha = 0.0,
                 self.story.transform = CGAffineTransformMakeTranslation(0, 0),
-                self.moveStoryDownbutton.alpha = 0.0
+                self.story.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
                 )}, completion: nil)
         }
     }

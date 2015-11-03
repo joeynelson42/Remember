@@ -17,7 +17,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     let PORTRAIT_IMAGE_SIZE = CGSize(width: 130, height: 230)
     let LANDSCAPE_IMAGE_SIZE = CGSize(width: 230, height: 130)
     var keyboardHeight: CGFloat!
-
+    var currentBGIndexPath: NSIndexPath!
     
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
@@ -27,9 +27,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         imagePicker.delegate = self
         registerForKeyboardNotifications()
         addMemoryView.addTitleField.attributedPlaceholder = NSAttributedString(string:"Add Title...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        
-        
+        addMemoryView.story.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
+                
 //        if let mem = memory{
 //            //edit mode: load the memory into the editable fields
 //        }
@@ -72,6 +71,10 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
                 cell.orientation = .landscape
             }
         }
+        
+        cell.layer.borderColor = CGColor.fromHex(0xF8FAA0)
+        cell.layer.borderWidth = 0.0
+        
         cell.imageView.contentMode = .ScaleAspectFill
         
         return cell
@@ -106,8 +109,27 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             addPhoto()
         }
         else{
-            print("set as main image")
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! MemoryImageCollectionCell
+            addMemoryView.backgroundImageView.image = cell.imageView.image
+            
+            toggleBackgroundPhotoSelect(indexPath)
         }
+    }
+    
+    func toggleBackgroundPhotoSelect(indexPath: NSIndexPath){
+        guard let previousBGIndexPath = currentBGIndexPath else{
+            let cell = imageCollectionView.cellForItemAtIndexPath(indexPath)
+            currentBGIndexPath = indexPath
+            cell?.layer.borderWidth = 3.0
+            return
+        }
+        currentBGIndexPath = indexPath
+        
+        let prevCell = imageCollectionView.cellForItemAtIndexPath(previousBGIndexPath)
+        let currCell = imageCollectionView.cellForItemAtIndexPath(currentBGIndexPath)
+        
+        prevCell?.layer.borderWidth = 0.0
+        currCell?.layer.borderWidth = 3.0
     }
     
     //MARK: Add photo stuff
@@ -150,9 +172,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     //MARK: Text field stuff
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         view.endEditing(true)
@@ -172,6 +191,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
                 attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         }
         
+        
         self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
     }
     
@@ -179,8 +199,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         if(textView.text == "Write the story..."){
             textView.text = ""
         }
+        self.keyboardHeight = addMemoryView.keyboardHeight
         self.addMemoryView.moveContainer(true, keyboardHeight: keyboardHeight)
-
     }
     
     func textViewDidEndEditing(textView: UITextView) {
@@ -188,7 +208,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             textView.text = "Write the story..."
         }
         self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
-
     }
     
     func registerForKeyboardNotifications() {
@@ -205,7 +224,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         
         keyboardHeight = keyboardFrame.height
         addMemoryView.keyboardHeight = keyboardHeight
-        
     }
     
     func removeQuote(){
@@ -214,10 +232,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func addNewQuoteSkeleton(){
         //When a user finishes a quote, create a new quote skeleton automatically
-    }
-    
-    func setBackgroundPhoto(){
-        //called by selecting one of the already uploaded photos
     }
     
     func showCalendar(){
