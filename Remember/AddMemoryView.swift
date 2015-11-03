@@ -15,6 +15,12 @@ class AddMemoryView: UIView{
     @IBOutlet weak var calendarContainer: UIView!
     @IBOutlet weak var startDateView: UIView!
     @IBOutlet weak var endDateView: UIView!
+    
+    @IBOutlet weak var storyButton: UIButton!
+    @IBOutlet weak var quotesButton: UIButton!
+    @IBOutlet weak var story: UITextView!
+    
+    
 
     var calendarVisible = true
     var startDateVisible = true
@@ -23,6 +29,7 @@ class AddMemoryView: UIView{
     override func layoutSubviews() {
         
         calendarContainer.layer.cornerRadius = 3.0
+        calendarContainer.layer.zPosition = CGFloat(MAXFLOAT - 1)
         
         endDateView.layer.cornerRadius = 3.0
         endDateView.layer.shadowColor = CGColor.fromHex(0x434242, alpha: 1.0)
@@ -36,11 +43,24 @@ class AddMemoryView: UIView{
         startDateView.layer.shadowOpacity = 0.2
         startDateView.layer.shadowRadius = 0.9
         startDateView.layer.zPosition = CGFloat(MAXFLOAT)
-        
     }
     
-    @IBAction func toggleCalendarContainer(sender: UIButton) {
-        //TODO: Move the calendar view up to show just the start/end date headers
+    
+    
+    @IBAction func toggleStory(sender: UIButton) {
+        storyButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
+        quotesButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        story.hidden = false
+    }
+    
+    
+    @IBAction func toggleQuotes(sender: UIButton) {
+        quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
+        storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        story.hidden = true
+    }
+    
+    func toggleCalendar(){
         if calendarVisible{
             if(endDateVisible){
                 hideEndDate()
@@ -55,6 +75,10 @@ class AddMemoryView: UIView{
         calendarVisible = !calendarVisible
     }
     
+    @IBAction func toggleCalendarContainer(sender: UIButton) {
+        toggleCalendar()
+    }
+    
     @IBAction func toggleStartDate(sender: UIButton) {
         //TODO: Move the calender view up to show the start date view
         if startDateVisible{
@@ -67,7 +91,6 @@ class AddMemoryView: UIView{
     }
     
     @IBAction func toggleEndDate(sender: UIButton) {
-        //TODO: Move the end date view up
         if endDateVisible{
             hideEndDate()
         }
@@ -77,7 +100,6 @@ class AddMemoryView: UIView{
         
         endDateVisible = !endDateVisible
     }
-    
     
     func hideCalendar(){
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({

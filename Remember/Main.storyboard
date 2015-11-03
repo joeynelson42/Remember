@@ -280,6 +280,56 @@
                                     <outlet property="delegate" destination="hdZ-HT-MOA" id="R4J-BR-7Gt"/>
                                 </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellowLine" translatesAutoresizingMaskIntoConstraints="NO" id="iXJ-rh-r3O">
+                                <rect key="frame" x="36" y="407" width="302" height="13"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="NhA-TT-cUa"/>
+                                    <constraint firstAttribute="width" constant="302" id="dK9-p9-h2R"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbS-Rl-P5N">
+                                <rect key="frame" x="36" y="369" width="123" height="42"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="CNL-4q-vez"/>
+                                    <constraint firstAttribute="height" constant="42" id="U1g-m8-DDA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="Story">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleStory:" destination="ISk-hI-mrB" eventType="touchUpInside" id="aJT-qy-Zf7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9h-fz-EXg">
+                                <rect key="frame" x="215" y="369" width="123" height="42"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="2e4-pB-Pxf"/>
+                                    <constraint firstAttribute="height" constant="42" id="u1d-hX-RYD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="Quotes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleQuotes:" destination="ISk-hI-mrB" eventType="touchUpInside" id="2sH-6D-4qD"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write the story..." translatesAutoresizingMaskIntoConstraints="NO" id="wNU-km-lHn">
+                                <rect key="frame" x="32" y="428" width="310" height="219"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hdZ-HT-MOA" id="5Ey-ts-YBc"/>
+                                </connections>
+                            </textView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-p1-dy7" userLabel="Calendar Container">
                                 <rect key="frame" x="0.0" y="667" width="375" height="458"/>
                                 <subviews>
@@ -357,14 +407,6 @@
                                     <constraint firstItem="4E9-PV-SgK" firstAttribute="trailing" secondItem="UJr-ZD-unp" secondAttribute="trailing" constant="-8" id="uyv-4W-zRb"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellowLine" translatesAutoresizingMaskIntoConstraints="NO" id="iXJ-rh-r3O">
-                                <rect key="frame" x="36" y="407" width="302" height="13"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="NhA-TT-cUa"/>
-                                    <constraint firstAttribute="width" constant="302" id="dK9-p9-h2R"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -373,8 +415,11 @@
                             <constraint firstItem="c3a-lg-7s5" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leading" id="1bU-EJ-ehs"/>
                             <constraint firstItem="aCA-p1-dy7" firstAttribute="trailing" secondItem="c3a-lg-7s5" secondAttribute="trailing" id="2fS-5c-LCy"/>
                             <constraint firstItem="iXJ-rh-r3O" firstAttribute="top" secondItem="c3a-lg-7s5" secondAttribute="bottom" constant="42" id="74H-2S-mhc"/>
+                            <constraint firstItem="dbS-Rl-P5N" firstAttribute="top" secondItem="c3a-lg-7s5" secondAttribute="bottom" constant="4" id="CnF-p7-sAi"/>
+                            <constraint firstItem="C9h-fz-EXg" firstAttribute="top" secondItem="c3a-lg-7s5" secondAttribute="bottom" constant="4" id="HWc-OK-HQy"/>
                             <constraint firstItem="aCA-p1-dy7" firstAttribute="centerX" secondItem="E2F-cv-Dfi" secondAttribute="centerX" id="IVJ-nd-81t"/>
                             <constraint firstItem="1rX-pB-yCg" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="58" id="JqU-6U-NVc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C9h-fz-EXg" secondAttribute="trailing" constant="17" id="Muh-v9-R6g"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="O2L-9l-VBO"/>
                             <constraint firstItem="c3a-lg-7s5" firstAttribute="centerX" secondItem="fH2-l4-zF6" secondAttribute="centerX" id="Qge-wp-ZuT"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="-20" id="SJ6-t2-t7d"/>
@@ -382,10 +427,15 @@
                             <constraint firstItem="c3a-lg-7s5" firstAttribute="top" secondItem="E2F-cv-Dfi" secondAttribute="bottom" constant="32" id="Uh3-KF-TRE"/>
                             <constraint firstItem="E2F-cv-Dfi" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="26" id="Uzb-Gz-6VP"/>
                             <constraint firstItem="c3a-lg-7s5" firstAttribute="top" secondItem="1rX-pB-yCg" secondAttribute="bottom" constant="5" id="aAF-cd-MSc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wNU-km-lHn" secondAttribute="trailing" constant="17" id="cZp-FM-aPj"/>
                             <constraint firstItem="iXJ-rh-r3O" firstAttribute="centerX" secondItem="ISk-hI-mrB" secondAttribute="centerX" id="dZG-tf-DLO"/>
                             <constraint firstItem="E2F-cv-Dfi" firstAttribute="top" secondItem="fH2-l4-zF6" secondAttribute="bottom" constant="2" id="dn9-Wf-tDh"/>
+                            <constraint firstItem="wNU-km-lHn" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="16" id="ewX-VP-iPq"/>
+                            <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="wNU-km-lHn" secondAttribute="bottom" constant="20" id="gVy-f6-aqh"/>
+                            <constraint firstItem="wNU-km-lHn" firstAttribute="top" secondItem="iXJ-rh-r3O" secondAttribute="bottom" constant="8" symbolic="YES" id="jdY-eT-Doj"/>
                             <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="c3a-lg-7s5" secondAttribute="bottom" constant="302" id="jo7-y5-YvW"/>
                             <constraint firstItem="1rX-pB-yCg" firstAttribute="top" secondItem="fH2-l4-zF6" secondAttribute="bottom" constant="36" id="lsZ-Ri-4eR"/>
+                            <constraint firstItem="dbS-Rl-P5N" firstAttribute="leading" secondItem="ISk-hI-mrB" secondAttribute="leadingMargin" constant="16" id="oO1-bQ-byX"/>
                             <constraint firstItem="aCA-p1-dy7" firstAttribute="bottom" secondItem="RGT-6K-H1T" secondAttribute="top" constant="23" id="suX-u7-QyY"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="top" secondItem="o3j-4E-6fs" secondAttribute="bottom" constant="-20" id="xvB-FH-73j"/>
                         </constraints>
@@ -393,13 +443,17 @@
                             <outlet property="addTitleField" destination="E2F-cv-Dfi" id="gc6-tV-fZL"/>
                             <outlet property="calendarContainer" destination="aCA-p1-dy7" id="YrI-Q0-pBR"/>
                             <outlet property="endDateView" destination="4E9-PV-SgK" id="BLP-pd-tUq"/>
+                            <outlet property="quotesButton" destination="C9h-fz-EXg" id="hYN-Lf-1eW"/>
                             <outlet property="startDateView" destination="UJr-ZD-unp" id="sd3-Yd-fBr"/>
+                            <outlet property="story" destination="wNU-km-lHn" id="kLX-aw-1VI"/>
+                            <outlet property="storyButton" destination="dbS-Rl-P5N" id="ugs-QO-irl"/>
                         </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addMemoryView" destination="ISk-hI-mrB" id="eoR-c2-IL0"/>
+                        <outlet property="imageCollectionView" destination="c3a-lg-7s5" id="DRG-zP-P8T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAs-cG-8gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
