@@ -17,19 +17,21 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     var memories: [Memory]!
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var memoryCollectionView: MemoryCollectionView!
     
     override func viewDidLoad() {
         loadDummyData()
-        
-        (self.view as! MemoryCollectionView).loadTiles()
-        (self.view as! MemoryCollectionView).sideMenuView.hideMenu()
-        
-        (self.view as! MemoryCollectionView).sideMenuView.hidden = false
+        memoryCollectionView = (self.view as! MemoryCollectionView)
+        memoryCollectionView.loadTiles()
+        memoryCollectionView.sideMenuView.hideMenu()
+        memoryCollectionView.sideMenuView.hidden = false
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissMenu")
+        memoryCollectionView.menuFade.addGestureRecognizer(tap)
     }
     
     override func viewDidDisappear(animated: Bool) {
-        (self.view as! MemoryCollectionView).toggleFade()
-        (self.view as! MemoryCollectionView).sideMenuView.hideMenu()
+        memoryCollectionView.hideFade()
+        memoryCollectionView.sideMenuView.hideMenu()
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -60,6 +62,11 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     @IBAction func addNewMemory(sender: UIButton) {
         let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
         self.presentViewController(addVC, animated: true, completion: nil)
+    }
+    
+    func dismissMenu(){
+        memoryCollectionView.hideFade()
+        memoryCollectionView.sideMenuView.toggleMenu()
     }
     
     

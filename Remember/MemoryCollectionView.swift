@@ -31,15 +31,23 @@ class MemoryCollectionView: UIView{
     
     func toggleFade(){
         if menuFade.alpha == 0.0{
-            UIView.animateWithDuration(0.3, animations: ({
-                self.menuFade.alpha = 0.6
-            }), completion: nil)
+            showFade()
         }
         else{
-            UIView.animateWithDuration(0.5, animations: ({
-                self.menuFade.alpha = 0.0
-            }), completion: nil)
+            hideFade()
         }
+    }
+    
+    func showFade(){
+        UIView.animateWithDuration(0.3, animations: ({
+            self.menuFade.alpha = 0.6
+        }), completion: nil)
+    }
+    
+    func hideFade(){
+        UIView.animateWithDuration(0.5, animations: ({
+            self.menuFade.alpha = 0.0
+        }), completion: nil)
     }
     
     @IBAction func tileSelected(sender: UIButton) {
