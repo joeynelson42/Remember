@@ -22,12 +22,15 @@ class AddMemoryView: UIView{
     
     @IBOutlet weak var blurViewContainer: UIView!
     
+    
+    @IBOutlet weak var startDateButton: UIButton!
+    
+    @IBOutlet weak var endDateButton: UIButton!
     @IBOutlet weak var startPicker: UIDatePicker!
     @IBOutlet weak var endPicker: UIDatePicker!
 
     var calendarVisible = true
-    var startDateVisible = true
-    var endDateVisible = true
+    var endDateVisible = false
     
     override func layoutSubviews() {
         
@@ -35,6 +38,7 @@ class AddMemoryView: UIView{
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
         visualEffectView.frame = blurViewContainer.bounds
         blurViewContainer.addSubview(visualEffectView)
+
         
         calendarContainer.layer.cornerRadius = 3.0
         calendarContainer.layer.zPosition = CGFloat(MAXFLOAT - 1)
@@ -69,14 +73,12 @@ class AddMemoryView: UIView{
     
     func toggleCalendar(){
         if calendarVisible{
-            blurViewContainer.hidden = true
             hideCalendar()
         }
         else{
             showCalendar()
-            blurViewContainer.hidden = false
+            if endDateVisible {showEndDate()}
         }
-        
         calendarVisible = !calendarVisible
     }
     
@@ -86,20 +88,16 @@ class AddMemoryView: UIView{
     
     @IBAction func toggleStartDate(sender: UIButton) {
         //TODO: Move the calender view up to show the start date view
-        if startDateVisible{
-            
-        }
-        else{
-            
-        }
-        startDateVisible = !startDateVisible
+        toggleCalendar()
     }
     
     @IBAction func toggleEndDate(sender: UIButton) {
         if endDateVisible{
+            endDateButton.setTitleColor(UIColor.fromHex(0x646363), forState: .Normal)
             hideEndDate()
         }
         else{
+            endDateButton.setTitleColor(UIColor.fromHex(0x000000), forState: .Normal)
             showEndDate()
         }
         
@@ -109,28 +107,23 @@ class AddMemoryView: UIView{
     func hideCalendar(){
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
             self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, 500)
-            self.blurViewContainer.alpha = 0.0
-        }), completion: {finished in
-            self.blurViewContainer.hidden = true
-        })
+        }), completion: nil)
         
     }
     
     func showCalendar(){
-        self.blurViewContainer.hidden = false
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
             self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, 0)
-            self.blurViewContainer.alpha = 1.0
         }), completion: nil)
     }
     
-    func hideEndDate(){
+    func showEndDate(){
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
             self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, -150)
         }), completion: nil)
     }
     
-    func showEndDate(){
+    func hideEndDate(){
         UIView.animateWithDuration(0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
             self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, 0)
         }), completion: nil)

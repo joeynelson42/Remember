@@ -385,11 +385,10 @@
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                                 <state key="normal" title="End Date (optional)">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" red="0.39215686274509803" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="toggleEndDate:" destination="ISk-hI-mrB" eventType="touchUpInside" id="kiz-ve-o55"/>
-                                                    <action selector="toggleStartDate:" destination="ISk-hI-mrB" eventType="touchUpInside" id="GKo-Rt-Dsw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -457,9 +456,11 @@
                             <outlet property="addTitleField" destination="E2F-cv-Dfi" id="gc6-tV-fZL"/>
                             <outlet property="blurViewContainer" destination="54g-PH-rOq" id="i3R-wH-vgA"/>
                             <outlet property="calendarContainer" destination="aCA-p1-dy7" id="YrI-Q0-pBR"/>
+                            <outlet property="endDateButton" destination="5Kf-K9-llc" id="And-c7-kYg"/>
                             <outlet property="endDateView" destination="4E9-PV-SgK" id="BLP-pd-tUq"/>
                             <outlet property="endPicker" destination="l99-0P-bWe" id="l5m-bb-aKC"/>
                             <outlet property="quotesButton" destination="C9h-fz-EXg" id="hYN-Lf-1eW"/>
+                            <outlet property="startDateButton" destination="sn4-8W-nqP" id="3yn-tP-3kE"/>
                             <outlet property="startDateView" destination="UJr-ZD-unp" id="sd3-Yd-fBr"/>
                             <outlet property="startPicker" destination="CJY-a2-TJc" id="bp6-UO-2ls"/>
                             <outlet property="story" destination="wNU-km-lHn" id="kLX-aw-1VI"/>
