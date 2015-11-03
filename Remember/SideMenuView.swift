@@ -116,10 +116,10 @@ class SideMenuTile: UIView{
     }
     
     func tappedAnimation(){
-        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseOut, animations: ({
+        UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseOut, animations: ({
             self.transform = CGAffineTransformMakeScale(0.85, 0.85)
         }), completion: {finished in
-            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .CurveEaseIn, animations: ({
+            UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .CurveEaseIn, animations: ({
                 self.transform = CGAffineTransformMakeScale(1.0, 1.0)
             }), completion: nil)
         })

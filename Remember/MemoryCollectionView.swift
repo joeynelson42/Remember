@@ -26,8 +26,11 @@ class MemoryCollectionView: UIView{
     
     @IBAction func menuButton(sender: AnyObject) {
         sideMenuView.toggleMenu()
-        
-        if sideMenuView.status == .open{
+        toggleFade()
+    }
+    
+    func toggleFade(){
+        if menuFade.alpha == 0.0{
             UIView.animateWithDuration(0.3, animations: ({
                 self.menuFade.alpha = 0.6
             }), completion: nil)
@@ -38,7 +41,6 @@ class MemoryCollectionView: UIView{
             }), completion: nil)
         }
     }
-    
     
     @IBAction func tileSelected(sender: UIButton) {
         sideMenuView.tiles[sender.tag].tappedAnimation()

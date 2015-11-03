@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
-class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
+class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate{
     
     var memory: Memory!
     var images: [UIImage]!
     
+    @IBOutlet var addMemoryView: AddMemoryView!
+    
     override func viewDidLoad() {
         loadDummyImages()
-        
+        addMemoryView.addTitleField.attributedPlaceholder = NSAttributedString(string:"Add Title...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         if let mem = memory{
             //edit mode: load the memory into the editable fields
         }
@@ -24,6 +26,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             //add new memory: show empty fields
         }
     }
+    
+    
     
     func loadDummyImages(){
         images = [UIImage(named: "wedding")!, UIImage(named: "cabin")!, UIImage(named: "fearmonth")!, UIImage(named: "sammyAtAirport")!, UIImage(named: "stitches")!, UIImage(named: "AddPhotoIcon")!]
@@ -65,6 +69,40 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        view.endEditing(true)
+        
+        if(indexPath.row == images.count - 1){
+            print("last cell")
+        }
+        else{
+            print("set as main image")
+        }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if(textField.placeholder == "Add Title..."){
+            textField.attributedPlaceholder = NSAttributedString(string:" ",
+                attributes:[NSForegroundColorAttributeName: UIColor.clearColor()])
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if(textField.placeholder == " "){
+            textField.attributedPlaceholder = NSAttributedString(string:"Add Title...",
+                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        }
+    }
+    
     func addPhoto(){
         
     }
@@ -93,7 +131,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         //ParseServerProxy.parseProxy.createMemory(<#T##memoryID: String##String#>, title: <#T##String#>, images: <#T##[UIImage]#>, startDate: <#T##NSDate#>, endDate: <#T##NSDate#>, story: <#T##String#>, quotes: <#T##[String]#>, taggedIDs: <#T##[String]#>)
     }
     
-    func cancel(){
+    
+    @IBAction func cancel(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

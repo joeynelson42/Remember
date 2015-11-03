@@ -13,6 +13,7 @@
 		632154351BE52ACC001FAFAE /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632154341BE52ACC001FAFAE /* MemoryCollectionView.swift */; };
 		6333678E1BE41C1A00DBD743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6333678D1BE41C1A00DBD743 /* Main.storyboard */; };
 		633367901BE427CA00DBD743 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333678F1BE427CA00DBD743 /* LoginView.swift */; };
+		636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		633367921BE4295500DBD743 /* Existence-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-Light.otf"; sourceTree = "<group>"; };
 		633367931BE4295500DBD743 /* Existence-StencilLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-StencilLight.otf"; sourceTree = "<group>"; };
 		633367941BE4295500DBD743 /* Existence-UnicaseLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-UnicaseLight.otf"; sourceTree = "<group>"; };
+		636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryView.swift; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CF66761BE18FC50042DC37 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				63E009611BE1D122009A0FA8 /* SideMenuView.swift */,
 				6333678F1BE427CA00DBD743 /* LoginView.swift */,
 				632154341BE52ACC001FAFAE /* MemoryCollectionView.swift */,
+				636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */,
 				633367911BE4291E00DBD743 /* Resources */,
 				63E009651BE1D146009A0FA8 /* Misc. Views */,
 			);
@@ -541,6 +544,7 @@
 				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
 				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
 				63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */,
+				636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */,
 				30DE0A1B1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift in Sources */,
 				63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */,
 				632154351BE52ACC001FAFAE /* MemoryCollectionView.swift in Sources */,

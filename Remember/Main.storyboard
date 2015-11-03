@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hdZ-HT-MOA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gC1-rd-kah">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -155,12 +155,12 @@
         <!--Add Memory View Controller-->
         <scene sceneID="LeT-q2-BFK">
             <objects>
-                <viewController id="hdZ-HT-MOA" customClass="AddMemoryViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMemoryVC" id="hdZ-HT-MOA" customClass="AddMemoryViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o3j-4E-6fs"/>
                         <viewControllerLayoutGuide type="bottom" id="RGT-6K-H1T"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ISk-hI-mrB">
+                    <view key="view" contentMode="scaleToFill" id="ISk-hI-mrB" customClass="AddMemoryView" customModule="Remember" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -177,16 +177,26 @@
                                         <state key="normal" image="TheYellowR"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMZ-5W-sbC">
-                                        <rect key="frame" x="22" y="29" width="27" height="24"/>
+                                        <rect key="frame" x="22" y="29" width="27" height="27"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="AlV-Je-TTh"/>
+                                            <constraint firstAttribute="height" constant="27" id="AlV-Je-TTh"/>
                                             <constraint firstAttribute="width" constant="27" id="uRF-lw-Brd"/>
                                         </constraints>
-                                        <state key="normal" image="SideMenuIcon"/>
+                                        <state key="normal" image="XIcon"/>
                                         <connections>
+                                            <action selector="cancel:" destination="hdZ-HT-MOA" eventType="touchUpInside" id="DnY-YP-byd"/>
                                             <action selector="menuButton:" destination="LZk-QK-olM" eventType="touchUpInside" id="ruN-lB-3pr"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmP-DD-CGg">
+                                        <rect key="frame" x="333" y="29" width="28" height="22"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="Zfx-A4-SG3"/>
+                                            <constraint firstAttribute="width" constant="28" id="wgt-6A-Ku6"/>
+                                        </constraints>
+                                        <state key="normal" image="checkmarkIcon"/>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -197,22 +207,10 @@
                                     <constraint firstAttribute="height" constant="64" id="SsS-bc-Nk9"/>
                                     <constraint firstItem="MhO-5b-RRf" firstAttribute="top" secondItem="fH2-l4-zF6" secondAttribute="top" constant="25" id="hOd-JL-Qmk"/>
                                     <constraint firstItem="jMZ-5W-sbC" firstAttribute="leading" secondItem="fH2-l4-zF6" secondAttribute="leading" constant="22" id="i4t-xB-J8L"/>
+                                    <constraint firstAttribute="trailing" secondItem="nmP-DD-CGg" secondAttribute="trailing" constant="22" id="jVc-1r-XrH"/>
+                                    <constraint firstItem="nmP-DD-CGg" firstAttribute="top" secondItem="fH2-l4-zF6" secondAttribute="top" constant="29" id="uN8-c7-1Le"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add Title..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3HP-3Q-sjB">
-                                <rect key="frame" x="20" y="55" width="335" height="49"/>
-                                <animations/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add Date..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5re-Zo-YV3">
-                                <rect key="frame" x="20" y="92" width="335" height="35"/>
-                                <animations/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-lg-7s5">
                                 <rect key="frame" x="0.0" y="135" width="375" height="230"/>
                                 <animations/>
@@ -220,11 +218,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="1EQ-kx-oaN"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="fSF-OE-ozP">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="10" id="fSF-OE-ozP">
                                     <size key="itemSize" width="132" height="226"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="132" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="JUT-bq-Zc6" customClass="MemoryImageCollectionCell" customModule="Remember" customModuleProvider="target">
@@ -260,6 +258,25 @@
                                     <outlet property="delegate" destination="hdZ-HT-MOA" id="xTT-qR-SZ0"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rX-pB-yCg">
+                                <rect key="frame" x="74" y="100" width="227" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="Add Date...">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Title..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-cv-Dfi">
+                                <rect key="frame" x="42" y="66" width="291" height="37"/>
+                                <animations/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hdZ-HT-MOA" id="R4J-BR-7Gt"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -271,9 +288,15 @@
                             <constraint firstItem="RGT-6K-H1T" firstAttribute="top" secondItem="c3a-lg-7s5" secondAttribute="bottom" constant="302" id="jo7-y5-YvW"/>
                             <constraint firstItem="fH2-l4-zF6" firstAttribute="top" secondItem="o3j-4E-6fs" secondAttribute="bottom" constant="-20" id="xvB-FH-73j"/>
                         </constraints>
+                        <connections>
+                            <outlet property="addTitleField" destination="E2F-cv-Dfi" id="gc6-tV-fZL"/>
+                        </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="addMemoryView" destination="ISk-hI-mrB" id="eoR-c2-IL0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAs-cG-8gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,6 +334,9 @@
                                             <constraint firstAttribute="width" constant="28" id="FI3-Ks-duy"/>
                                         </constraints>
                                         <state key="normal" image="AddIcon"/>
+                                        <connections>
+                                            <action selector="addNewMemory:" destination="gC1-rd-kah" eventType="touchUpInside" id="tNz-fS-gaL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f71-1a-RFU">
                                         <rect key="frame" x="22" y="29" width="27" height="24"/>
@@ -629,6 +655,8 @@
         <image name="SideMenuIcon" width="54" height="48"/>
         <image name="TheYellowR" width="18" height="30"/>
         <image name="UserIcon" width="45" height="54"/>
+        <image name="XIcon" width="21" height="20"/>
+        <image name="checkmarkIcon" width="28" height="21"/>
         <image name="loginBackground" width="1024" height="1544"/>
         <image name="rememberTitle" width="1017" height="231"/>
         <image name="stitches" width="242" height="460"/>
