@@ -15,6 +15,12 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     var images = [UIImage]()
     var infoVisible = informationVisible.story
     
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        images = [UIImage(named: "stitches")!, UIImage(named: "sammyAtAirport")!, UIImage(named: "fearmonth")!, UIImage(named: "wedding")!, UIImage(named: "cabin")!]
+    }
+    
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -25,8 +31,9 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = MemoryImageCollectionCell()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageCell", forIndexPath: indexPath) as! MemoryImageCollectionCell
         cell.imageView.image = images[indexPath.row]
+        cell.imageView.contentMode = .ScaleAspectFill
         if(images[indexPath.row].size.height < images[indexPath.row].size.width){
             cell.orientation = .portrait
         }

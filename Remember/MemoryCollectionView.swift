@@ -24,6 +24,22 @@ class MemoryCollectionView: UIView{
     @IBOutlet weak var profileTile: SideMenuTile!
     @IBOutlet weak var settingsTile: SideMenuTile!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        loadTiles()
+        sideMenuView.hideMenu()
+        sideMenuView.hidden = false
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissMenu")
+        menuFade.addGestureRecognizer(tap)
+    }
+    
+    func dismissMenu(){
+        hideFade()
+        sideMenuView.toggleMenu()
+    }
+    
     @IBAction func menuButton(sender: AnyObject) {
         sideMenuView.toggleMenu()
         toggleFade()

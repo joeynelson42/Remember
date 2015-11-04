@@ -22,11 +22,6 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         loadDummyData()
         memoryCollectionView = (self.view as! MemoryCollectionView)
-        memoryCollectionView.loadTiles()
-        memoryCollectionView.sideMenuView.hideMenu()
-        memoryCollectionView.sideMenuView.hidden = false
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissMenu")
-        memoryCollectionView.menuFade.addGestureRecognizer(tap)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -57,16 +52,14 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
 //        let memoryVC = MemoryViewController()
 //        memoryVC.memory = cell.memory
 //        self.presentViewController(memoryVC, animated: false, completion: nil)
+        
+        let memoryVC = mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
+        self.presentViewController(memoryVC, animated: true, completion: nil)
     }
 
     @IBAction func addNewMemory(sender: UIButton) {
         let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
         self.presentViewController(addVC, animated: true, completion: nil)
-    }
-    
-    func dismissMenu(){
-        memoryCollectionView.hideFade()
-        memoryCollectionView.sideMenuView.toggleMenu()
     }
     
     

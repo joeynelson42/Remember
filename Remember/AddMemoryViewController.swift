@@ -26,8 +26,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         imagePicker.delegate = self
         registerForKeyboardNotifications()
-        addMemoryView.addTitleField.attributedPlaceholder = NSAttributedString(string:"Add Title...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        addMemoryView.story.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
+        
                 
 //        if let mem = memory{
 //            //edit mode: load the memory into the editable fields

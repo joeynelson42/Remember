@@ -40,11 +40,14 @@ class AddMemoryView: UIView{
     
     var keyboardHeight: CGFloat!
     
-    override func layoutSubviews() {
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
+        addTitleField.attributedPlaceholder = NSAttributedString(string:"Add Title...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        story.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
         navBar.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
         imageCollectionView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.5)
-
+        
         
         
         calendarContainer.layer.cornerRadius = 3.0
@@ -57,13 +60,14 @@ class AddMemoryView: UIView{
         endDateView.layer.shadowRadius = 0.9
         
         startDateView.layer.cornerRadius = 3.0
-//        startDateView.layer.shadowColor = CGColor.fromHex(0x434242, alpha: 1.0)
-//        startDateView.layer.shadowOffset = CGSize(width: 3, height: -4)
-//        startDateView.layer.shadowOpacity = 0.2
-//        startDateView.layer.shadowRadius = 0.9
+        //        startDateView.layer.shadowColor = CGColor.fromHex(0x434242, alpha: 1.0)
+        //        startDateView.layer.shadowOffset = CGSize(width: 3, height: -4)
+        //        startDateView.layer.shadowOpacity = 0.2
+        //        startDateView.layer.shadowRadius = 0.9
         
         story.layer.cornerRadius = 3.0
     }
+
     
     func calculateAnimationDistance(){
         let modelName = UIDevice.currentDevice().modelName

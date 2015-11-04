@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     var keyboardHeight: CGFloat!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyboardNotifications()
@@ -29,8 +30,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         signUp()
     }
     
-    func login(username: String, password: String){
-        let success = ParseServerProxy.parseProxy.login()
+    func login(email: String, password: String){
+        let success = ParseServerProxy.parseProxy.login(email, pass: password)
         enterApp(success)
     }
     
@@ -44,6 +45,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let mainVC = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
+            
+            mainVC.modalTransitionStyle = .CrossDissolve
             mainVC.user = PFUser.currentUser()
 //            mainVC.memories = ParseServerProxy.parseProxy.getMemoriesOfUser("userID goes here")
             self.presentViewController(mainVC, animated: true, completion: nil)

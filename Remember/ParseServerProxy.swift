@@ -17,30 +17,58 @@ class ParseServerProxy{
     static let parseProxy = ParseServerProxy()
     
     let context: NSManagedObjectContext!
+    let permissions = ["public_profile"]
     
     init(){
         context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }
     
-    func login() -> Bool{
-        return true
+    func login(email: String, pass: String) -> Bool{
+        var success = false
+        PFUser.logInWithUsernameInBackground(email, password: pass) {
+            (pfUser: PFUser?, error: NSError?) -> Void in
+            if pfUser != nil {
+                print("logged in!")
+                success = true
+            }
+            else{
+                success = false
+            }
+        }
+        return success
     }
     
     func signUp() -> Bool{
         var success = false
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(nil) {
-            (user: PFUser?, error: NSError?) -> Void in
-            if let user = user {
-                if user.isNew {
-                    print("User signed up and logged in through Facebook!")
-                    success = true
-                } else {
+        if let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken() {
+            PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil {
                     print("User logged in through Facebook!")
                     success = true
+                } else {
+                    print("Uh oh. There was an error logging in.")
+                    success = false
                 }
-            } else {
-                print("Uh oh. The user cancelled the Facebook login.")
+            })
+        }
+        else {
+        
+            PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if let user = user {
+                    if user.isNew {
+                        print("User signed up and logged in through Facebook!")
+                        success = true
+                    } else {
+                        print("User logged in through Facebook!")
+                        success = true
+                    }
+                } else {
+                    print("Uh oh. The user cancelled the Facebook login.")
+                }
             }
+            
         }
         return success
     }
