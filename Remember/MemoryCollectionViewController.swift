@@ -18,6 +18,10 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var memoryCollectionView: MemoryCollectionView!
+    var previousContentOffset: CGPoint!
+    
+    @IBOutlet weak var memoryCollection: UICollectionView!
+    
     
     override func viewDidLoad() {
         memoryCollectionView = (self.view as! MemoryCollectionView)
@@ -39,10 +43,13 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memoryCell", forIndexPath: indexPath) as! MemoryCollectionCell
 
+        cell.memory = memories[indexPath.row]
+        
         cell.title.text = memories[indexPath.row].title
         cell.image.image = memories[indexPath.row].mainImage
         cell.image.contentMode = .ScaleAspectFill
         cell.date.text = memories[indexPath.row].startDate.getFormattedDate(memories[indexPath.row].endDate)
+        cell.memoryCollectionVC = self
         return cell
     }
     
@@ -52,6 +59,24 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         (memoryVC as! MemoryViewController).collectionVC = self
         self.presentViewController(memoryVC, animated: true, completion: nil)
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.view.endEditing(true)
+        
+        guard let _ = previousContentOffset else{
+            //memoryCollectionView.hideSearchBar()
+            previousContentOffset = CGPoint(x: 0, y: 0)
+            return
+        }
+        
+        if scrollView.contentOffset.y > previousContentOffset.y{
+            memoryCollectionView.hideSearchBar()
+        }
+        else{
+            memoryCollectionView.showSearchBar()
+        }
+    }
+    
 
     @IBAction func addNewMemory(sender: UIButton) {
         let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")

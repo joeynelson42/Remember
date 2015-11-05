@@ -591,11 +591,11 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bz9-Ta-sxw">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="630"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="559" id="pTP-g2-ZAR"/>
+                                    <constraint firstAttribute="height" constant="630" id="pTP-g2-ZAR"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="oTS-Tl-Iwb">
                                     <size key="itemSize" width="375" height="179"/>
@@ -861,7 +861,7 @@
                             <constraint firstItem="udT-Va-AXj" firstAttribute="top" secondItem="JeN-52-zIF" secondAttribute="bottom" id="QrY-LL-yc2"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Bk8-ht-3wU" secondAttribute="bottom" constant="88" id="SRV-gq-LjT"/>
                             <constraint firstItem="Bk8-ht-3wU" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leading" constant="2" id="UwJ-0e-VDf"/>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="bottom" secondItem="EfY-sq-Dp1" secondAttribute="top" id="cGR-lO-M1b"/>
+                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="bottom" secondItem="EfY-sq-Dp1" secondAttribute="top" constant="71" id="cGR-lO-M1b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JeN-52-zIF" secondAttribute="trailing" constant="-20" id="ccE-Id-PcD"/>
                             <constraint firstItem="bz9-Ta-sxw" firstAttribute="leading" secondItem="udT-Va-AXj" secondAttribute="leading" id="eLr-dZ-kiM"/>
                             <constraint firstItem="JeN-52-zIF" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leadingMargin" constant="-20" id="fRS-gF-Yux"/>
@@ -885,6 +885,9 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="memoryCollection" destination="bz9-Ta-sxw" id="XB8-Ez-4xi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibf-4U-QTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="8kV-L1-DgP"/>
@@ -1270,7 +1273,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddIcon" width="54" height="56"/>
+        <image name="AddIcon" width="27" height="28"/>
         <image name="EditIcon" width="359" height="369"/>
         <image name="FadeCoverSingle" width="374" height="179"/>
         <image name="GearIcon" width="90" height="90"/>

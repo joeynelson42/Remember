@@ -198,6 +198,32 @@ class ParseServerProxy{
     }
     
     func deleteMemory(memory: LocalMemory){
+        let query = PFQuery(className: "Memory")
+        query.whereKey("memoryID", equalTo: memory.ID)
+        var pfMemories = [PFObject]()
         
+        do{
+            try pfMemories = query.findObjects()
+        }
+        catch let err as NSError{
+            print("Memory query failed with error: \(err)")
+        }
+        
+        
+        pfMemories.first?.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
+            if succeeded{
+                print("Delete successful")
+            }
+            else{
+                print("Delete failed with error: \(error)")
+            }
+        }
     }
 }
+
+
+
+
+
+
+

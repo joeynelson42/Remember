@@ -18,10 +18,18 @@ class MemoryCollectionCell: UICollectionViewCell {
     
     var memory: LocalMemory!
     var deleteEnabled = false
+    weak var memoryCollectionVC: MemoryCollectionViewController!
     
     @IBAction func deleteAction(sender: AnyObject) {
         ParseServerProxy.parseProxy.deleteMemory(memory)
-        //somehow alert the collectionView to reload?
+        
+        for (i, mem) in memoryCollectionVC.memories.enumerate() {
+            if mem.ID == memory.ID{
+                memoryCollectionVC.memories.removeAtIndex(i)
+            }
+        }
+        memoryCollectionVC.memoryCollection.reloadData()
+        hideDelete()
     }
     
     override func awakeFromNib() {

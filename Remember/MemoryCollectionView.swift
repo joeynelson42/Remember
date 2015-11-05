@@ -29,12 +29,32 @@ class MemoryCollectionView: UIView{
         super.awakeFromNib()
         
         loadTiles()
+        navigationBar.layer.zPosition = CGFloat(MAXFLOAT)
         sideMenuView.hideMenu()
         sideMenuView.hidden = false
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissMenu")
         menuFade.addGestureRecognizer(tap)
     }
     
+    //MARK: Search Bar
+    func hideSearchBar(){
+        
+        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.05, options: .CurveEaseOut, animations: {
+                self.searchBar.transform = CGAffineTransformMakeTranslation(0, -60)
+                self.searchBar.alpha = 0.0
+                self.memoryCollection.transform = CGAffineTransformMakeTranslation(0, -60)
+            }, completion: nil)
+    }
+    
+    func showSearchBar(){
+        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.05, options: .CurveEaseOut, animations: {
+            self.searchBar.transform = CGAffineTransformMakeTranslation(0, 0)
+            self.searchBar.alpha = 1.0
+            self.memoryCollection.transform = CGAffineTransformMakeTranslation(0, 0)
+            }, completion: nil)
+    }
+    
+    //MARK: Side Menu
     func dismissMenu(){
         hideFade()
         sideMenuView.toggleMenu()
