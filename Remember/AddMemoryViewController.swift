@@ -11,29 +11,31 @@ import UIKit
 
 class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    var memory: Memory!
+    var memory: LocalMemory!
     var images = [UIImage]()
     let imagePicker = UIImagePickerController()
     let PORTRAIT_IMAGE_SIZE = CGSize(width: 130, height: 230)
     let LANDSCAPE_IMAGE_SIZE = CGSize(width: 230, height: 130)
     var keyboardHeight: CGFloat!
     var currentBGIndexPath: NSIndexPath!
-    
+    var collectionVC = MemoryCollectionViewController()
+    var memoryVC = MemoryViewController()
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet var addMemoryView: AddMemoryView!
+    
+    var editMode = false
     
     override func viewDidLoad() {
         imagePicker.delegate = self
         registerForKeyboardNotifications()
         
                 
-//        if let mem = memory{
-//            //edit mode: load the memory into the editable fields
-//        }
-//        else{
-//            //add new memory: show empty fields
-//        }
+        if let mem = memory{
+            editMode = true
+            images = memory.images
+            addMemoryView.loadMemoryToBeEdited(mem)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,9 +58,9 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageCell", forIndexPath: indexPath) as! MemoryImageCollectionCell
         
         if indexPath.row == images.count{
-            cell.imageView.image = UIImage(named: "AddPhotoIcon")
-            
+            cell.imageView.image = UIImage(named: "AddPhotoNoBorder")
             cell.orientation = .portrait
+            cell.alpha = 0.71
         }
         else{
             cell.imageView.image = images[indexPath.row]
@@ -82,7 +84,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     
         if indexPath.row == images.count {
-            return PORTRAIT_IMAGE_SIZE
+            return CGSize(width: 133, height: 206)
         }
         else if images[indexPath.row].size.height > images[indexPath.row].size.width{
             return PORTRAIT_IMAGE_SIZE
@@ -233,16 +235,76 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         //When a user finishes a quote, create a new quote skeleton automatically
     }
     
-    func showCalendar(){
-        //bring up calendar
-    }
+    //MARK: Saving the Memory
     
-    func saveDate(startDate: NSDate, endDate: NSDate){
-        //called from the calendar pop-up
+    @IBAction func checkMarkButtonAction(sender: AnyObject) {
+        if editMode{
+            updateMemory()
+        }
+        else{
+            saveMemory()
+        }
     }
     
     func saveMemory(){
-        //ParseServerProxy.parseProxy.createMemory(<#T##memoryID: String##String#>, title: <#T##String#>, images: <#T##[UIImage]#>, startDate: <#T##NSDate#>, endDate: <#T##NSDate#>, story: <#T##String#>, quotes: <#T##[String]#>, taggedIDs: <#T##[String]#>)
+        let memoryID = String.randomStringWithLength(13) as String
+        
+        if memoryReady() {
+            
+            ParseServerProxy.parseProxy.createMemory(memoryID, title: addMemoryView.addTitleField.text!, images: images, mainImage: addMemoryView.backgroundImageView.image!, startDate: addMemoryView.startPicker.date, endDate: addMemoryView.endPicker.date, story: addMemoryView.story.text)
+            
+            let newMemory = LocalMemory(Mtitle: addMemoryView.addTitleField.text!, MstartDate: addMemoryView.startPicker.date, MendDate: addMemoryView.endPicker.date, Mimages: images, MmainImage: addMemoryView.backgroundImageView.image!, Mstory: addMemoryView.story.text, Mquotes: "", MID: memoryID)
+            
+            collectionVC.memories.append(newMemory)
+            collectionVC.memoryCollectionView.memoryCollection.reloadData()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else{
+            notifyNotReady()
+        }
+    }
+    
+    func updateMemory(){
+        if memoryReady() {
+            
+            ParseServerProxy.parseProxy.updateMemory(memory.ID, title: addMemoryView.addTitleField.text!, images: images, mainImage: addMemoryView.backgroundImageView.image!, startDate: addMemoryView.startPicker.date, endDate: addMemoryView.endPicker.date, story: addMemoryView.story.text)
+            
+            let newMemory = LocalMemory(Mtitle: addMemoryView.addTitleField.text!, MstartDate: addMemoryView.startPicker.date, MendDate: addMemoryView.endPicker.date, Mimages: images, MmainImage: addMemoryView.backgroundImageView.image!, Mstory: addMemoryView.story.text, Mquotes: "", MID: memory.ID)
+            
+            
+            for (i, mem) in collectionVC.memories.enumerate(){
+                if memory.ID == mem.ID{
+                    collectionVC.memories[i] = newMemory
+                }
+            }
+            
+            memoryVC.memory = newMemory
+            collectionVC.memoryCollectionView.memoryCollection.reloadData()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else{
+            notifyNotReady()
+        }
+    }
+    
+    func memoryReady() -> Bool{
+        if(addMemoryView.addTitleField.text! == "Add Title..."){ return false }
+        else if(addMemoryView.dateButton.titleLabel?.text == "Add Date..."){ return false }
+        else if(addMemoryView.story.text == "Write the story..."){ return false }
+        else if(addMemoryView.backgroundImageView.image == nil){ return false }
+        else{ return true }
+    }
+    
+    func notifyNotReady(){
+        var alert = ""
+        if(addMemoryView.addTitleField.text! == "Add Title..."){ alert = "Missing a title" }
+        else if(addMemoryView.dateButton.titleLabel?.text == "Add Date..."){ alert = "Missing a date" }
+        else if(addMemoryView.story.text == "Write the story..."){ alert = "Missing a story" }
+        else if(addMemoryView.backgroundImageView.image == nil){ alert = "Missing a selected image" }
+        let alertController = UIAlertController(title: "Not finished", message:
+            "\(alert)", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     

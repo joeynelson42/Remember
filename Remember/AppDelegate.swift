@@ -29,18 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("80r6yuLpu9vrlnb63hdloUrkiCZ8QfgEES9piJRb",
             clientKey: "AD804ZOBDsFuubJubStDnliSWp6PR6Y1TqSWbCfA")
         
-        // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
-        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         var initialViewController = UIViewController()
-        if let _ = PFUser.currentUser(){
+        if let currentUser = PFUser.currentUser(){
             initialViewController = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
+            (initialViewController as! MemoryCollectionViewController).user = currentUser
+            (initialViewController as! MemoryCollectionViewController).memories = ParseServerProxy.parseProxy.getMemoriesOfUser()
         }
         else{
             initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
@@ -80,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {

@@ -27,28 +27,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func signUpButtonAction(sender: AnyObject) {
-        signUp()
+        signUp(loginView.emailTextField.text!, password: loginView.passwordTextField.text!)
     }
     
+    
     func login(email: String, password: String){
+        self.view.endEditing(true)
         let success = ParseServerProxy.parseProxy.login(email, pass: password)
         enterApp(success)
     }
     
-    func signUp(){
-        let success = ParseServerProxy.parseProxy.signUp()
+    func signUp(email: String, password: String){
+        self.view.endEditing(true)
+        let success = ParseServerProxy.parseProxy.signUp(email, password: password)
         enterApp(success)
     }
     
     func enterApp(success: Bool){
-        if success{
+        if success {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let mainVC = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
             
             mainVC.modalTransitionStyle = .CrossDissolve
             mainVC.user = PFUser.currentUser()
-//            mainVC.memories = ParseServerProxy.parseProxy.getMemoriesOfUser("userID goes here")
+            mainVC.memories = ParseServerProxy.parseProxy.getMemoriesOfUser()
             self.presentViewController(mainVC, animated: true, completion: nil)
         }
         else{

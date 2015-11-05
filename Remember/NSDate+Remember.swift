@@ -11,6 +11,24 @@ import UIKit
 
 extension NSDate{
     
+    
+    func getFormattedDate(endDate: NSDate) -> String{
+        var date = ""
+        if(self.fullDate() == endDate.fullDate()){
+            date = "\(self.fullDate())"
+        }
+        else if(self.year() != endDate.year()){
+            date = "\(self.monthAbbrev()) \(self.day()), \(self.year()) - \(endDate.monthAbbrev()) \(endDate.day()), \(endDate.year())"
+        }
+        else if self.month() == endDate.month(){
+            date = "\(self.monthName()) \(self.day())-\(endDate.day()), \(self.year())"
+        }
+        else{
+            date = "\(self.monthAbbrev()) \(self.day())-\(endDate.monthAbbrev()) \(endDate.day()), \(self.year())"
+        }
+        return date
+    }
+    
     func day() -> Int{
         let calendar = NSCalendar.currentCalendar()
         let day = calendar.components([.Day], fromDate: self)

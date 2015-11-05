@@ -13,6 +13,7 @@ import CoreData
 
 class ParseServerProxy{
     
+    //Server Proxy Singleton
     //get this using ParseServerProxy.parseProxy
     static let parseProxy = ParseServerProxy()
     
@@ -24,129 +25,179 @@ class ParseServerProxy{
     }
     
     func login(email: String, pass: String) -> Bool{
-        var success = false
-        PFUser.logInWithUsernameInBackground(email, password: pass) {
-            (pfUser: PFUser?, error: NSError?) -> Void in
-            if pfUser != nil {
-                print("logged in!")
-                success = true
-            }
-            else{
-                success = false
-            }
-        }
-        return success
-    }
-    
-    func signUp() -> Bool{
-        var success = false
-        if let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken() {
-            PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: {
-                (user: PFUser?, error: NSError?) -> Void in
-                if user != nil {
-                    print("User logged in through Facebook!")
-                    success = true
-                } else {
-                    print("Uh oh. There was an error logging in.")
-                    success = false
-                }
-            })
-        }
-        else {
+        var success = true
         
-            PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
-                (user: PFUser?, error: NSError?) -> Void in
-                if let user = user {
-                    if user.isNew {
-                        print("User signed up and logged in through Facebook!")
-                        success = true
-                    } else {
-                        print("User logged in through Facebook!")
-                        success = true
-                    }
-                } else {
-                    print("Uh oh. The user cancelled the Facebook login.")
-                }
-            }
-            
+        do{
+            try PFUser.logInWithUsername(email, password: pass)
+        }
+        catch let err as NSError{
+            print("failed login with error: \(err)")
+            success = false
         }
         return success
     }
     
-    func createMemory(memoryID: String, title: String, images: [UIImage], startDate: NSDate, endDate: NSDate, story: String, quotes: [String], taggedIDs: [String]){
+    func signUp(email: String, password: String) -> Bool{
+        let parseUser = PFUser()
+        parseUser.username = email
+        parseUser.password = password
+        
+        var success = true
+        
+        do{
+            try parseUser.signUp()
+        }
+        catch let err as NSError{
+            print("failed signup with error: \(err)")
+            success = false
+        }
+        
+        return success
+    }
+    
+    func createMemory(memoryID: String, title: String, images: [UIImage], mainImage: UIImage, startDate: NSDate, endDate: NSDate, story: String){
         
         
         // SAVING MEMORY IN PARSE-----------------------------
         let imageFiles = imagesToParseObjects(images)
+        let mainImageFile = imagesToParseObjects([mainImage])
         let newMemory = PFObject(className: "Memory")
         newMemory["memoryID"] = memoryID
         newMemory["title"] = title
         newMemory["images"] = imageFiles
+        newMemory["mainImage"] = mainImageFile
         newMemory["story"] = story
         newMemory["startDate"] = NSDateToString(startDate)
         newMemory["endDate"] = NSDateToString(endDate)
-        newMemory["quotes"] = quotes
-        newMemory["taggedIDs"] = taggedIDs
-        newMemory.saveInBackground()
-        //----------------------------------------------------
-        
-        
-        
-        
-        //TODO: SAVING MEMORY ON DEVICE----------------------------
-        let newCDMemory = Memory()
-        
-        
-        
-        
-        
-        
-        do {
-            try context?.save()
-        } catch let err as NSError{
-            print(err)
+        newMemory["username"] = PFUser.currentUser()?.username
+
+        //newMemory["quotes"] = quotes
+        //newMemory["taggedIDs"] = taggedIDs
+        newMemory.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if success == true {
+                print("Memory saved!")
+            } else {
+                print(error)
+            }
         }
         
         //----------------------------------------------------
+    }
+    
+    func updateMemory(memoryID: String, title: String, images: [UIImage], mainImage: UIImage, startDate: NSDate, endDate: NSDate, story: String){
+        
+        var pfMemories = [PFObject]()
+        
+        //get PFObject
+        let query = PFQuery(className: "Memory")
+        query.whereKey("memoryID", equalTo: memoryID)
+        
+        do{
+            try pfMemories = query.findObjects()
+        }
+        catch let err as NSError{
+            print("Memory query failed with error: \(err)")
+        }
+        
+        // UPDATING MEMORY IN PARSE-----------------------------
+        let imageFiles = imagesToParseObjects(images)
+        let mainImageFile = imagesToParseObjects([mainImage])
+        let updatedMemory = pfMemories.first!
+        updatedMemory["memoryID"] = memoryID
+        updatedMemory["title"] = title
+        updatedMemory["images"] = imageFiles
+        updatedMemory["mainImage"] = mainImageFile
+        updatedMemory["story"] = story
+        updatedMemory["startDate"] = NSDateToString(startDate)
+        updatedMemory["endDate"] = NSDateToString(endDate)
+        updatedMemory["username"] = PFUser.currentUser()?.username
+        updatedMemory.saveEventually()
+        
+        //newMemory["quotes"] = quotes
+        //newMemory["taggedIDs"] = taggedIDs
         
         
+        updatedMemory.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if success == true {
+                print("Memory saved!")
+            } else {
+                print(error)
+            }
+        }
         
-        //this is how you save an image! then just slap the url into a Memory Object
-//        let selectedImage = UIImage()
-//        let imageData = UIImagePNGRepresentation(selectedImage)
-//        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-//        let imageURL = documentsURL.URLByAppendingPathComponent("\(memoryID)-1.png")
-//        
-//        if !imageData!.writeToURL(imageURL, atomically: false)
-//        {
-//            print("not saved")
-//        } else {
-//            print("saved")
-//            NSUserDefaults.standardUserDefaults().setObject(imageURL, forKey: "imagePath")
-//        }
+        //----------------------------------------------------
     }
     
     func imagesToParseObjects(images: [UIImage]) -> [PFFile]{
-        //TODO:
-        let imageFiles = [PFFile]()
+        var imageFiles = [PFFile]()
+        
+        for (i, image) in images.enumerate(){
+            let imageData = UIImagePNGRepresentation(image)
+            let imageFile = PFFile(name:"image\(i).png", data:imageData!)
+            imageFiles.append(imageFile!)
+        }
+        
         return imageFiles
     }
     
     func NSDateToString(date: NSDate) -> String{
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "mm:dd:yyy"
+        dateFormatter.dateFormat = "mm:dd:yyyy"
         return dateFormatter.stringFromDate(date)
     }
     
-    func getMemoriesOfUser(userID: String) -> [Memory]{
-        let memories = [Memory]()
+    func getMemoriesOfUser() -> [LocalMemory]{
+        var pfMemories = [PFObject]()
+        var memories = [LocalMemory]()
+        
+        let query = PFQuery(className: "Memory")
+        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+        
+        do{
+            try pfMemories = query.findObjects()
+        }
+        catch let err as NSError{
+            print("Memory query failed with error: \(err)")
+        }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "mm:dd:yyyy"
+        
+        for pfMemory in pfMemories{
+            let title = pfMemory["title"] as? String
+            let startDate = dateFormatter.dateFromString((pfMemory["startDate"] as? String)!)
+            let endDate = dateFormatter.dateFromString((pfMemory["endDate"] as? String)!)
+            let images = getPhotosFromParseArray(pfMemory["images"] as! [PFFile])
+            let mainImage = getPhotosFromParseArray(pfMemory["mainImage"] as! [PFFile]).first
+            let story = pfMemory["story"] as? String
+            let quotes = ""
+            let ID = pfMemory["memoryID"] as? String
+            
+            let newMemory = LocalMemory(Mtitle: title!, MstartDate: startDate!, MendDate: endDate!, Mimages: images, MmainImage: mainImage!, Mstory: story!, Mquotes: quotes, MID: ID!)
+            memories.append(newMemory)
+        }
+        
         return memories
     }
-    
-    
-    func getFriendsOfUser(userID: String) -> [PFUser]{
-        let friends = [PFUser]()
-        return friends
+
+    func getPhotosFromParseArray(files: [PFFile]) -> [UIImage]{
+        var images = [UIImage]()
+        for userImageFile in files{
+            do{
+                let imageData = try userImageFile.getData()
+                let image = UIImage(data:imageData)
+                images.append(image!)
+            }
+            catch let err as NSError{
+                print("Failed to fetch photo with error: \(err)")
+            }
+        }
+        return images
     }
     
+    func deleteMemory(memory: LocalMemory){
+        
+    }
 }

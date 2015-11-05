@@ -11,16 +11,22 @@ import UIKit
 
 class MemoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
-    var memory: Memory!
+    var memory: LocalMemory!
     var images = [UIImage]()
     var infoVisible = informationVisible.story
+    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    var collectionVC = MemoryCollectionViewController()
     
+    @IBOutlet var memoryView: MemoryView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     override func viewDidLoad() {
-        images = [UIImage(named: "stitches")!, UIImage(named: "sammyAtAirport")!, UIImage(named: "fearmonth")!, UIImage(named: "wedding")!, UIImage(named: "cabin")!]
+        loadMemory()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        loadMemory()
+    }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -72,7 +78,27 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.presentViewController(editVC, animated: true, completion: nil)
     }
     
+    func loadMemory(){
+        self.images = memory.images
+        self.memoryView.titleLabel.text = memory.title
+        self.memoryView.dateLabel.text = memory.startDate.getFormattedDate(memory.endDate)
+        self.memoryView.storyView.text = memory.story
+        self.memoryView.backgroundImageView.image = memory.mainImage
+        self.memoryView.backgroundImageView.contentMode = .ScaleAspectFill
+    }
     
+    @IBAction func editButtonAction(sender: AnyObject) {
+        let editVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
+        (editVC as! AddMemoryViewController).memory = memory
+        (editVC as! AddMemoryViewController).memoryVC = self
+        (editVC as! AddMemoryViewController).collectionVC = collectionVC
+        editVC.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(editVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func backButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 enum informationVisible{

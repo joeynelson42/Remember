@@ -24,13 +24,11 @@ class MemoryView: UIView{
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var backgroundFade: UIView!
     
+    var parentVC = MemoryViewController()
     
-    @IBAction func sideMenuButtonAction(sender: UIButton) {
-        
-    }
-    
-    @IBAction func editMemoryButtonAction(sender: UIButton) {
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageCollectionView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.5)
     }
     
     @IBAction func storyButtonAction(sender: UIButton) {

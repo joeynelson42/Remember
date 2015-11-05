@@ -67,6 +67,16 @@ class AddMemoryView: UIView{
         
         story.layer.cornerRadius = 3.0
     }
+    
+    //if there is a memory being edited this will load it into the view
+    func loadMemoryToBeEdited(memory: LocalMemory){
+        addTitleField.text = memory.title
+        dateButton.setTitle("\(memory.startDate.getFormattedDate(memory.endDate))", forState: .Normal)
+        startPicker.date = memory.startDate
+        endPicker.date = memory.endDate
+        story.text = memory.story
+        backgroundImageView.image = memory.mainImage
+    }
 
     
     func calculateAnimationDistance(){
@@ -143,8 +153,9 @@ class AddMemoryView: UIView{
         let endDate = endPicker.date
         var date = ""
         
-        if(startDate == endDate || !endDateVisible){
+        if(startDate.fullDate() == endDate.fullDate() || !endDateVisible){
             date = "\(startDate.fullDate())"
+            endPicker.date = startDate
         }
         else if(startDate.year() != endDate.year()){
             date = "\(startDate.monthAbbrev()) \(startDate.day()), \(startDate.year()) - \(endDate.monthAbbrev()) \(endDate.day()), \(endDate.year())"
