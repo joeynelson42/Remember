@@ -12,6 +12,8 @@ import Parse
 import Bolts
 import ParseFacebookUtilsV4
 
+//sku = 3
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
