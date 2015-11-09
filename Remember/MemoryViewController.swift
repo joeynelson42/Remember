@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class MemoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     var memory: LocalMemory!
     var images = [UIImage]()
@@ -22,6 +22,7 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         loadMemory()
+        self.memoryView.parentVC = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -60,6 +61,14 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         vc.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let cellHeight: CGFloat = 226
+        let cellWidth: CGFloat = (226 * images[indexPath.row].size.width) / images[indexPath.row].size.height
+        
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func toggleInformation(){

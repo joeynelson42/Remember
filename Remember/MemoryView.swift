@@ -28,6 +28,8 @@ class MemoryView: UIView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        storyView.layer.cornerRadius = 3.0
         imageCollectionView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.5)
     }
     
@@ -38,9 +40,18 @@ class MemoryView: UIView{
     }
     
     @IBAction func quotesButtonAction(sender: UIButton) {
-        quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
-        storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        storyView.hidden = true
+        showComingSoonAlert()
+        
+//        quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
+//        storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+//        storyView.hidden = true
+    }
+    
+    func showComingSoonAlert(){
+        let alertController = UIAlertController(title: "Coming Soon!", message:
+            "Check back soon!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        parentVC.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 

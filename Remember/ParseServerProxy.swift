@@ -20,6 +20,8 @@ class ParseServerProxy{
     let context: NSManagedObjectContext!
     let permissions = ["public_profile"]
     
+    var progressAngle = 0
+    
     init(){
         context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }
@@ -72,13 +74,11 @@ class ParseServerProxy{
 
         //newMemory["quotes"] = quotes
         //newMemory["taggedIDs"] = taggedIDs
-        newMemory.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if success == true {
-                print("Memory saved!")
-            } else {
-                print(error)
-            }
+        do{
+            try newMemory.save()
+        }
+        catch let error as NSError{
+            print("MemoryImages save failed with error: \(error)")
         }
         
         
@@ -89,13 +89,11 @@ class ParseServerProxy{
         memoryImages["imageFiles"] = imageFiles
         memoryImages["memoryID"] = memoryID
     
-        memoryImages.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if success == true {
-                print("Memory saved!")
-            } else {
-                print(error)
-            }
+        do{
+            try memoryImages.save()
+        }
+        catch let error as NSError{
+            print("MemoryImages save failed with error: \(error)")
         }
         
         
@@ -132,13 +130,11 @@ class ParseServerProxy{
         //newMemory["quotes"] = quotes
         //newMemory["taggedIDs"] = taggedIDs
         
-        updatedMemory.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if success == true {
-                print("Memory saved!")
-            } else {
-                print(error)
-            }
+        do{
+            try updatedMemory.save()
+        }
+        catch let error as NSError{
+            print("MemoryImages save failed with error: \(error)")
         }
         
         
@@ -161,7 +157,12 @@ class ParseServerProxy{
         memoryImages["imageFiles"] = imageFiles
         memoryImages["memoryID"] = memoryID
         
-        memoryImages.saveEventually()
+        do{
+            try memoryImages.save()
+        }
+        catch let error as NSError{
+            print("MemoryImages save failed with error: \(error)")
+        }
         
         //----------------------------------------------------
     }
@@ -203,9 +204,6 @@ class ParseServerProxy{
         
         for pfMemory in pfMemories{
             let title = pfMemory["title"] as? String
-            
-            let date = (pfMemory["startDate"] as? String)!
-            
             let startDate = dateFormatter.dateFromString((pfMemory["startDate"] as? String)!)
             let endDate = dateFormatter.dateFromString((pfMemory["endDate"] as? String)!)
             let mainImage = getPhotosFromParseArray(pfMemory["mainImage"] as! [PFFile]).first
@@ -279,7 +277,6 @@ class ParseServerProxy{
         }
     }
 }
-
 
 
 

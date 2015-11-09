@@ -23,6 +23,8 @@
 		63ABCCA11BF11B3A0020E933 /* ImageCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA01BF11B3A0020E933 /* ImageCarouselViewController.swift */; };
 		63ABCCA51BF11B990020E933 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA41BF11B990020E933 /* iCarousel.m */; };
 		63ABCCA71BF11C4D0020E933 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */; };
+		63ABCCAB1BF1548B0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
+		63ABCCAC1BF1548C0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
@@ -199,6 +201,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		63ABCCA81BF133150020E933 /* Third Party Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				63ABCCA31BF11B990020E933 /* iCarousel.h */,
+				63ABCCA41BF11B990020E933 /* iCarousel.m */,
+			);
+			name = "Third Party Libraries";
+			sourceTree = "<group>";
+		};
 		63CF66621BE18FC50042DC37 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +241,7 @@
 				63E009401BE1A0F6009A0FA8 /* Controllers */,
 				63E0093E1BE1A0DE009A0FA8 /* Views */,
 				63E0093F1BE1A0EB009A0FA8 /* Model */,
+				63ABCCA81BF133150020E933 /* Third Party Libraries */,
 				63E009571BE1C48D009A0FA8 /* Utility Extensions */,
 			);
 			path = Remember;
@@ -341,8 +353,6 @@
 				63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */,
 				30DE0A1E1BE2B13F00F8DCEC /* String+Remember.swift */,
 				636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */,
-				63ABCCA31BF11B990020E933 /* iCarousel.h */,
-				63ABCCA41BF11B990020E933 /* iCarousel.m */,
 				63ABCCA21BF11B990020E933 /* Remember-Bridging-Header.h */,
 			);
 			name = "Utility Extensions";
@@ -488,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ABCCAB1BF1548B0020E933 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +506,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ABCCAC1BF1548C0020E933 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

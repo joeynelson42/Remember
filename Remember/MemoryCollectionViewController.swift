@@ -13,6 +13,8 @@ import CoreData
 
 class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+
+    
     var user: PFObject!
     var memories = [LocalMemory]()
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -25,6 +27,7 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         memoryCollectionView = (self.view as! MemoryCollectionView)
+        memoryCollectionView.controller = self
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -89,6 +92,18 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
         (addVC as! AddMemoryViewController).collectionVC = self
         self.presentViewController(addVC, animated: true, completion: nil)
+    }
+    
+    
+    func logout(){
+        memoryCollectionView.dismissMenu()
+        PFUser.logOut()
+        user = nil
+        
+        let loginVC = mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+        self.presentViewController(loginVC, animated: false, completion: nil)
+        
+        
     }
 }
 

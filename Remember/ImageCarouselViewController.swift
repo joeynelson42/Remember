@@ -21,7 +21,6 @@ class ImageCarouselViewController: UIViewController, iCarouselDataSource, iCarou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         carouselView.pagingEnabled = true
     }
     

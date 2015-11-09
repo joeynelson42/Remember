@@ -32,6 +32,7 @@ class AddMemoryView: UIView{
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    var controller: AddMemoryViewController!
     var calendarVisible = true
     var endDateVisible = false
     
@@ -114,11 +115,20 @@ class AddMemoryView: UIView{
     
     
     @IBAction func toggleQuotes(sender: UIButton) {
-        quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
-        storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        story.hidden = true
+        
+        showComingSoonAlert()
+//        quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
+//        storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+//        story.hidden = true
         self.endEditing(true)
 
+    }
+
+    func showComingSoonAlert(){
+        let alertController = UIAlertController(title: "Coming Soon!", message:
+            "Check back soon!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        controller.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func moveContainer(moveUp: Bool, keyboardHeight: CGFloat){
@@ -234,10 +244,4 @@ class AddMemoryView: UIView{
             self.calendarContainer.transform = CGAffineTransformMakeTranslation(0, 0)
         }), completion: nil)
     }
-    
-    
-    
-    
-    
-    
 }
