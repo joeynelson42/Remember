@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class MemoryCollectionView: UIView{
     
@@ -24,6 +25,43 @@ class MemoryCollectionView: UIView{
     @IBOutlet weak var profileTile: SideMenuTile!
     @IBOutlet weak var settingsTile: SideMenuTile!
     
+    var controller: MemoryCollectionViewController!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        loadTiles()
+        navigationBar.layer.zPosition = CGFloat(MAXFLOAT)
+        sideMenuView.hideMenu()
+        sideMenuView.hidden = false
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissMenu")
+        menuFade.addGestureRecognizer(tap)
+    }
+    
+    //MARK: Search Bar
+    func hideSearchBar(){
+        
+        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.05, options: .CurveEaseOut, animations: {
+                self.searchBar.transform = CGAffineTransformMakeTranslation(0, -60)
+                self.searchBar.alpha = 0.0
+                self.memoryCollection.transform = CGAffineTransformMakeTranslation(0, -60)
+            }, completion: nil)
+    }
+    
+    func showSearchBar(){
+        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.05, options: .CurveEaseOut, animations: {
+            self.searchBar.transform = CGAffineTransformMakeTranslation(0, 0)
+            self.searchBar.alpha = 1.0
+            self.memoryCollection.transform = CGAffineTransformMakeTranslation(0, 0)
+            }, completion: nil)
+    }
+    
+    //MARK: Side Menu
+    func dismissMenu(){
+        hideFade()
+        sideMenuView.toggleMenu()
+    }
+    
     @IBAction func menuButton(sender: AnyObject) {
         sideMenuView.toggleMenu()
         toggleFade()
@@ -31,35 +69,67 @@ class MemoryCollectionView: UIView{
     
     func toggleFade(){
         if menuFade.alpha == 0.0{
-            UIView.animateWithDuration(0.3, animations: ({
-                self.menuFade.alpha = 0.6
-            }), completion: nil)
+            showFade()
         }
         else{
-            UIView.animateWithDuration(0.5, animations: ({
-                self.menuFade.alpha = 0.0
-            }), completion: nil)
+            hideFade()
         }
     }
     
+    func showFade(){
+        UIView.animateWithDuration(0.3, animations: ({
+            self.menuFade.alpha = 0.6
+        }), completion: nil)
+    }
+    
+    func hideFade(){
+        UIView.animateWithDuration(0.5, animations: ({
+            self.menuFade.alpha = 0.0
+        }), completion: nil)
+    }
+    
     @IBAction func tileSelected(sender: UIButton) {
-        sideMenuView.tiles[sender.tag].tappedAnimation()
+        
         
         switch sender.tag{
         case 0:
             print("Collection tapped")
-            
+            sideMenuView.tiles[sender.tag].tappedAnimation({self.dismissMenu()})
         case 1:
             print("Notifications tapped")
+            sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})
         case 2:
-            print("Friends tapped")
-        case 3:
             print("Profile tapped")
-        case 4:
+            sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})
+        case 3:
             print("Settings tapped")
+            sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})
+        case 4:
+            sideMenuView.tiles[sender.tag].tappedAnimation()
+            showLogoutConfirmation()
         default:
             print("nothing tapped")
         }
+        
+    }
+    
+    func showComingSoonAlert(){
+        let alertController = UIAlertController(title: "Coming Soon!", message:
+            "Check back soon!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        controller.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func showLogoutConfirmation(){
+        let alertController = UIAlertController(title: "Are you sure you want to logout?", message:
+            "", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Yes, log me out.", style: UIAlertActionStyle.Destructive, handler: { (alertController) -> Void in self.controller.logout() }))
+        alertController.addAction(UIAlertAction(title: "No, I want to stay!", style: UIAlertActionStyle.Default,handler: nil))
+        controller.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func logoutViaAlert(alert: UIAlertAction!){
+        self.controller.logout()
     }
     
     func loadTiles(){

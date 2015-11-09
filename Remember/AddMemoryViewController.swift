@@ -11,31 +11,31 @@ import UIKit
 
 class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    var memory: Memory!
+    var memory: LocalMemory!
     var images = [UIImage]()
     let imagePicker = UIImagePickerController()
     let PORTRAIT_IMAGE_SIZE = CGSize(width: 130, height: 230)
     let LANDSCAPE_IMAGE_SIZE = CGSize(width: 230, height: 130)
     var keyboardHeight: CGFloat!
-
-    
+    var currentBGIndexPath: NSIndexPath!
+    var collectionVC = MemoryCollectionViewController()
+    var memoryVC = MemoryViewController()
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet var addMemoryView: AddMemoryView!
     
+    var editMode = false
+    
     override func viewDidLoad() {
         imagePicker.delegate = self
         registerForKeyboardNotifications()
-        addMemoryView.addTitleField.attributedPlaceholder = NSAttributedString(string:"Add Title...", attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        
-        
-//        if let mem = memory{
-//            //edit mode: load the memory into the editable fields
-//        }
-//        else{
-//            //add new memory: show empty fields
-//        }
+        addMemoryView.controller = self
+                
+        if let mem = memory{
+            editMode = true
+            images = memory.images
+            addMemoryView.loadMemoryToBeEdited(mem)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,9 +58,9 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageCell", forIndexPath: indexPath) as! MemoryImageCollectionCell
         
         if indexPath.row == images.count{
-            cell.imageView.image = UIImage(named: "AddPhotoIcon")
-            
+            cell.imageView.image = UIImage(named: "AddPhotoNoBorder")
             cell.orientation = .portrait
+            cell.alpha = 0.71
         }
         else{
             cell.imageView.image = images[indexPath.row]
@@ -72,6 +72,10 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
                 cell.orientation = .landscape
             }
         }
+        
+        cell.layer.borderColor = CGColor.fromHex(0xF8FAA0)
+        cell.layer.borderWidth = 0.0
+        
         cell.imageView.contentMode = .ScaleAspectFill
         
         return cell
@@ -80,13 +84,13 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     
         if indexPath.row == images.count {
-            return PORTRAIT_IMAGE_SIZE
-        }
-        else if images[indexPath.row].size.height > images[indexPath.row].size.width{
-            return PORTRAIT_IMAGE_SIZE
+            return CGSize(width: 133, height: 206)
         }
         else{
-            return LANDSCAPE_IMAGE_SIZE
+            let cellHeight: CGFloat = 226
+            let cellWidth: CGFloat = (226 * images[indexPath.row].size.width) / images[indexPath.row].size.height
+            
+            return CGSize(width: cellWidth, height: cellHeight)
         }
     }
     
@@ -106,8 +110,27 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             addPhoto()
         }
         else{
-            print("set as main image")
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! MemoryImageCollectionCell
+            addMemoryView.backgroundImageView.image = cell.imageView.image
+            
+            toggleBackgroundPhotoSelect(indexPath)
         }
+    }
+    
+    func toggleBackgroundPhotoSelect(indexPath: NSIndexPath){
+        guard let previousBGIndexPath = currentBGIndexPath else{
+            let cell = imageCollectionView.cellForItemAtIndexPath(indexPath)
+            currentBGIndexPath = indexPath
+            cell?.layer.borderWidth = 3.0
+            return
+        }
+        currentBGIndexPath = indexPath
+        
+        let prevCell = imageCollectionView.cellForItemAtIndexPath(previousBGIndexPath)
+        let currCell = imageCollectionView.cellForItemAtIndexPath(currentBGIndexPath)
+        
+        prevCell?.layer.borderWidth = 0.0
+        currCell?.layer.borderWidth = 3.0
     }
     
     //MARK: Add photo stuff
@@ -150,9 +173,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     //MARK: Text field stuff
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
         view.endEditing(true)
@@ -172,6 +192,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
                 attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         }
         
+        
         self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
     }
     
@@ -179,8 +200,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         if(textView.text == "Write the story..."){
             textView.text = ""
         }
+        self.keyboardHeight = addMemoryView.keyboardHeight
         self.addMemoryView.moveContainer(true, keyboardHeight: keyboardHeight)
-
     }
     
     func textViewDidEndEditing(textView: UITextView) {
@@ -188,7 +209,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             textView.text = "Write the story..."
         }
         self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
-
     }
     
     func registerForKeyboardNotifications() {
@@ -205,7 +225,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         
         keyboardHeight = keyboardFrame.height
         addMemoryView.keyboardHeight = keyboardHeight
-        
     }
     
     func removeQuote(){
@@ -216,22 +235,80 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         //When a user finishes a quote, create a new quote skeleton automatically
     }
     
-    func setBackgroundPhoto(){
-        //called by selecting one of the already uploaded photos
-    }
+    //MARK: Saving the Memory
     
-    func showCalendar(){
-        //bring up calendar
-    }
-    
-    func saveDate(startDate: NSDate, endDate: NSDate){
-        //called from the calendar pop-up
+    @IBAction func checkMarkButtonAction(sender: AnyObject) {
+        if editMode{
+            updateMemory()
+        }
+        else{
+            saveMemory()
+        }
     }
     
     func saveMemory(){
-        //ParseServerProxy.parseProxy.createMemory(<#T##memoryID: String##String#>, title: <#T##String#>, images: <#T##[UIImage]#>, startDate: <#T##NSDate#>, endDate: <#T##NSDate#>, story: <#T##String#>, quotes: <#T##[String]#>, taggedIDs: <#T##[String]#>)
+        let memoryID = String.randomStringWithLength(13) as String
+        
+        if memoryReady() {
+            
+            ParseServerProxy.parseProxy.createMemory(memoryID, title: addMemoryView.addTitleField.text!, images: images, mainImage: addMemoryView.backgroundImageView.image!, startDate: addMemoryView.startPicker.date, endDate: addMemoryView.endPicker.date, story: addMemoryView.story.text)
+            
+            let newMemory = LocalMemory(Mtitle: addMemoryView.addTitleField.text!, MstartDate: addMemoryView.startPicker.date, MendDate: addMemoryView.endPicker.date, Mimages: images, MmainImage: addMemoryView.backgroundImageView.image!, Mstory: addMemoryView.story.text, Mquotes: "", MID: memoryID)
+            
+
+            collectionVC.memories.append(newMemory)
+            collectionVC.memoryCollectionView.memoryCollection.reloadData()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else{
+            notifyNotReady()
+        }
     }
     
+    func updateMemory(){
+        if memoryReady() {
+            
+            ParseServerProxy.parseProxy.updateMemory(memory.ID, title: addMemoryView.addTitleField.text!, images: images, mainImage: addMemoryView.backgroundImageView.image!, startDate: addMemoryView.startPicker.date, endDate: addMemoryView.endPicker.date, story: addMemoryView.story.text)
+            
+            let newMemory = LocalMemory(Mtitle: addMemoryView.addTitleField.text!, MstartDate: addMemoryView.startPicker.date, MendDate: addMemoryView.endPicker.date, Mimages: images, MmainImage: addMemoryView.backgroundImageView.image!, Mstory: addMemoryView.story.text, Mquotes: "", MID: memory.ID)
+            
+            
+            for (i, mem) in collectionVC.memories.enumerate(){
+                if memory.ID == mem.ID{
+                    collectionVC.memories[i] = newMemory
+                }
+            }
+            
+            memoryVC.memory = newMemory
+            collectionVC.memoryCollectionView.memoryCollection.reloadData()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else{
+            notifyNotReady()
+        }
+    }
+    
+    func memoryReady() -> Bool{
+        if(addMemoryView.addTitleField.text! == ""){ return false }
+        if(addMemoryView.dateButton.titleLabel?.text == "Add Date..."){ return false }
+        if(addMemoryView.story.text == "Write the story..."){ return false }
+        if(self.images.count == 0) { return false }
+        if(addMemoryView.backgroundImageView.image == nil){ return false }
+        else{ return true }
+    }
+    
+    func notifyNotReady(){
+        var alert = ""
+        if(addMemoryView.addTitleField.text! == ""){ alert += "Add a title.\n" }
+        if(addMemoryView.dateButton.titleLabel?.text == "Add Date..."){ alert += "Add a date.\n" }
+        if(addMemoryView.story.text == "Write the story..."){ alert += "Write a story.\n" }
+        if(self.images.count == 0){ alert += "Add (at least) one image.\n"}
+        if(addMemoryView.backgroundImageView.image == nil){ alert += "Select an image as your memory's main photo.\n" }
+        let alertController = UIAlertController(title: "Missing Field(s)", message:
+            "\(alert)", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     
     @IBAction func cancel(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)

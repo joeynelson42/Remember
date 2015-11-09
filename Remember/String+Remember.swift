@@ -20,7 +20,7 @@ extension String{
                 randomString.appendString("-")
             }
         }
-        randomString.appendString("GuildHall")
+        randomString.appendString("Remember")
         return randomString
     }
 }

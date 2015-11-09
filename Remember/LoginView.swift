@@ -15,7 +15,9 @@ class LoginView: UIView{
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    override func layoutSubviews() {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
         emailTextField.attributedPlaceholder = NSAttributedString(string:"Email",
             attributes:[NSForegroundColorAttributeName: UIColor.fromHex(0xFFFFFF, alpha: 0.5)])
         

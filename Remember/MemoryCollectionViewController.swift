@@ -13,23 +13,26 @@ import CoreData
 
 class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+
+    
     var user: PFObject!
-    var memories: [Memory]!
+    var memories = [LocalMemory]()
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var memoryCollectionView: MemoryCollectionView!
+    var previousContentOffset: CGPoint!
+    
+    @IBOutlet weak var memoryCollection: UICollectionView!
+    
     
     override func viewDidLoad() {
-        loadDummyData()
-        
-        (self.view as! MemoryCollectionView).loadTiles()
-        (self.view as! MemoryCollectionView).sideMenuView.hideMenu()
-        
-        (self.view as! MemoryCollectionView).sideMenuView.hidden = false
+        memoryCollectionView = (self.view as! MemoryCollectionView)
+        memoryCollectionView.controller = self
     }
     
     override func viewDidDisappear(animated: Bool) {
-        (self.view as! MemoryCollectionView).toggleFade()
-        (self.view as! MemoryCollectionView).sideMenuView.hideMenu()
+        memoryCollectionView.hideFade()
+        memoryCollectionView.sideMenuView.hideMenu()
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -43,48 +46,64 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memoryCell", forIndexPath: indexPath) as! MemoryCollectionCell
 
+        cell.memory = memories[indexPath.row]
+        
         cell.title.text = memories[indexPath.row].title
-        cell.image.image = UIImage(named: memories[indexPath.row].imageURLs!)
-        cell.date.text = "October \(indexPath.row), 2015"
+        cell.image.image = memories[indexPath.row].mainImage
+        cell.image.contentMode = .ScaleAspectFill
+        cell.date.text = memories[indexPath.row].startDate.getFormattedDate(memories[indexPath.row].endDate)
+        cell.memoryCollectionVC = self
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! MemoryCollectionCell
-//        
-//        let memoryVC = MemoryViewController()
-//        memoryVC.memory = cell.memory
-//        self.presentViewController(memoryVC, animated: false, completion: nil)
+        
+        
+        
+        let memoryVC = mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
+        if(memories[indexPath.row].images.count == 0){
+            memories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(memories[indexPath.row])
+        }
+        
+        (memoryVC as! MemoryViewController).memory = memories[indexPath.row]
+        (memoryVC as! MemoryViewController).collectionVC = self
+        self.presentViewController(memoryVC, animated: true, completion: nil)
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.view.endEditing(true)
+        
+        guard let _ = previousContentOffset else{
+            //memoryCollectionView.hideSearchBar()
+            previousContentOffset = CGPoint(x: 0, y: 0)
+            return
+        }
+        
+        if scrollView.contentOffset.y > previousContentOffset.y{
+            memoryCollectionView.hideSearchBar()
+        }
+        else{
+            memoryCollectionView.showSearchBar()
+        }
+    }
+    
 
     @IBAction func addNewMemory(sender: UIButton) {
         let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
+        (addVC as! AddMemoryViewController).collectionVC = self
         self.presentViewController(addVC, animated: true, completion: nil)
     }
     
     
-    func loadDummyData(){
-        let memory1 = NSEntityDescription.insertNewObjectForEntityForName("Memory", inManagedObjectContext: context) as! Memory
-        memory1.title = "Jorie's Cabin"
-        memory1.imageURLs = "cabin"
+    func logout(){
+        memoryCollectionView.dismissMenu()
+        PFUser.logOut()
+        user = nil
         
-        let memory2 = NSEntityDescription.insertNewObjectForEntityForName("Memory", inManagedObjectContext: context) as! Memory
-        memory2.title = "Bryan's Wedding"
-        memory2.imageURLs = "wedding"
+        let loginVC = mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+        self.presentViewController(loginVC, animated: false, completion: nil)
         
-        let memory3 = NSEntityDescription.insertNewObjectForEntityForName("Memory", inManagedObjectContext: context) as! Memory
-        memory3.title = "Sammy's Homecoming"
-        memory3.imageURLs = "sammyAtAirport"
         
-        let memory4 = NSEntityDescription.insertNewObjectForEntityForName("Memory", inManagedObjectContext: context) as! Memory
-        memory4.title = "#FEARMONTH"
-        memory4.imageURLs = "fearmonth"
-        
-        let memory5 = NSEntityDescription.insertNewObjectForEntityForName("Memory", inManagedObjectContext: context) as! Memory
-        memory5.title = "Stitches"
-        memory5.imageURLs = "stitches"
-        
-        memories = [memory1, memory2, memory3, memory4, memory5]
     }
 }
 

@@ -29,26 +29,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("80r6yuLpu9vrlnb63hdloUrkiCZ8QfgEES9piJRb",
             clientKey: "AD804ZOBDsFuubJubStDnliSWp6PR6Y1TqSWbCfA")
         
-        // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        var initialViewController = UIViewController()
-//        if let _ = PFUser.currentUser(){
-//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
-//        }
-//        else{
-//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
-//        }
-//        
-//        
-//        self.window?.rootViewController = initialViewController
-//        self.window?.makeKeyAndVisible()
+        var initialViewController = UIViewController()
+        if let currentUser = PFUser.currentUser(){
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
+            (initialViewController as! MemoryCollectionViewController).user = currentUser
+            (initialViewController as! MemoryCollectionViewController).memories = ParseServerProxy.parseProxy.getMemoriesOfUser()
+        }
+        else{
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+        }
+        
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
         
         return true
     }
@@ -80,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -118,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
 
-            dict[NSUnderlyingErrorKey] = error as NSError
+            dict[NSUnderlyingErrorKey] = error as! NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

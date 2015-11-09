@@ -16,6 +16,16 @@
 		636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */; };
 		636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */; };
 		636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */; };
+		638FFF8F1BE97FA00085FB46 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FFF8E1BE97FA00085FB46 /* MemoryView.swift */; };
+		638FFF911BE988E70085FB46 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FFF901BE988E70085FB46 /* NotificationViewController.swift */; };
+		638FFF931BE989290085FB46 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FFF921BE989290085FB46 /* NotificationView.swift */; };
+		638FFF951BE98A080085FB46 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FFF941BE98A080085FB46 /* NotificationCell.swift */; };
+		63ABCCA11BF11B3A0020E933 /* ImageCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA01BF11B3A0020E933 /* ImageCarouselViewController.swift */; };
+		63ABCCA51BF11B990020E933 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA41BF11B990020E933 /* iCarousel.m */; };
+		63ABCCA71BF11C4D0020E933 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */; };
+		63ABCCAB1BF1548B0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
+		63ABCCAC1BF1548C0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
+		63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C7FCCE1BF159DD00D70721 /* TheR@3x.png */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
@@ -36,8 +46,6 @@
 		63CF66BE1BE1934E0042DC37 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF66BD1BE1934E0042DC37 /* libsqlite3.tbd */; };
 		63E0093C1BE19F81009A0FA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 63E0093B1BE19F81009A0FA8 /* Podfile */; };
 		63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */; };
-		63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */; };
-		63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009441BE1B0BE009A0FA8 /* Memory.swift */; };
 		63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */; };
 		63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */; };
 		63E0094C1BE1B7B4009A0FA8 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */; };
@@ -50,6 +58,7 @@
 		63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */; };
 		63E0095E1BE1CD65009A0FA8 /* MemoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */; };
 		63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E009611BE1D122009A0FA8 /* SideMenuView.swift */; };
+		63EC87B41BEA9CAE008835B6 /* LocalMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC87B31BEA9CAE008835B6 /* LocalMemory.swift */; };
 		F9D7A88596C8C0F2168AE0A9 /* Pods_Remember.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +93,16 @@
 		636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryView.swift; sourceTree = "<group>"; };
 		636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Remember.swift"; sourceTree = "<group>"; };
 		636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Remember.swift"; sourceTree = "<group>"; };
+		638FFF8E1BE97FA00085FB46 /* MemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
+		638FFF901BE988E70085FB46 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		638FFF921BE989290085FB46 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		638FFF941BE98A080085FB46 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		63ABCCA01BF11B3A0020E933 /* ImageCarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCarouselViewController.swift; sourceTree = "<group>"; };
+		63ABCCA21BF11B990020E933 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
+		63ABCCA31BF11B990020E933 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		63ABCCA41BF11B990020E933 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		63C7FCCE1BF159DD00D70721 /* TheR@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheR@3x.png"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CF66761BE18FC50042DC37 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -110,8 +129,6 @@
 		63CF66BD1BE1934E0042DC37 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		63E0093B1BE19F81009A0FA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseServerProxy.swift; sourceTree = "<group>"; };
-		63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Memory+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		63E009441BE1B0BE009A0FA8 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
 		63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +141,7 @@
 		63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGColor+Remember.swift"; sourceTree = "<group>"; };
 		63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCollectionCell.swift; sourceTree = "<group>"; };
 		63E009611BE1D122009A0FA8 /* SideMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		63EC87B31BEA9CAE008835B6 /* LocalMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalMemory.swift; sourceTree = "<group>"; };
 		C7DB809D5B80FE8959D81DFC /* Pods_Remember.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Remember.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remember.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remember/Pods-Remember.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +203,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		63ABCCA81BF133150020E933 /* Third Party Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				63ABCCA31BF11B990020E933 /* iCarousel.h */,
+				63ABCCA41BF11B990020E933 /* iCarousel.m */,
+			);
+			name = "Third Party Libraries";
+			sourceTree = "<group>";
+		};
 		63CF66621BE18FC50042DC37 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +243,7 @@
 				63E009401BE1A0F6009A0FA8 /* Controllers */,
 				63E0093E1BE1A0DE009A0FA8 /* Views */,
 				63E0093F1BE1A0EB009A0FA8 /* Model */,
+				63ABCCA81BF133150020E933 /* Third Party Libraries */,
 				63E009571BE1C48D009A0FA8 /* Utility Extensions */,
 			);
 			path = Remember;
@@ -285,8 +313,11 @@
 				6333678F1BE427CA00DBD743 /* LoginView.swift */,
 				632154341BE52ACC001FAFAE /* MemoryCollectionView.swift */,
 				636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */,
+				638FFF8E1BE97FA00085FB46 /* MemoryView.swift */,
+				63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */,
 				633367911BE4291E00DBD743 /* Resources */,
 				63E009651BE1D146009A0FA8 /* Misc. Views */,
+				638FFF921BE989290085FB46 /* NotificationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -294,10 +325,9 @@
 		63E0093F1BE1A0EB009A0FA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				63E009431BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift */,
-				63E009441BE1B0BE009A0FA8 /* Memory.swift */,
 				63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */,
 				63E009411BE1A17E009A0FA8 /* ParseServerProxy.swift */,
+				63EC87B31BEA9CAE008835B6 /* LocalMemory.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -308,9 +338,11 @@
 				63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */,
 				63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */,
 				63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */,
+				63E009511BE1B7E1009A0FA8 /* UserProfileViewController.swift */,
 				63E0094D1BE1B7C2009A0FA8 /* FriendsListViewController.swift */,
 				63E0094F1BE1B7CE009A0FA8 /* AddMemoryViewController.swift */,
-				63E009511BE1B7E1009A0FA8 /* UserProfileViewController.swift */,
+				638FFF901BE988E70085FB46 /* NotificationViewController.swift */,
+				63ABCCA01BF11B3A0020E933 /* ImageCarouselViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +355,7 @@
 				63E0095A1BE1C4B9009A0FA8 /* CGColor+Remember.swift */,
 				30DE0A1E1BE2B13F00F8DCEC /* String+Remember.swift */,
 				636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */,
+				63ABCCA21BF11B990020E933 /* Remember-Bridging-Header.h */,
 			);
 			name = "Utility Extensions";
 			sourceTree = "<group>";
@@ -334,6 +367,7 @@
 				63E0095D1BE1CD65009A0FA8 /* MemoryCollectionCell.swift */,
 				30DE0A1A1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift */,
 				30DE0A1C1BE2ACCE00F8DCEC /* FriendCollectionCell.swift */,
+				638FFF941BE98A080085FB46 /* NotificationCell.swift */,
 			);
 			name = "Custom Cells/Layouts";
 			sourceTree = "<group>";
@@ -341,6 +375,7 @@
 		63E009651BE1D146009A0FA8 /* Misc. Views */ = {
 			isa = PBXGroup;
 			children = (
+				63C7FCCE1BF159DD00D70721 /* TheR@3x.png */,
 				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
 				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
 			);
@@ -458,6 +493,7 @@
 				63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */,
 				63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */,
 				63E0093C1BE19F81009A0FA8 /* Podfile in Resources */,
+				63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */,
 				6333678E1BE41C1A00DBD743 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ABCCAB1BF1548B0020E933 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ABCCAC1BF1548C0020E933 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,26 +571,32 @@
 			files = (
 				63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */,
 				636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */,
-				63E009461BE1B0BE009A0FA8 /* Memory.swift in Sources */,
 				30DE0A1D1BE2ACCE00F8DCEC /* FriendCollectionCell.swift in Sources */,
-				63E009451BE1B0BE009A0FA8 /* Memory+CoreDataProperties.swift in Sources */,
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
 				636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */,
 				63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */,
 				63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */,
 				63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,
+				638FFF8F1BE97FA00085FB46 /* MemoryView.swift in Sources */,
+				63EC87B41BEA9CAE008835B6 /* LocalMemory.swift in Sources */,
 				30DE0A1F1BE2B13F00F8DCEC /* String+Remember.swift in Sources */,
 				63E0095B1BE1C4B9009A0FA8 /* CGColor+Remember.swift in Sources */,
 				63E0094C1BE1B7B4009A0FA8 /* MemoryViewController.swift in Sources */,
 				63E009501BE1B7CE009A0FA8 /* AddMemoryViewController.swift in Sources */,
 				63E0095E1BE1CD65009A0FA8 /* MemoryCollectionCell.swift in Sources */,
+				63ABCCA11BF11B3A0020E933 /* ImageCarouselViewController.swift in Sources */,
 				63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */,
 				633367901BE427CA00DBD743 /* LoginView.swift in Sources */,
 				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
 				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
+				63ABCCA71BF11C4D0020E933 /* CarouselCell.swift in Sources */,
+				63ABCCA51BF11B990020E933 /* iCarousel.m in Sources */,
+				638FFF951BE98A080085FB46 /* NotificationCell.swift in Sources */,
 				63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */,
 				636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */,
+				638FFF931BE989290085FB46 /* NotificationView.swift in Sources */,
+				638FFF911BE988E70085FB46 /* NotificationViewController.swift in Sources */,
 				30DE0A1B1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift in Sources */,
 				63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */,
 				632154351BE52ACC001FAFAE /* MemoryCollectionView.swift in Sources */,
@@ -688,6 +732,7 @@
 			baseConfigurationReference = 2B1A75A0A524D21BDEC50421 /* Pods-Remember.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -697,6 +742,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NelsonJE.Remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Remember/Remember-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -705,6 +752,7 @@
 			baseConfigurationReference = D3ECCF70466EBA99547F1F89 /* Pods-Remember.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -714,6 +762,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NelsonJE.Remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Remember/Remember-Bridging-Header.h";
 			};
 			name = Release;
 		};

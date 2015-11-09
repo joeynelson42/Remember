@@ -12,7 +12,7 @@ import Parse
 
 class UserProfileViewController: UIViewController{
     var user: PFUser!
-    var memories: [Memory]!
+    var memories: [LocalMemory]!
     
     func shareOptions(){
         //TODO: show share options
