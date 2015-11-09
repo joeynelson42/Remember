@@ -25,6 +25,7 @@
 		63ABCCA71BF11C4D0020E933 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */; };
 		63ABCCAB1BF1548B0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
 		63ABCCAC1BF1548C0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
+		63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C7FCCE1BF159DD00D70721 /* TheR@3x.png */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
 		63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		63ABCCA31BF11B990020E933 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		63ABCCA41BF11B990020E933 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		63C7FCCE1BF159DD00D70721 /* TheR@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheR@3x.png"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CF66761BE18FC50042DC37 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 		63E009651BE1D146009A0FA8 /* Misc. Views */ = {
 			isa = PBXGroup;
 			children = (
+				63C7FCCE1BF159DD00D70721 /* TheR@3x.png */,
 				63CF66781BE18FC50042DC37 /* Assets.xcassets */,
 				63CF667A1BE18FC50042DC37 /* LaunchScreen.storyboard */,
 			);
@@ -490,6 +493,7 @@
 				63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */,
 				63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */,
 				63E0093C1BE19F81009A0FA8 /* Podfile in Resources */,
+				63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */,
 				6333678E1BE41C1A00DBD743 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
