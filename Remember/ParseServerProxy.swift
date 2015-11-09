@@ -59,12 +59,11 @@ class ParseServerProxy{
         
         
         // SAVING MEMORY IN PARSE-----------------------------
-        let imageFiles = imagesToParseObjects(images)
+        
         let mainImageFile = imagesToParseObjects([mainImage])
         let newMemory = PFObject(className: "Memory")
         newMemory["memoryID"] = memoryID
         newMemory["title"] = title
-        newMemory["images"] = imageFiles
         newMemory["mainImage"] = mainImageFile
         newMemory["story"] = story
         newMemory["startDate"] = NSDateToString(startDate)
@@ -81,6 +80,24 @@ class ParseServerProxy{
                 print(error)
             }
         }
+        
+        
+        //Save images separately into a MemoryImages Object
+        let memoryImages = PFObject(className: "MemoryImages")
+        let imageFiles = imagesToParseObjects(images)
+        
+        memoryImages["imageFiles"] = imageFiles
+        memoryImages["memoryID"] = memoryID
+    
+        memoryImages.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if success == true {
+                print("Memory saved!")
+            } else {
+                print(error)
+            }
+        }
+        
         
         //----------------------------------------------------
     }
@@ -101,12 +118,10 @@ class ParseServerProxy{
         }
         
         // UPDATING MEMORY IN PARSE-----------------------------
-        let imageFiles = imagesToParseObjects(images)
         let mainImageFile = imagesToParseObjects([mainImage])
         let updatedMemory = pfMemories.first!
         updatedMemory["memoryID"] = memoryID
         updatedMemory["title"] = title
-        updatedMemory["images"] = imageFiles
         updatedMemory["mainImage"] = mainImageFile
         updatedMemory["story"] = story
         updatedMemory["startDate"] = NSDateToString(startDate)
@@ -117,8 +132,36 @@ class ParseServerProxy{
         //newMemory["quotes"] = quotes
         //newMemory["taggedIDs"] = taggedIDs
         
-        
         updatedMemory.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if success == true {
+                print("Memory saved!")
+            } else {
+                print(error)
+            }
+        }
+        
+        
+        //Save images separately into a MemoryImages Object
+        
+        //get MemoryImages PFObject
+        let imagesQuery = PFQuery(className: "MemoryImages")
+        imagesQuery.whereKey("memoryID", equalTo: memoryID)
+        
+        do{
+            try pfMemories = imagesQuery.findObjects()
+        }
+        catch let err as NSError{
+            print("Memory query failed with error: \(err)")
+        }
+        
+        let memoryImages = pfMemories.first!
+        let imageFiles = imagesToParseObjects(images)
+        
+        memoryImages["imageFiles"] = imageFiles
+        memoryImages["memoryID"] = memoryID
+        
+        memoryImages.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if success == true {
                 print("Memory saved!")
@@ -169,18 +212,38 @@ class ParseServerProxy{
             let title = pfMemory["title"] as? String
             let startDate = dateFormatter.dateFromString((pfMemory["startDate"] as? String)!)
             let endDate = dateFormatter.dateFromString((pfMemory["endDate"] as? String)!)
-            let images = getPhotosFromParseArray(pfMemory["images"] as! [PFFile])
             let mainImage = getPhotosFromParseArray(pfMemory["mainImage"] as! [PFFile]).first
             let story = pfMemory["story"] as? String
             let quotes = ""
             let ID = pfMemory["memoryID"] as? String
             
-            let newMemory = LocalMemory(Mtitle: title!, MstartDate: startDate!, MendDate: endDate!, Mimages: images, MmainImage: mainImage!, Mstory: story!, Mquotes: quotes, MID: ID!)
+            let newMemory = LocalMemory(Mtitle: title!, MstartDate: startDate!, MendDate: endDate!, MmainImage: mainImage!, Mstory: story!, Mquotes: quotes, MID: ID!)
             memories.append(newMemory)
         }
         
         return memories
     }
+    
+    func getMemoryImagesForMemory(memory: LocalMemory) -> [UIImage]{
+        var pfMemories = [PFObject]()
+        var memoryImages = [UIImage]()
+        
+        let query = PFQuery(className: "MemoryImages")
+        query.whereKey("memoryID", equalTo: memory.ID)
+        
+        do{
+            try pfMemories = query.findObjects()
+        }
+        catch let err as NSError{
+            print("MemoryImage query failed with error: \(err)")
+        }
+        
+        let memoryImageObject = pfMemories.first!
+        memoryImages = getPhotosFromParseArray(memoryImageObject["imageFiles"] as! [PFFile])
+        
+        return memoryImages
+    }
+    
 
     func getPhotosFromParseArray(files: [PFFile]) -> [UIImage]{
         var images = [UIImage]()

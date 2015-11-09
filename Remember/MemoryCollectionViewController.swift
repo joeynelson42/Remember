@@ -54,7 +54,12 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        
         let memoryVC = mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
+        memories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(memories[indexPath.row])
+        
         (memoryVC as! MemoryViewController).memory = memories[indexPath.row]
         (memoryVC as! MemoryViewController).collectionVC = self
         self.presentViewController(memoryVC, animated: true, completion: nil)

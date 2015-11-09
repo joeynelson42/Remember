@@ -53,6 +53,13 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //TODO: expand photo to full screen
         
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("carouselVC") as! ImageCarouselViewController
+        
+        vc.images = memory.images
+        vc.initialIndex = indexPath.row
+        
+        vc.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     func toggleInformation(){
