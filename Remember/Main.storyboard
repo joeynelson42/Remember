@@ -197,7 +197,7 @@
                                             <constraint firstAttribute="height" constant="31" id="IOG-Am-iTM"/>
                                             <constraint firstAttribute="width" constant="18" id="ycU-Vg-zuo"/>
                                         </constraints>
-                                        <state key="normal" image="R"/>
+                                        <state key="normal" image="TheYellowR"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMZ-5W-sbC">
                                         <rect key="frame" x="22" y="29" width="27" height="27"/>
@@ -314,7 +314,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="hdZ-HT-MOA" id="R4J-BR-7Gt"/>
                                 </connections>
@@ -551,7 +551,7 @@
                                             <constraint firstAttribute="height" constant="31" id="Jyk-7Z-ue4"/>
                                             <constraint firstAttribute="width" constant="18" id="uCY-w6-juf"/>
                                         </constraints>
-                                        <state key="normal" image="R"/>
+                                        <state key="normal" image="TheYellowR"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9O-AB-vSq">
                                         <rect key="frame" x="334" y="27" width="28" height="28"/>
@@ -925,7 +925,7 @@
                                             <constraint firstAttribute="height" constant="31" id="AuO-45-oZ6"/>
                                             <constraint firstAttribute="width" constant="18" id="eeZ-K6-apH"/>
                                         </constraints>
-                                        <state key="normal" image="R"/>
+                                        <state key="normal" image="TheYellowR"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-k3-2xp" userLabel="Edit Memory button">
                                         <rect key="frame" x="333" y="26" width="30" height="30"/>
@@ -1183,7 +1183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CmN-tY-rCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2202.5" y="322.5"/>
+            <point key="canvasLocation" x="1745.5" y="1093.5"/>
         </scene>
         <!--Notification View Controller-->
         <scene sceneID="rfR-Le-oXN">
@@ -1336,7 +1336,6 @@
         <image name="Login" width="423" height="108"/>
         <image name="MoveDownIcon" width="246" height="246"/>
         <image name="NotificationIcon" width="90" height="88"/>
-        <image name="R" width="113" height="185"/>
         <image name="SideMenuIcon" width="54" height="48"/>
         <image name="TheYellowR" width="113" height="185"/>
         <image name="UserIcon" width="126" height="149"/>

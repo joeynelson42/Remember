@@ -161,14 +161,7 @@ class ParseServerProxy{
         memoryImages["imageFiles"] = imageFiles
         memoryImages["memoryID"] = memoryID
         
-        memoryImages.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if success == true {
-                print("Memory saved!")
-            } else {
-                print(error)
-            }
-        }
+        memoryImages.saveEventually()
         
         //----------------------------------------------------
     }
@@ -187,7 +180,7 @@ class ParseServerProxy{
     
     func NSDateToString(date: NSDate) -> String{
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "mm:dd:yyyy"
+        dateFormatter.dateFormat = "MM:dd:yyyy"
         return dateFormatter.stringFromDate(date)
     }
     
@@ -206,10 +199,13 @@ class ParseServerProxy{
         }
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "mm:dd:yyyy"
+        dateFormatter.dateFormat = "MM:dd:yyyy"
         
         for pfMemory in pfMemories{
             let title = pfMemory["title"] as? String
+            
+            let date = (pfMemory["startDate"] as? String)!
+            
             let startDate = dateFormatter.dateFromString((pfMemory["startDate"] as? String)!)
             let endDate = dateFormatter.dateFromString((pfMemory["endDate"] as? String)!)
             let mainImage = getPhotosFromParseArray(pfMemory["mainImage"] as! [PFFile]).first
