@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TheR@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="dea-Ct-JCz">
-                                <rect key="frame" x="-55" y="119" width="495" height="264"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TheBlackRIcon" highlightedImage="TheR@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="dea-Ct-JCz">
+                                <rect key="frame" x="111" y="199" width="152" height="270"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dea-Ct-JCz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-82.5" id="5Ax-Yd-lku"/>
-                            <constraint firstItem="dea-Ct-JCz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-75" id="QBx-qX-FCA"/>
-                            <constraint firstItem="dea-Ct-JCz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="5" id="oiO-9b-qK0"/>
-                            <constraint firstItem="dea-Ct-JCz" firstAttribute="top" secondItem="Am5-5s-ryz" secondAttribute="bottom" constant="99" id="uzO-iA-asw"/>
+                            <constraint firstItem="dea-Ct-JCz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5Ax-Yd-lku"/>
+                            <constraint firstItem="dea-Ct-JCz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="91" id="QBx-qX-FCA"/>
+                            <constraint firstItem="dea-Ct-JCz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oiO-9b-qK0"/>
+                            <constraint firstItem="dea-Ct-JCz" firstAttribute="top" secondItem="Am5-5s-ryz" secondAttribute="bottom" constant="179" id="uzO-iA-asw"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -41,6 +41,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TheBlackRIcon" width="144" height="239"/>
         <image name="TheR@3x.png" width="207" height="208"/>
     </resources>
 </document>

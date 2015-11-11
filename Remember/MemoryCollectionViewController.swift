@@ -11,10 +11,8 @@ import UIKit
 import Parse
 import CoreData
 
-class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
-    
+class MemoryCollectionViewController: UIViewController {
 
-    
     var user: PFObject!
     var memories = [LocalMemory]()
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -24,7 +22,11 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     
     var filteredMemories = [LocalMemory]()
     
+    @IBOutlet weak var addMemoryButton: UIButton!
     @IBOutlet weak var memoryCollection: UICollectionView!
+    
+//    @IBOutlet weak var loadViewContainer: UIView!
+//    @IBOutlet weak var loadViewR: UIImageView!
     
     
     override func viewDidLoad() {
@@ -42,6 +44,42 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         memoryCollectionView.sideMenuView.hideMenu()
     }
     
+    @IBAction func addNewMemory(sender: UIButton) {
+        let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
+        (addVC as! AddMemoryViewController).collectionVC = self
+        self.presentViewController(addVC, animated: true, completion: nil)
+    }
+    
+    func logout(){
+        memoryCollectionView.dismissMenu()
+        PFUser.logOut()
+        user = nil
+        
+        let loginVC = mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+        self.presentViewController(loginVC, animated: false, completion: nil)
+    }
+    
+//    func showLoadView(){
+//        UIView.animateWithDuration(0.5, animations: {
+//                self.loadViewContainer.alpha = 1.0
+//            }, completion: {finished in
+//                self.animateLoadingView()
+//        })
+//    }
+//    
+//    func animateLoadingView(){
+//        self.loadViewR.alpha = 0.5
+//        UIView.animateWithDuration(0.6, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
+//            self.loadViewR.transform = CGAffineTransformMakeScale(1.15, 1.15)
+//            self.loadViewR.alpha = 1.0
+//            }, completion: nil)
+//    }
+    
+}
+
+
+extension MemoryCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -52,7 +90,7 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memoryCell", forIndexPath: indexPath) as! MemoryCollectionCell
-
+        
         cell.memory = filteredMemories[indexPath.row]
         
         cell.title.text = filteredMemories[indexPath.row].title
@@ -64,9 +102,7 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        
-        
+            
         let memoryVC = mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
         if(filteredMemories[indexPath.row].images.count == 0){
             filteredMemories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(filteredMemories[indexPath.row])
@@ -93,7 +129,10 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
             memoryCollectionView.showSearchBar()
         }
     }
-    
+}
+
+
+extension MemoryCollectionViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let screenWidth: CGFloat = UIScreen.mainScreen().bounds.width
@@ -101,31 +140,17 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         return CGSize(width: screenWidth, height: 179)
         
     }
-    
+}
 
-    @IBAction func addNewMemory(sender: UIButton) {
-        let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
-        (addVC as! AddMemoryViewController).collectionVC = self
-        self.presentViewController(addVC, animated: true, completion: nil)
-    }
-    
-    
-    func logout(){
-        memoryCollectionView.dismissMenu()
-        PFUser.logOut()
-        user = nil
-        
-        let loginVC = mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
-        self.presentViewController(loginVC, animated: false, completion: nil)
-        
-        
-    }
-    
+extension MemoryCollectionViewController: UISearchBarDelegate{
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredMemories.removeAll()
         
         for memory in memories{
-            if memory.title.containsString(searchText){
+            let titleLC = memory.title.lowercaseString
+            let searchLC = searchText.lowercaseString
+            
+            if titleLC.containsString(searchLC){
                 filteredMemories.append(memory)
             }
         }
@@ -136,17 +161,7 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         
         memoryCollection.reloadData()
     }
-    
-    
-    
-    
-    
 }
-
-
-
-
-
 
 
 

@@ -623,7 +623,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-0x-U1E">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-0x-U1E">
                                                     <rect key="frame" x="8" y="109" width="359" height="46"/>
                                                     <animations/>
                                                     <constraints>
@@ -886,6 +886,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="addMemoryButton" destination="D9O-AB-vSq" id="vaB-fQ-ne6"/>
                         <outlet property="memoryCollection" destination="bz9-Ta-sxw" id="XB8-Ez-4xi"/>
                     </connections>
                 </viewController>
@@ -928,11 +929,11 @@
                                         <state key="normal" image="TheYellowR"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-k3-2xp" userLabel="Edit Memory button">
-                                        <rect key="frame" x="333" y="26" width="30" height="30"/>
+                                        <rect key="frame" x="333" y="23" width="32" height="34"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="ITX-UZ-7s9"/>
-                                            <constraint firstAttribute="height" constant="30" id="acv-y0-2VS"/>
+                                            <constraint firstAttribute="width" constant="32" id="ITX-UZ-7s9"/>
+                                            <constraint firstAttribute="height" constant="34" id="acv-y0-2VS"/>
                                         </constraints>
                                         <state key="normal" image="EditIcon"/>
                                         <connections>
@@ -955,9 +956,9 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.3921568627" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Zi0-k3-2xp" firstAttribute="top" secondItem="WL2-fJ-M7t" secondAttribute="top" constant="26" id="5eZ-kP-rgh"/>
+                                    <constraint firstItem="Zi0-k3-2xp" firstAttribute="top" secondItem="WL2-fJ-M7t" secondAttribute="top" constant="23" id="5eZ-kP-rgh"/>
                                     <constraint firstItem="XxJ-H5-2wq" firstAttribute="top" secondItem="WL2-fJ-M7t" secondAttribute="top" constant="26" id="IOz-Tq-vbd"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zi0-k3-2xp" secondAttribute="trailing" constant="20" id="K3q-ZU-xE9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zi0-k3-2xp" secondAttribute="trailing" constant="18" id="K3q-ZU-xE9"/>
                                     <constraint firstItem="Awe-tM-poJ" firstAttribute="centerX" secondItem="WL2-fJ-M7t" secondAttribute="centerX" id="NKF-Ry-5XS"/>
                                     <constraint firstAttribute="height" constant="64" id="NMR-LK-r6q"/>
                                     <constraint firstItem="Awe-tM-poJ" firstAttribute="top" secondItem="WL2-fJ-M7t" secondAttribute="top" constant="25" id="e9J-3p-xpt"/>
@@ -1061,7 +1062,7 @@
                                     <outlet property="delegate" destination="EUY-Q1-BHG" id="AbF-AU-pDc"/>
                                 </connections>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-cg-D6d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-cg-D6d">
                                 <rect key="frame" x="20" y="66" width="335" height="37"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
