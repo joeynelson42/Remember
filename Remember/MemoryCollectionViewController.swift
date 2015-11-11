@@ -25,9 +25,6 @@ class MemoryCollectionViewController: UIViewController {
     @IBOutlet weak var addMemoryButton: UIButton!
     @IBOutlet weak var memoryCollection: UICollectionView!
     
-//    @IBOutlet weak var loadViewContainer: UIView!
-//    @IBOutlet weak var loadViewR: UIImageView!
-    
     
     override func viewDidLoad() {
         memoryCollectionView = (self.view as! MemoryCollectionView)
@@ -37,6 +34,10 @@ class MemoryCollectionViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         filteredMemories = memories
+        
+        if memories.isEmpty{
+            animateAddButton()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -59,21 +60,11 @@ class MemoryCollectionViewController: UIViewController {
         self.presentViewController(loginVC, animated: false, completion: nil)
     }
     
-//    func showLoadView(){
-//        UIView.animateWithDuration(0.5, animations: {
-//                self.loadViewContainer.alpha = 1.0
-//            }, completion: {finished in
-//                self.animateLoadingView()
-//        })
-//    }
-//    
-//    func animateLoadingView(){
-//        self.loadViewR.alpha = 0.5
-//        UIView.animateWithDuration(0.6, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
-//            self.loadViewR.transform = CGAffineTransformMakeScale(1.15, 1.15)
-//            self.loadViewR.alpha = 1.0
-//            }, completion: nil)
-//    }
+    func animateAddButton(){
+        UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: [.Repeat, .AllowUserInteraction, .CurveEaseIn], animations: {
+                self.addMemoryButton.transform = CGAffineTransformConcat(CGAffineTransformMakeRotation(CGFloat(M_PI)), CGAffineTransformMakeScale(1.15, 1.15))
+            }, completion: nil)
+    }
     
 }
 

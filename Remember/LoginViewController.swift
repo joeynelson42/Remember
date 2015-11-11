@@ -27,7 +27,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func signUpButtonAction(sender: AnyObject) {
-        signUp(loginView.emailTextField.text!, password: loginView.passwordTextField.text!)
+        
+        if (loginView.emailTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty){
+            let alertController = UIAlertController(title: "Missing Email/Password", message:
+                "Please add email/password", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else{
+            signUp(loginView.emailTextField.text!, password: loginView.passwordTextField.text!)
+        }
     }
     
     
@@ -60,7 +69,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func displayFailedLogin(){
-        let alertController = UIAlertController(title: "Incorrect Username/Password", message:
+        let alertController = UIAlertController(title: "Incorrect Email/Password", message:
             "Please try again", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
