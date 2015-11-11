@@ -590,13 +590,10 @@
                                     <constraint firstItem="D9O-AB-vSq" firstAttribute="top" secondItem="JeN-52-zIF" secondAttribute="top" constant="27" id="ylv-ms-AMx"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bz9-Ta-sxw">
-                                <rect key="frame" x="0.0" y="108" width="375" height="630"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bz9-Ta-sxw">
+                                <rect key="frame" x="-4" y="108" width="383" height="632"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="630" id="pTP-g2-ZAR"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="oTS-Tl-Iwb">
                                     <size key="itemSize" width="375" height="179"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -605,7 +602,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memoryCell" id="TrI-dk-uBX" customClass="MemoryCollectionCell" customModule="Remember" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                        <rect key="frame" x="4" y="0.0" width="375" height="179"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
@@ -692,24 +689,27 @@
                                     <outlet property="delegate" destination="gC1-rd-kah" id="fcs-3P-Gcd"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="udT-Va-AXj">
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udT-Va-AXj">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <animations/>
                                 <color key="barTintColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gC1-rd-kah" id="kNW-vF-8U7"/>
+                                </connections>
                             </searchBar>
                             <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-V5-hMt">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bk8-ht-3wU" customClass="SideMenuView" customModule="Remember" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bk8-ht-3wU" customClass="SideMenuView" customModule="Remember" customModuleProvider="target">
                                 <rect key="frame" x="2" y="67" width="95" height="512"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwN-tz-EOh" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JwN-tz-EOh" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="85" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0I7-l3-7hx">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0I7-l3-7hx">
                                                 <rect key="frame" x="14" y="15" width="57" height="55"/>
                                                 <animations/>
                                                 <constraints>
@@ -731,10 +731,10 @@
                                             <constraint firstItem="0I7-l3-7hx" firstAttribute="centerY" secondItem="JwN-tz-EOh" secondAttribute="centerY" id="o6l-yf-Rjr"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDp-dD-6Or" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDp-dD-6Or" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
                                         <rect key="frame" x="5" y="98" width="85" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBW-lP-bKe">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBW-lP-bKe">
                                                 <rect key="frame" x="19" y="21" width="46" height="44"/>
                                                 <animations/>
                                                 <constraints>
@@ -756,10 +756,10 @@
                                             <constraint firstAttribute="width" constant="85" id="pUO-Eb-cwx"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ej9-d0-Fh5" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ej9-d0-Fh5" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
                                         <rect key="frame" x="5" y="191" width="85" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ki-ue-ffX">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ki-ue-ffX">
                                                 <rect key="frame" x="20" y="16" width="45" height="54"/>
                                                 <animations/>
                                                 <constraints>
@@ -781,10 +781,10 @@
                                             <constraint firstItem="8Ki-ue-ffX" firstAttribute="centerX" secondItem="Ej9-d0-Fh5" secondAttribute="centerX" id="iPY-5x-4MJ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEf-Bg-Cjg" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEf-Bg-Cjg" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
                                         <rect key="frame" x="5" y="284" width="85" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-JA-krB">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-JA-krB">
                                                 <rect key="frame" x="20" y="20" width="45" height="45"/>
                                                 <animations/>
                                                 <constraints>
@@ -806,10 +806,10 @@
                                             <constraint firstAttribute="height" constant="85" id="vYE-bE-CZu"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3s-f5-4qE" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3s-f5-4qE" customClass="SideMenuTile" customModule="Remember" customModuleProvider="target">
                                         <rect key="frame" x="5" y="377" width="85" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEz-pm-Ypg">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEz-pm-Ypg">
                                                 <rect key="frame" x="14" y="20" width="45" height="45"/>
                                                 <animations/>
                                                 <constraints>
@@ -853,21 +853,21 @@
                         <animations/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="top" secondItem="udT-Va-AXj" secondAttribute="bottom" id="3sc-Rc-YK8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bz9-Ta-sxw" secondAttribute="trailing" constant="-24" id="3Aa-Ek-Yf5"/>
+                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="top" secondItem="udT-Va-AXj" secondAttribute="bottom" id="4tk-Ta-Ple"/>
                             <constraint firstItem="Bk8-ht-3wU" firstAttribute="top" secondItem="JeN-52-zIF" secondAttribute="bottom" constant="3" id="82h-TZ-TDf"/>
-                            <constraint firstItem="Bk8-ht-3wU" firstAttribute="trailing" secondItem="udT-Va-AXj" secondAttribute="leading" constant="97" id="9Ma-ZK-dSb"/>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="centerX" secondItem="JeN-52-zIF" secondAttribute="centerX" id="FVb-HS-2uk"/>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leading" id="P0Q-Po-7jg"/>
-                            <constraint firstItem="udT-Va-AXj" firstAttribute="top" secondItem="JeN-52-zIF" secondAttribute="bottom" id="QrY-LL-yc2"/>
+                            <constraint firstItem="udT-Va-AXj" firstAttribute="top" secondItem="tkZ-fk-aoN" secondAttribute="bottom" constant="44" id="J7I-41-0gA"/>
+                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="top" secondItem="tkZ-fk-aoN" secondAttribute="bottom" constant="88" id="S7L-j7-udh"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Bk8-ht-3wU" secondAttribute="bottom" constant="88" id="SRV-gq-LjT"/>
                             <constraint firstItem="Bk8-ht-3wU" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leading" constant="2" id="UwJ-0e-VDf"/>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="bottom" secondItem="EfY-sq-Dp1" secondAttribute="top" constant="71" id="cGR-lO-M1b"/>
+                            <constraint firstItem="udT-Va-AXj" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leadingMargin" constant="-20" id="cNu-7L-Pfh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JeN-52-zIF" secondAttribute="trailing" constant="-20" id="ccE-Id-PcD"/>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="leading" secondItem="udT-Va-AXj" secondAttribute="leading" id="eLr-dZ-kiM"/>
+                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leadingMargin" constant="-24" id="eZA-sq-e6l"/>
                             <constraint firstItem="JeN-52-zIF" firstAttribute="leading" secondItem="LZk-QK-olM" secondAttribute="leadingMargin" constant="-20" id="fRS-gF-Yux"/>
                             <constraint firstItem="JeN-52-zIF" firstAttribute="top" secondItem="tkZ-fk-aoN" secondAttribute="bottom" constant="-20" id="i3y-vX-ePo"/>
-                            <constraint firstItem="bz9-Ta-sxw" firstAttribute="trailing" secondItem="udT-Va-AXj" secondAttribute="trailing" id="pyU-AJ-iY0"/>
                             <constraint firstItem="JeN-52-zIF" firstAttribute="centerX" secondItem="LZk-QK-olM" secondAttribute="centerX" id="vZF-09-Sg1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="udT-Va-AXj" secondAttribute="trailing" constant="-20" id="vnd-Gt-MuV"/>
+                            <constraint firstItem="EfY-sq-Dp1" firstAttribute="top" secondItem="bz9-Ta-sxw" secondAttribute="bottom" constant="-73" id="z7K-vX-DLc"/>
                         </constraints>
                         <connections>
                             <outlet property="collectionTile" destination="JwN-tz-EOh" id="6ae-WI-85x"/>

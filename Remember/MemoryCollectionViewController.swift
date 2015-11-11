@@ -11,7 +11,7 @@ import UIKit
 import Parse
 import CoreData
 
-class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
 
     
@@ -22,12 +22,19 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     var memoryCollectionView: MemoryCollectionView!
     var previousContentOffset: CGPoint!
     
+    var filteredMemories = [LocalMemory]()
+    
     @IBOutlet weak var memoryCollection: UICollectionView!
     
     
     override func viewDidLoad() {
         memoryCollectionView = (self.view as! MemoryCollectionView)
         memoryCollectionView.controller = self
+        filteredMemories = memories
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        filteredMemories = memories
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -40,18 +47,18 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return memories.count
+        return filteredMemories.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memoryCell", forIndexPath: indexPath) as! MemoryCollectionCell
 
-        cell.memory = memories[indexPath.row]
+        cell.memory = filteredMemories[indexPath.row]
         
-        cell.title.text = memories[indexPath.row].title
-        cell.image.image = memories[indexPath.row].mainImage
+        cell.title.text = filteredMemories[indexPath.row].title
+        cell.image.image = filteredMemories[indexPath.row].mainImage
         cell.image.contentMode = .ScaleAspectFill
-        cell.date.text = memories[indexPath.row].startDate.getFormattedDate(memories[indexPath.row].endDate)
+        cell.date.text = filteredMemories[indexPath.row].startDate.getFormattedDate(filteredMemories[indexPath.row].endDate)
         cell.memoryCollectionVC = self
         return cell
     }
@@ -61,11 +68,11 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         
         
         let memoryVC = mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
-        if(memories[indexPath.row].images.count == 0){
-            memories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(memories[indexPath.row])
+        if(filteredMemories[indexPath.row].images.count == 0){
+            filteredMemories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(filteredMemories[indexPath.row])
         }
         
-        (memoryVC as! MemoryViewController).memory = memories[indexPath.row]
+        (memoryVC as! MemoryViewController).memory = filteredMemories[indexPath.row]
         (memoryVC as! MemoryViewController).collectionVC = self
         self.presentViewController(memoryVC, animated: true, completion: nil)
     }
@@ -87,6 +94,14 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         }
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let screenWidth: CGFloat = UIScreen.mainScreen().bounds.width
+        
+        return CGSize(width: screenWidth, height: 179)
+        
+    }
+    
 
     @IBAction func addNewMemory(sender: UIButton) {
         let addVC = mainStoryboard.instantiateViewControllerWithIdentifier("AddMemoryVC")
@@ -105,6 +120,27 @@ class MemoryCollectionViewController: UIViewController, UICollectionViewDelegate
         
         
     }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredMemories.removeAll()
+        
+        for memory in memories{
+            if memory.title.containsString(searchText){
+                filteredMemories.append(memory)
+            }
+        }
+        
+        if(searchText == ""){
+            filteredMemories = memories
+        }
+        
+        memoryCollection.reloadData()
+    }
+    
+    
+    
+    
+    
 }
 
 

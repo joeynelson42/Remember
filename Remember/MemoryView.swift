@@ -30,6 +30,7 @@ class MemoryView: UIView{
         super.awakeFromNib()
         
         storyView.layer.cornerRadius = 3.0
+        storyView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.7)
         imageCollectionView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.5)
     }
     
