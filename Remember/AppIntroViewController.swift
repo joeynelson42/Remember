@@ -14,10 +14,16 @@ class AppIntroViewController: UIViewController{
     @IBOutlet weak var introQuote: UIImageView!
     @IBOutlet weak var fadeView: UIView!
     
+    override func viewDidLoad() {
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark)) as UIVisualEffectView
+        visualEffectView.frame = fadeView.bounds
+        fadeView.addSubview(visualEffectView)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         introQuote.alpha = 0.0
         fadeView.alpha = 0.0
-        fadeView.backgroundColor = UIColor.fromHex(0x434242, alpha: 0.7)
+        fadeView.backgroundColor = UIColor.clearColor()
     }
     
     override func viewDidAppear(animated: Bool) {

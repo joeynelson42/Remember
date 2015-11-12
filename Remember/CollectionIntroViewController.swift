@@ -27,7 +27,12 @@ class CollectionIntroViewController: UIViewController{
         self.tutorialContainer.alpha = 0.0
         self.quote.alpha = 0.0
         self.quoteContainer.alpha = 0.0
-        self.quoteContainer.backgroundColor = UIColor.fromHex(0x434242, alpha: 0.7)
+        self.quoteContainer.backgroundColor = UIColor.clearColor()
+        
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark)) as UIVisualEffectView
+        visualEffectView.frame = quoteContainer.bounds
+        quoteContainer.addSubview(visualEffectView)
+        
         
         self.tutorialContainer.layer.cornerRadius = 5.0
     }

@@ -28,16 +28,21 @@ class MemoryIntroViewController: UIViewController{
         imageCollectionBackground.layer.zPosition = CGFloat(MAXFLOAT - 1)
         
         self.tutorialContainer.layer.cornerRadius = 5.0
-        self.fadeView.backgroundColor = UIColor.fromHex(0x434242, alpha: 0.7)
-
+        self.fadeView.backgroundColor = UIColor.clearColor()
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark)) as UIVisualEffectView
+        visualEffectView.frame = fadeView.bounds
+        fadeView.addSubview(visualEffectView)
+        
         
         self.tutorialContainer.alpha = 0.0
         self.quote.alpha = 0.0
         self.fadeView.alpha = 0.0
+        
+        self.imageCollection.transform = CGAffineTransformMakeTranslation(90, 0)
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.imageCollection.transform = CGAffineTransformMakeTranslation(90, 0)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -88,7 +93,7 @@ class MemoryIntroViewController: UIViewController{
                             }, completion: {finished in
                                 UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
                                     self.imageCollectionBackground.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(2, 3.5), CGAffineTransformMakeTranslation(0, 50))
-                                    self.imageCollection.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.5, 1.5), CGAffineTransformMakeTranslation(0, 20))
+                                    self.imageCollection.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.5, 1.5), CGAffineTransformMakeTranslation(0, 40))
                                     }, completion: {finished in
                                         UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
                                             self.imageCollection.transform = CGAffineTransformMakeScale(1.0, 1.0)
