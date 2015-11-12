@@ -13,6 +13,16 @@
 		632154351BE52ACC001FAFAE /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632154341BE52ACC001FAFAE /* MemoryCollectionView.swift */; };
 		6333678E1BE41C1A00DBD743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6333678D1BE41C1A00DBD743 /* Main.storyboard */; };
 		633367901BE427CA00DBD743 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333678F1BE427CA00DBD743 /* LoginView.swift */; };
+		63464E541BF403A400851162 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63464E531BF403A400851162 /* IntroViewController.swift */; };
+		63464E571BF403C100851162 /* CollectionIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63464E561BF403C100851162 /* CollectionIntroViewController.swift */; };
+		63464E591BF403CB00851162 /* AddIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63464E581BF403CB00851162 /* AddIntroViewController.swift */; };
+		63464E5B1BF403D800851162 /* MemoryIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63464E5A1BF403D800851162 /* MemoryIntroViewController.swift */; };
+		63464E5D1BF4053F00851162 /* AppIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63464E5C1BF4053F00851162 /* AppIntroViewController.swift */; };
+		63464E611BF4086400851162 /* BW - DadAndKiki.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63464E601BF4086400851162 /* BW - DadAndKiki.jpg */; };
+		63464E651BF40CFC00851162 /* garrettAndMaddy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63464E641BF40CFC00851162 /* garrettAndMaddy.jpg */; };
+		63464E6D1BF4152800851162 /* laurenBW.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63464E6C1BF4152800851162 /* laurenBW.jpg */; };
+		63464E751BF4274500851162 /* jakeBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 63464E741BF4274500851162 /* jakeBW.png */; };
+		63464E791BF42ADC00851162 /* naomiClaireBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 63464E781BF42ADC00851162 /* naomiClaireBW.png */; };
 		636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */; };
 		636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */; };
 		636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */; };
@@ -90,6 +100,16 @@
 		633367921BE4295500DBD743 /* Existence-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-Light.otf"; sourceTree = "<group>"; };
 		633367931BE4295500DBD743 /* Existence-StencilLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-StencilLight.otf"; sourceTree = "<group>"; };
 		633367941BE4295500DBD743 /* Existence-UnicaseLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-UnicaseLight.otf"; sourceTree = "<group>"; };
+		63464E531BF403A400851162 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		63464E561BF403C100851162 /* CollectionIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionIntroViewController.swift; sourceTree = "<group>"; };
+		63464E581BF403CB00851162 /* AddIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIntroViewController.swift; sourceTree = "<group>"; };
+		63464E5A1BF403D800851162 /* MemoryIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryIntroViewController.swift; sourceTree = "<group>"; };
+		63464E5C1BF4053F00851162 /* AppIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntroViewController.swift; sourceTree = "<group>"; };
+		63464E601BF4086400851162 /* BW - DadAndKiki.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BW - DadAndKiki.jpg"; sourceTree = "<group>"; };
+		63464E641BF40CFC00851162 /* garrettAndMaddy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = garrettAndMaddy.jpg; sourceTree = "<group>"; };
+		63464E6C1BF4152800851162 /* laurenBW.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = laurenBW.jpg; sourceTree = "<group>"; };
+		63464E741BF4274500851162 /* jakeBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jakeBW.png; sourceTree = "<group>"; };
+		63464E781BF42ADC00851162 /* naomiClaireBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = naomiClaireBW.png; sourceTree = "<group>"; };
 		636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryView.swift; sourceTree = "<group>"; };
 		636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Remember.swift"; sourceTree = "<group>"; };
 		636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Remember.swift"; sourceTree = "<group>"; };
@@ -201,6 +221,23 @@
 				633367941BE4295500DBD743 /* Existence-UnicaseLight.otf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		63464E551BF403A800851162 /* Intro Page */ = {
+			isa = PBXGroup;
+			children = (
+				63464E601BF4086400851162 /* BW - DadAndKiki.jpg */,
+				63464E6C1BF4152800851162 /* laurenBW.jpg */,
+				63464E781BF42ADC00851162 /* naomiClaireBW.png */,
+				63464E741BF4274500851162 /* jakeBW.png */,
+				63464E641BF40CFC00851162 /* garrettAndMaddy.jpg */,
+				63464E531BF403A400851162 /* IntroViewController.swift */,
+				63464E5C1BF4053F00851162 /* AppIntroViewController.swift */,
+				63464E561BF403C100851162 /* CollectionIntroViewController.swift */,
+				63464E581BF403CB00851162 /* AddIntroViewController.swift */,
+				63464E5A1BF403D800851162 /* MemoryIntroViewController.swift */,
+			);
+			name = "Intro Page";
 			sourceTree = "<group>";
 		};
 		63ABCCA81BF133150020E933 /* Third Party Libraries */ = {
@@ -335,6 +372,7 @@
 		63E009401BE1A0F6009A0FA8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63464E551BF403A800851162 /* Intro Page */,
 				63E009491BE1B7A6009A0FA8 /* LoginViewController.swift */,
 				63E009471BE1B606009A0FA8 /* MemoryCollectionViewController.swift */,
 				63E0094B1BE1B7B4009A0FA8 /* MemoryViewController.swift */,
@@ -491,9 +529,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				63CF667C1BE18FC50042DC37 /* LaunchScreen.storyboard in Resources */,
+				63464E751BF4274500851162 /* jakeBW.png in Resources */,
 				63CF66791BE18FC50042DC37 /* Assets.xcassets in Resources */,
+				63464E791BF42ADC00851162 /* naomiClaireBW.png in Resources */,
 				63E0093C1BE19F81009A0FA8 /* Podfile in Resources */,
+				63464E6D1BF4152800851162 /* laurenBW.jpg in Resources */,
 				63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */,
+				63464E651BF40CFC00851162 /* garrettAndMaddy.jpg in Resources */,
+				63464E611BF4086400851162 /* BW - DadAndKiki.jpg in Resources */,
 				6333678E1BE41C1A00DBD743 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,10 +614,12 @@
 			files = (
 				63E0094A1BE1B7A6009A0FA8 /* LoginViewController.swift in Sources */,
 				636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */,
+				63464E571BF403C100851162 /* CollectionIntroViewController.swift in Sources */,
 				30DE0A1D1BE2ACCE00F8DCEC /* FriendCollectionCell.swift in Sources */,
 				63E009421BE1A17E009A0FA8 /* ParseServerProxy.swift in Sources */,
 				636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */,
 				63E009541BE1C016009A0FA8 /* MemoryCollectionFlowLayout.swift in Sources */,
+				63464E5D1BF4053F00851162 /* AppIntroViewController.swift in Sources */,
 				63E0094E1BE1B7C2009A0FA8 /* FriendsListViewController.swift in Sources */,
 				63E009621BE1D122009A0FA8 /* SideMenuView.swift in Sources */,
 				63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */,
@@ -587,6 +632,7 @@
 				63E0095E1BE1CD65009A0FA8 /* MemoryCollectionCell.swift in Sources */,
 				63ABCCA11BF11B3A0020E933 /* ImageCarouselViewController.swift in Sources */,
 				63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */,
+				63464E591BF403CB00851162 /* AddIntroViewController.swift in Sources */,
 				633367901BE427CA00DBD743 /* LoginView.swift in Sources */,
 				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
 				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
@@ -596,10 +642,12 @@
 				63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */,
 				636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */,
 				638FFF931BE989290085FB46 /* NotificationView.swift in Sources */,
+				63464E5B1BF403D800851162 /* MemoryIntroViewController.swift in Sources */,
 				638FFF911BE988E70085FB46 /* NotificationViewController.swift in Sources */,
 				30DE0A1B1BE2A2C300F8DCEC /* MemoryImageCollectionCell.swift in Sources */,
 				63E009481BE1B606009A0FA8 /* MemoryCollectionViewController.swift in Sources */,
 				632154351BE52ACC001FAFAE /* MemoryCollectionView.swift in Sources */,
+				63464E541BF403A400851162 /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

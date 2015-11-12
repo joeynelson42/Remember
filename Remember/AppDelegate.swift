@@ -31,23 +31,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("80r6yuLpu9vrlnb63hdloUrkiCZ8QfgEES9piJRb",
             clientKey: "AD804ZOBDsFuubJubStDnliSWp6PR6Y1TqSWbCfA")
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        var initialViewController = UIViewController()
-        if let currentUser = PFUser.currentUser(){
-            initialViewController = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
-            (initialViewController as! MemoryCollectionViewController).user = currentUser
-            (initialViewController as! MemoryCollectionViewController).memories = ParseServerProxy.parseProxy.getMemoriesOfUser()
-        }
-        else{
-            initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
-        }
-        
-        
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
+//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        var initialViewController = UIViewController()
+//        if let currentUser = PFUser.currentUser(){
+//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("collectionVC") as! MemoryCollectionViewController
+//            (initialViewController as! MemoryCollectionViewController).user = currentUser
+//            (initialViewController as! MemoryCollectionViewController).memories = ParseServerProxy.parseProxy.getMemoriesOfUser()
+//        }
+//        else{
+//            initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+//        }
+//        
+//        
+//        self.window?.rootViewController = initialViewController
+//        self.window?.makeKeyAndVisible()
         
         return true
     }

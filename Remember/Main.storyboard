@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jue-S2-1VY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kcL-ma-1rO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -15,6 +15,206 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Intro View Controller-->
+        <scene sceneID="GVd-IL-QV2">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Wdp-aC-6Nt" customClass="IntroViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B2v-XD-f2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-67.5" y="-454.5"/>
+        </scene>
+        <!--App Intro View Controller-->
+        <scene sceneID="YDZ-7Z-LvS">
+            <objects>
+                <viewController id="GsI-aV-2HR" customClass="AppIntroViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mOf-7Y-Jev"/>
+                        <viewControllerLayoutGuide type="bottom" id="dbU-sa-Ycd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DJ2-uM-B2d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BW - DadAndKiki.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Qyu-I5-fiZ">
+                                <rect key="frame" x="-21" y="-64" width="619" height="735"/>
+                                <animations/>
+                            </imageView>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rsy-Vy-GKl" userLabel="Fade">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro Quote@1x" translatesAutoresizingMaskIntoConstraints="NO" id="thE-6q-E4S">
+                                <rect key="frame" x="12" y="181" width="351" height="306"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="306" id="gr0-At-xXt"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rememberTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SZl-aM-jTw">
+                                <rect key="frame" x="30" y="40" width="315" height="92"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="miy-uc-pPu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="thE-6q-E4S" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="-4" id="1hb-1J-U6t"/>
+                            <constraint firstItem="SZl-aM-jTw" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="14" id="27x-rF-N1U"/>
+                            <constraint firstItem="dbU-sa-Ycd" firstAttribute="top" secondItem="rsy-Vy-GKl" secondAttribute="bottom" id="5mG-hf-tDo"/>
+                            <constraint firstItem="Qyu-I5-fiZ" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="-37" id="AAe-XD-5sf"/>
+                            <constraint firstItem="rsy-Vy-GKl" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="-20" id="Bsv-3C-xdp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qyu-I5-fiZ" secondAttribute="trailing" constant="-239" id="MOw-13-oqr"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Qyu-I5-fiZ" secondAttribute="bottom" constant="-4" id="S49-Pz-SvG"/>
+                            <constraint firstItem="thE-6q-E4S" firstAttribute="centerX" secondItem="DJ2-uM-B2d" secondAttribute="centerX" id="Ugh-WZ-cR3"/>
+                            <constraint firstItem="Qyu-I5-fiZ" firstAttribute="top" secondItem="DJ2-uM-B2d" secondAttribute="topMargin" constant="-64" id="cAV-ae-01G"/>
+                            <constraint firstItem="rsy-Vy-GKl" firstAttribute="top" secondItem="DJ2-uM-B2d" secondAttribute="topMargin" id="gI3-5X-szQ"/>
+                            <constraint firstItem="SZl-aM-jTw" firstAttribute="top" secondItem="mOf-7Y-Jev" secondAttribute="bottom" constant="20" id="oOS-QP-2gU"/>
+                            <constraint firstItem="thE-6q-E4S" firstAttribute="top" secondItem="mOf-7Y-Jev" secondAttribute="bottom" constant="161" id="pmg-og-P55"/>
+                            <constraint firstItem="SZl-aM-jTw" firstAttribute="centerX" secondItem="DJ2-uM-B2d" secondAttribute="centerX" id="sVP-yL-Iqs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rsy-Vy-GKl" secondAttribute="trailing" constant="-20" id="vJ3-cr-RMd"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ejp-yb-83I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="430.5" y="-454.5"/>
+        </scene>
+        <!--Collection Intro View Controller-->
+        <scene sceneID="RTd-ok-FAu">
+            <objects>
+                <viewController storyboardIdentifier="collectionIntro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kcL-ma-1rO" customClass="CollectionIntroViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3RJ-gG-rbM"/>
+                        <viewControllerLayoutGuide type="bottom" id="6OS-Ie-G2s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="roq-IV-e1V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="garrettAndMaddy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4Zo-kd-d7W">
+                                <rect key="frame" x="-96" y="0.0" width="643" height="667"/>
+                                <animations/>
+                            </imageView>
+                            <view alpha="0.45000000000000001" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWH-Aa-nqM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GWH-Aa-nqM" firstAttribute="top" secondItem="roq-IV-e1V" secondAttribute="topMargin" id="KMp-3G-PKH"/>
+                            <constraint firstItem="6OS-Ie-G2s" firstAttribute="top" secondItem="4Zo-kd-d7W" secondAttribute="bottom" id="M1r-nh-ExM"/>
+                            <constraint firstItem="GWH-Aa-nqM" firstAttribute="leading" secondItem="roq-IV-e1V" secondAttribute="leadingMargin" constant="-20" id="Tso-9i-gAT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Zo-kd-d7W" secondAttribute="trailing" constant="-192" id="d2z-0g-WpD"/>
+                            <constraint firstItem="6OS-Ie-G2s" firstAttribute="top" secondItem="GWH-Aa-nqM" secondAttribute="bottom" id="eCW-jU-re7"/>
+                            <constraint firstItem="4Zo-kd-d7W" firstAttribute="leading" secondItem="roq-IV-e1V" secondAttribute="leadingMargin" constant="-116" id="g1P-fV-Mfs"/>
+                            <constraint firstItem="4Zo-kd-d7W" firstAttribute="top" secondItem="roq-IV-e1V" secondAttribute="topMargin" id="t7N-YF-zF1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GWH-Aa-nqM" secondAttribute="trailing" constant="-20" id="vgT-B8-g3f"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YzE-BL-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1317.5" y="-440.5"/>
+        </scene>
+        <!--Add Intro View Controller-->
+        <scene sceneID="CPc-n0-HsU">
+            <objects>
+                <viewController storyboardIdentifier="addIntro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qkn-IH-5ue" customClass="AddIntroViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X67-5Q-xId"/>
+                        <viewControllerLayoutGuide type="bottom" id="ztw-XR-F5T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="alz-Ne-TkL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laurenBW.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rgu-59-lwg">
+                                <rect key="frame" x="-83" y="0.0" width="479" height="667"/>
+                                <animations/>
+                            </imageView>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-sa-Iii">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ztw-XR-F5T" firstAttribute="top" secondItem="rgu-59-lwg" secondAttribute="bottom" id="AQV-MI-9Vl"/>
+                            <constraint firstItem="7DB-sa-Iii" firstAttribute="leading" secondItem="alz-Ne-TkL" secondAttribute="leadingMargin" constant="-20" id="D4f-cW-wDX"/>
+                            <constraint firstItem="rgu-59-lwg" firstAttribute="leading" secondItem="alz-Ne-TkL" secondAttribute="leadingMargin" constant="-99" id="Viu-kJ-VVo"/>
+                            <constraint firstItem="7DB-sa-Iii" firstAttribute="top" secondItem="alz-Ne-TkL" secondAttribute="topMargin" id="aKZ-Ay-ffY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rgu-59-lwg" secondAttribute="trailing" constant="-37" id="h2u-sM-IwU"/>
+                            <constraint firstItem="ztw-XR-F5T" firstAttribute="top" secondItem="7DB-sa-Iii" secondAttribute="bottom" id="tkt-2k-tsS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7DB-sa-Iii" secondAttribute="trailing" constant="-20" id="yCd-gA-MNH"/>
+                            <constraint firstItem="rgu-59-lwg" firstAttribute="top" secondItem="alz-Ne-TkL" secondAttribute="topMargin" id="yrY-Ix-hyI"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojK-dA-hsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="878.5" y="-454.5"/>
+        </scene>
+        <!--Memory Intro View Controller-->
+        <scene sceneID="tL8-TI-plb">
+            <objects>
+                <viewController storyboardIdentifier="memoryIntro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rbl-RO-V8R" customClass="MemoryIntroViewController" customModule="Remember" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DGD-bb-TYm"/>
+                        <viewControllerLayoutGuide type="bottom" id="VLg-P8-cxm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Hg-H3-rsB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="naomiClaireBW.png" translatesAutoresizingMaskIntoConstraints="NO" id="5qB-8I-g7V">
+                                <rect key="frame" x="-235" y="-55" width="890" height="752"/>
+                                <animations/>
+                            </imageView>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlj-hh-ceE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5qB-8I-g7V" firstAttribute="top" secondItem="3Hg-H3-rsB" secondAttribute="topMargin" constant="-55" id="1Z1-b0-jcm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jlj-hh-ceE" secondAttribute="trailing" constant="-20" id="26Y-5p-pXz"/>
+                            <constraint firstItem="VLg-P8-cxm" firstAttribute="top" secondItem="jlj-hh-ceE" secondAttribute="bottom" id="IOa-1D-XWS"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5qB-8I-g7V" secondAttribute="bottom" constant="-30" id="MxG-uc-vLo"/>
+                            <constraint firstItem="jlj-hh-ceE" firstAttribute="leading" secondItem="3Hg-H3-rsB" secondAttribute="leadingMargin" constant="-20" id="Pit-lq-f9K"/>
+                            <constraint firstItem="5qB-8I-g7V" firstAttribute="leading" secondItem="3Hg-H3-rsB" secondAttribute="leadingMargin" constant="-255" id="Vof-HI-naE"/>
+                            <constraint firstItem="jlj-hh-ceE" firstAttribute="top" secondItem="3Hg-H3-rsB" secondAttribute="topMargin" id="X5y-2F-CEN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5qB-8I-g7V" secondAttribute="trailing" constant="-300" id="h9l-Wj-bna"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DP2-W0-VXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1745.5" y="-454.5"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="4yZ-7n-Pou">
             <objects>
@@ -1335,9 +1535,11 @@
     </scenes>
     <resources>
         <image name="AddIcon" width="207" height="208"/>
+        <image name="BW - DadAndKiki.jpg" width="1000" height="667"/>
         <image name="EditIcon" width="359" height="369"/>
         <image name="FadeCoverSingle" width="374" height="179"/>
         <image name="GearIcon" width="90" height="90"/>
+        <image name="Intro Quote@1x" width="257" height="179"/>
         <image name="Login" width="423" height="108"/>
         <image name="MoveDownIcon" width="246" height="246"/>
         <image name="NotificationIcon" width="90" height="88"/>
@@ -1347,9 +1549,12 @@
         <image name="XIcon" width="157" height="157"/>
         <image name="backArrowIcon" width="32" height="49"/>
         <image name="checkmarkIcon" width="121" height="94"/>
+        <image name="garrettAndMaddy.jpg" width="960" height="960"/>
         <image name="homeIconPDF" width="375" height="328"/>
+        <image name="laurenBW.jpg" width="960" height="960"/>
         <image name="loginBackground" width="1024" height="1544"/>
         <image name="logoutIcon" width="225" height="226"/>
+        <image name="naomiClaireBW.png" width="957" height="1540"/>
         <image name="rememberTitle" width="1017" height="231"/>
         <image name="signUpbutton" width="423" height="108"/>
         <image name="stitches" width="242" height="460"/>
