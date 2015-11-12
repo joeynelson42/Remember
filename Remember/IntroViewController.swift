@@ -13,7 +13,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     
     
     var index = 0
-    var identifiers: NSArray = ["collectionIntro", "addIntro", "memoryIntro"]
+    var identifiers: NSArray = ["appIntro", "collectionIntro", "memoryIntro", "addIntro"]
     
     
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         
         let pageControl = UIPageControl.appearance()
         pageControl.backgroundColor = UIColor.clearColor()
-        pageControl.currentPageIndicatorTintColor = UIColor.fromHex(0x92D57F)
+        pageControl.currentPageIndicatorTintColor = UIColor.fromHex(0xF8FAA0)
         pageControl.pageIndicatorTintColor = UIColor.darkGrayColor()
         
         self.dataSource = self
@@ -31,23 +31,30 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         let viewControllers: NSArray = [startingViewController]
         self.setViewControllers(viewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
-        self.view.backgroundColor = UIColor.fromHex(0xB2B2B2)
+        
+        
+        self.view.backgroundColor = UIColor.clearColor()
     }
     
     func viewControllerAtIndex(index: Int) -> UIViewController! {
         
         if index == 0 {
-            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("appNameVC") as! CollectionIntroViewController
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("appIntro") as! AppIntroViewController
             return vc
         }
         
         if index == 1 {
-            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("categoryTutorialVC") as! AddIntroViewController
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("collectionIntro") as! CollectionIntroViewController
             return vc
         }
         
         if index == 2 {
-            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("studyTutorialVC") as! MemoryIntroViewController
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("memoryIntro") as! MemoryIntroViewController
+            return vc
+        }
+        
+        if index == 3 {
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("addIntro") as! AddIntroViewController
             return vc
         }
         
@@ -67,6 +74,9 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             self.index = 2
             return self.viewControllerAtIndex(2)
         case 2:
+            self.index = 3
+            return self.viewControllerAtIndex(3)
+        case 3:
             return nil
         default:
             return nil
@@ -88,6 +98,9 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         case 2:
             self.index = 1
             return self.viewControllerAtIndex(1)
+        case 3:
+            self.index = 2
+            return self.viewControllerAtIndex(2)
         default:
             return nil
         }

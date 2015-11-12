@@ -23,6 +23,7 @@
 		63464E6D1BF4152800851162 /* laurenBW.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63464E6C1BF4152800851162 /* laurenBW.jpg */; };
 		63464E751BF4274500851162 /* jakeBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 63464E741BF4274500851162 /* jakeBW.png */; };
 		63464E791BF42ADC00851162 /* naomiClaireBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 63464E781BF42ADC00851162 /* naomiClaireBW.png */; };
+		63464E7B1BF4344C00851162 /* laurenGraffiti.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63464E7A1BF4344C00851162 /* laurenGraffiti.jpg */; };
 		636388E91BE5D4DA00B7FFD4 /* AddMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */; };
 		636B1E621BE92EBF00D404E0 /* NSDate+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */; };
 		636B1E641BE93CDC00D404E0 /* UIDevice+Remember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */; };
@@ -110,6 +111,7 @@
 		63464E6C1BF4152800851162 /* laurenBW.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = laurenBW.jpg; sourceTree = "<group>"; };
 		63464E741BF4274500851162 /* jakeBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jakeBW.png; sourceTree = "<group>"; };
 		63464E781BF42ADC00851162 /* naomiClaireBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = naomiClaireBW.png; sourceTree = "<group>"; };
+		63464E7A1BF4344C00851162 /* laurenGraffiti.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = laurenGraffiti.jpg; sourceTree = "<group>"; };
 		636388E81BE5D4DA00B7FFD4 /* AddMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryView.swift; sourceTree = "<group>"; };
 		636B1E611BE92EBF00D404E0 /* NSDate+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Remember.swift"; sourceTree = "<group>"; };
 		636B1E631BE93CDC00D404E0 /* UIDevice+Remember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Remember.swift"; sourceTree = "<group>"; };
@@ -228,14 +230,15 @@
 			children = (
 				63464E601BF4086400851162 /* BW - DadAndKiki.jpg */,
 				63464E6C1BF4152800851162 /* laurenBW.jpg */,
+				63464E7A1BF4344C00851162 /* laurenGraffiti.jpg */,
 				63464E781BF42ADC00851162 /* naomiClaireBW.png */,
 				63464E741BF4274500851162 /* jakeBW.png */,
 				63464E641BF40CFC00851162 /* garrettAndMaddy.jpg */,
 				63464E531BF403A400851162 /* IntroViewController.swift */,
 				63464E5C1BF4053F00851162 /* AppIntroViewController.swift */,
 				63464E561BF403C100851162 /* CollectionIntroViewController.swift */,
-				63464E581BF403CB00851162 /* AddIntroViewController.swift */,
 				63464E5A1BF403D800851162 /* MemoryIntroViewController.swift */,
+				63464E581BF403CB00851162 /* AddIntroViewController.swift */,
 			);
 			name = "Intro Page";
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				63464E791BF42ADC00851162 /* naomiClaireBW.png in Resources */,
 				63E0093C1BE19F81009A0FA8 /* Podfile in Resources */,
 				63464E6D1BF4152800851162 /* laurenBW.jpg in Resources */,
+				63464E7B1BF4344C00851162 /* laurenGraffiti.jpg in Resources */,
 				63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */,
 				63464E651BF40CFC00851162 /* garrettAndMaddy.jpg in Resources */,
 				63464E611BF4086400851162 /* BW - DadAndKiki.jpg in Resources */,
