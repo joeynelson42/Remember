@@ -23,6 +23,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet var addMemoryView: AddMemoryView!
+    @IBOutlet weak var progressContainer: UIView!
     
     var editMode = false
     
@@ -36,6 +37,10 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             images = memory.images
             addMemoryView.loadMemoryToBeEdited(mem)
         }
+        
+        
+        progressContainer.layer.cornerRadius = 5.0
+        progressContainer.backgroundColor = UIColor.fromHex(0x434242, alpha: 0.7)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +48,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             addMemoryView.calculateAnimationDistance()
             addMemoryView.toggleCalendar()
         }
+        
+        progressContainer.alpha = 0.0
     }
     
     //MARK: Image Collection View
@@ -238,12 +245,16 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     //MARK: Saving the Memory
     
     @IBAction func checkMarkButtonAction(sender: AnyObject) {
-        if editMode{
-            updateMemory()
-        }
-        else{
-            saveMemory()
-        }
+        UIView.animateWithDuration(0.3, animations: {
+            self.progressContainer.alpha = 1.0
+            }, completion: {finished in
+                if self.editMode{
+                    self.updateMemory()
+                }
+                else{
+                    self.saveMemory()
+                }
+        })
     }
     
     func saveMemory(){
@@ -298,16 +309,20 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func notifyNotReady(){
-        var alert = ""
-        if(addMemoryView.addTitleField.text! == ""){ alert += "Add a title.\n" }
-        if(addMemoryView.dateButton.titleLabel?.text == "Add Date..."){ alert += "Add a date.\n" }
-        if(addMemoryView.story.text == "Write the story..."){ alert += "Write a story.\n" }
-        if(self.images.count == 0){ alert += "Add (at least) one image.\n"}
-        if(addMemoryView.backgroundImageView.image == nil){ alert += "Select an image as your memory's main photo.\n" }
-        let alertController = UIAlertController(title: "Missing Field(s)", message:
-            "\(alert)", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
+        UIView.animateWithDuration(0.3, animations: {
+            self.progressContainer.alpha = 0.0
+            }, completion: {finished in
+                var alert = ""
+                if(self.addMemoryView.addTitleField.text! == ""){ alert += "Add a title.\n" }
+                if(self.addMemoryView.dateButton.titleLabel?.text == "Add Date..."){ alert += "Add a date.\n" }
+                if(self.addMemoryView.story.text == "Write the story..."){ alert += "Write a story.\n" }
+                if(self.images.count == 0){ alert += "Add (at least) one image.\n"}
+                if(self.addMemoryView.backgroundImageView.image == nil){ alert += "Select an image as your memory's main photo.\n" }
+                let alertController = UIAlertController(title: "Missing Field(s)", message:
+                    "\(alert)", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+        })
     }
     
     @IBAction func cancel(sender: UIButton) {

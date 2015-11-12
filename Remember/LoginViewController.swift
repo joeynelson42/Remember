@@ -13,6 +13,7 @@ import Parse
 class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet var loginView: LoginView!
+    @IBOutlet weak var progressContainer: UIView!
     
     var keyboardHeight: CGFloat!
     
@@ -20,14 +21,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyboardNotifications()
+        
+        progressContainer.alpha = 0.0
+        progressContainer.layer.cornerRadius = 5.0
+        progressContainer.backgroundColor = UIColor.fromHex(0x434242, alpha: 0.7)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        progressContainer.alpha = 0.0
     }
     
     @IBAction func loginButtonAction(sender: AnyObject) {
-        login(loginView.emailTextField.text!, password: loginView.passwordTextField.text!)
+        self.view.endEditing(true)
+        UIView.animateWithDuration(0.3, animations: {
+                self.progressContainer.alpha = 1.0
+            }, completion: {finished in
+                self.login(self.loginView.emailTextField.text!, password: self.loginView.passwordTextField.text!)
+        })
     }
     
     @IBAction func signUpButtonAction(sender: AnyObject) {
-        
+        self.view.endEditing(true)
         if (loginView.emailTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty){
             let alertController = UIAlertController(title: "Missing Email/Password", message:
                 "Please add email/password", preferredStyle: UIAlertControllerStyle.Alert)
@@ -35,19 +49,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         else{
-            signUp(loginView.emailTextField.text!, password: loginView.passwordTextField.text!)
+            UIView.animateWithDuration(0.3, animations: {
+                self.progressContainer.alpha = 1.0
+                }, completion: {finished in
+                    self.signUp(self.loginView.emailTextField.text!, password: self.loginView.passwordTextField.text!)
+            })
         }
     }
     
     
     func login(email: String, password: String){
-        self.view.endEditing(true)
         let success = ParseServerProxy.parseProxy.login(email, pass: password)
         enterApp(success)
     }
     
     func signUp(email: String, password: String){
-        self.view.endEditing(true)
         let success = ParseServerProxy.parseProxy.signUp(email, password: password)
         enterApp(success)
     }

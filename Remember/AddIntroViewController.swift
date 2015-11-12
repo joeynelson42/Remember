@@ -132,6 +132,20 @@ class AddIntroViewController: UIViewController{
     
     
     @IBAction func startButtonAction(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let viewed = defaults.boolForKey("tutorialViewed")
+        defaults.setBool(true, forKey: "tutorialViewed")
+        
+        if viewed{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+        
+        
     }
     
 }

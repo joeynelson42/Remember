@@ -24,12 +24,17 @@ class MemoryCollectionViewController: UIViewController {
     
     @IBOutlet weak var addMemoryButton: UIButton!
     @IBOutlet weak var memoryCollection: UICollectionView!
+    @IBOutlet weak var progressContainer: UIView!
     
     
     override func viewDidLoad() {
         memoryCollectionView = (self.view as! MemoryCollectionView)
         memoryCollectionView.controller = self
         filteredMemories = memories
+        
+        progressContainer.alpha = 0.0
+        progressContainer.layer.cornerRadius = 5.0
+        progressContainer.backgroundColor = UIColor.fromHex(0x434242, alpha: 0.7)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,6 +43,8 @@ class MemoryCollectionViewController: UIViewController {
         if memories.isEmpty{
             animateAddButton()
         }
+        
+        progressContainer.alpha = 0.0
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -52,12 +59,16 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     func logout(){
-        memoryCollectionView.dismissMenu()
-        PFUser.logOut()
-        user = nil
-        
-        let loginVC = mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
-        self.presentViewController(loginVC, animated: false, completion: nil)
+        UIView.animateWithDuration(0.3, animations: {
+            self.progressContainer.alpha = 1.0
+            }, completion: {finished in
+                self.memoryCollectionView.dismissMenu()
+                PFUser.logOut()
+                self.user = nil
+                
+                let loginVC = self.mainStoryboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+                self.presentViewController(loginVC, animated: false, completion: nil)
+        })
     }
     
     func animateAddButton(){
@@ -66,6 +77,10 @@ class MemoryCollectionViewController: UIViewController {
             }, completion: nil)
     }
     
+    @IBAction func RButtonAction(sender: AnyObject) {
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("tutorialVC") as! IntroViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 }
 
 
@@ -93,15 +108,19 @@ extension MemoryCollectionViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-            
-        let memoryVC = mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
-        if(filteredMemories[indexPath.row].images.count == 0){
-            filteredMemories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(filteredMemories[indexPath.row])
-        }
         
-        (memoryVC as! MemoryViewController).memory = filteredMemories[indexPath.row]
-        (memoryVC as! MemoryViewController).collectionVC = self
-        self.presentViewController(memoryVC, animated: true, completion: nil)
+        UIView.animateWithDuration(0.3, animations: {
+            self.progressContainer.alpha = 1.0
+            }, completion: {finished in
+                let memoryVC = self.mainStoryboard.instantiateViewControllerWithIdentifier("MemoryVC")
+                if(self.filteredMemories[indexPath.row].images.count == 0){
+                    self.filteredMemories[indexPath.row].images = ParseServerProxy.parseProxy.getMemoryImagesForMemory(self.filteredMemories[indexPath.row])
+                }
+                
+                (memoryVC as! MemoryViewController).memory = self.filteredMemories[indexPath.row]
+                (memoryVC as! MemoryViewController).collectionVC = self
+                self.presentViewController(memoryVC, animated: true, completion: nil)
+        })
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
