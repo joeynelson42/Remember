@@ -19,6 +19,7 @@ class MemoryCollectionCell: UICollectionViewCell {
     var memory: LocalMemory!
     var deleteEnabled = false
     weak var memoryCollectionVC: MemoryCollectionViewController!
+    let OFFSET_SPEED: CGFloat = 15.0
     
     @IBAction func deleteAction(sender: AnyObject) {
         ParseServerProxy.parseProxy.deleteMemory(memory)
@@ -59,5 +60,11 @@ class MemoryCollectionCell: UICollectionViewCell {
             self.deleteButton.transform = CGAffineTransformMakeTranslation(-118, 0)
             }, completion: nil)
         deleteEnabled = true
+    }
+    
+    
+    //for parallax effect
+    func offset(offset: CGPoint){
+        image.frame = CGRectOffset(self.image.bounds, offset.x, offset.y)
     }
 }

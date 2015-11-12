@@ -138,6 +138,15 @@ extension MemoryCollectionViewController: UICollectionViewDelegate, UICollection
         else{
             memoryCollectionView.showSearchBar()
         }
+        
+        
+        //parallax effect on images
+        if let visibleCells = memoryCollection.visibleCells() as? [MemoryCollectionCell] {
+            for cell in visibleCells{
+                let yOffset = ((memoryCollection!.contentOffset.y - cell.frame.origin.y) / cell.image.frame.height) * cell.OFFSET_SPEED
+                cell.offset(CGPointMake(0.0, yOffset))
+            }
+        }
     }
 }
 
