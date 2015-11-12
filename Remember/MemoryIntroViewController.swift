@@ -82,24 +82,24 @@ class MemoryIntroViewController: UIViewController{
     }
     
     func animate(){
-        UIView.animateWithDuration(2, delay: 1.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
+        UIView.animateWithDuration(1, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
             self.imageCollection.transform = CGAffineTransformMakeTranslation(0, 0)
             }, completion: { finished in
-                UIView.animateWithDuration(0.2, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
+                UIView.animateWithDuration(0.2, delay: 0.1, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
                     self.image2.transform = CGAffineTransformMakeScale(0.9, 0.9)
                     }, completion: {finished in
-                        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
+                        UIView.animateWithDuration(0.2, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
                             self.image2.transform = CGAffineTransformMakeScale(1.0, 1.0)
                             }, completion: {finished in
-                                UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
+                                UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
                                     self.imageCollectionBackground.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(2, 3.5), CGAffineTransformMakeTranslation(0, 50))
                                     self.imageCollection.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.5, 1.5), CGAffineTransformMakeTranslation(0, 40))
                                     }, completion: {finished in
-                                        UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
+                                        UIView.animateWithDuration(1.0, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
                                             self.imageCollection.transform = CGAffineTransformMakeScale(1.0, 1.0)
                                             self.imageCollectionBackground.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0, 1.0), CGAffineTransformMakeTranslation(0, 0))
                                             }, completion: {finished in
-                                                UIView.animateWithDuration(1.5, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: {
+                                                UIView.animateWithDuration(0.75, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
                                                     self.imageCollection.transform = CGAffineTransformMakeTranslation(90, 0)
                                                     }, completion: {finished in
                                                         self.startTimer()
@@ -112,7 +112,7 @@ class MemoryIntroViewController: UIViewController{
     }
     
     func startTimer(){
-        self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "animate", userInfo: nil, repeats: false)
+        self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(0.75, target: self, selector: "animate", userInfo: nil, repeats: false)
     }
 
 }

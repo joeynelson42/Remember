@@ -114,4 +114,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         return 0
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }

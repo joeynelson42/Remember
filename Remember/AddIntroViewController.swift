@@ -12,6 +12,9 @@ import UIKit
 class AddIntroViewController: UIViewController{
     
     @IBOutlet weak var tutorialContainer: UIView!
+    @IBOutlet weak var quote: UILabel!
+    @IBOutlet weak var fadeView: UIView!
+    @IBOutlet weak var startButton: UIButton!
     
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var addPhotoButton: UIImageView!
@@ -21,16 +24,62 @@ class AddIntroViewController: UIViewController{
     @IBOutlet weak var grayView3: UIView!
     @IBOutlet weak var grayView4: UIView!
     
+    var animationBegun = false
     var animationTimer = NSTimer()
     
     override func viewDidLoad() {
         image1.alpha = 0.0
         
+        self.tutorialContainer.layer.cornerRadius = 5.0
+        self.fadeView.backgroundColor = UIColor.clearColor()
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark)) as UIVisualEffectView
+        visualEffectView.frame = fadeView.bounds
+        fadeView.addSubview(visualEffectView)
+        
+        
+        self.tutorialContainer.alpha = 0.0
+        self.quote.alpha = 0.0
+        self.fadeView.alpha = 0.0
+        self.startButton.alpha = 0.0
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        animate()
+        if animationBegun{
+            fadeIn()
+        }
+        else{
+            fadeIn({self.animate()})
+            animationBegun = true
+        }
+        
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.tutorialContainer.alpha = 0.0
+        self.quote.alpha = 0.0
+        self.fadeView.alpha = 0.0
+        self.startButton.alpha = 0.0
+    }
+    
+    func fadeIn(){
+        UIView.animateWithDuration(1.0, delay: 0.3, options: [], animations: {
+            self.quote.alpha = 1.0
+            self.tutorialContainer.alpha = 1.0
+            self.fadeView.alpha = 1.0
+            self.startButton.alpha = 1.0
+            }, completion: nil)
+    }
+    
+    func fadeIn(completion: () -> Void){
+        UIView.animateWithDuration(1.0, delay: 0.3, options: [], animations: {
+            self.quote.alpha = 1.0
+            self.tutorialContainer.alpha = 1.0
+            self.fadeView.alpha = 1.0
+            self.startButton.alpha = 1.0
+            }, completion: { finished in
+                completion()
+        })
     }
     
     func animate(){
@@ -77,5 +126,12 @@ class AddIntroViewController: UIViewController{
         self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(0.75, target: self, selector: "animate", userInfo: nil, repeats: false)
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    
+    @IBAction func startButtonAction(sender: AnyObject) {
+    }
     
 }

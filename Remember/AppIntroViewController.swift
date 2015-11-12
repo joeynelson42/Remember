@@ -36,4 +36,5 @@ class AppIntroViewController: UIViewController{
             self.fadeView.alpha = 1.0
         })
     }
+
 }

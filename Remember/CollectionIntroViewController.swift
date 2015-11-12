@@ -89,4 +89,8 @@ class CollectionIntroViewController: UIViewController{
         self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "animate", userInfo: nil, repeats: false)
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
 }
