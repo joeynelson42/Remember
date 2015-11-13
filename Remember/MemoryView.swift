@@ -28,9 +28,25 @@ class MemoryView: UIView{
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark)) as UIVisualEffectView
+        visualEffectView.frame = backgroundFade.bounds
+        backgroundFade.addSubview(visualEffectView)
+        backgroundFade.backgroundColor = UIColor.clearColor()
+        backgroundFade.alpha = 0.0
+        
         storyView.layer.cornerRadius = 3.0
-        storyView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.85)
+        storyView.backgroundColor = UIColor.clearColor()
         imageCollectionView.backgroundColor = UIColor.fromHex(0x646363, alpha: 0.5)
+    }
+    
+    func showFade(){
+        UIView.animateWithDuration(0.5, animations: {
+            self.backgroundFade.alpha = 0.8
+        })
+    }
+    
+    func hideFade(){
+        self.backgroundFade.alpha = 0.0
     }
     
     @IBAction func storyButtonAction(sender: UIButton) {

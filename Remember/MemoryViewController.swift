@@ -24,8 +24,16 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.memoryView.parentVC = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         loadMemory()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.memoryView.showFade()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.memoryView.hideFade()
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
