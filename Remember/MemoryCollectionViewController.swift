@@ -93,6 +93,7 @@ class MemoryCollectionViewController: UIViewController {
     
     func showProfile(){
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("userProfileVC") as! UserProfileViewController
+        vc.memoryCount = memories.count
         self.presentViewController(vc, animated: true, completion: nil)
     }
 }

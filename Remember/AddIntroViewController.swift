@@ -83,7 +83,7 @@ class AddIntroViewController: UIViewController{
     }
     
     func animate(){
-        UIView.animateWithDuration(0.3, delay: 0.5, options: [], animations: {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: [], animations: {
                 self.addPhotoButton.transform = CGAffineTransformMakeScale(0.9, 0.9)
             }, completion: {finished in
                 UIView.animateWithDuration(0.2, animations: {

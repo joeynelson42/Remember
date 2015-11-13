@@ -2703,17 +2703,61 @@
                                     <constraint firstAttribute="height" constant="64" id="skd-uo-liJ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xG-Vx-NSX">
+                                <rect key="frame" x="16" y="72" width="343" height="68"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="dH7-eW-IVN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member since..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0eK-o8-RiN">
+                                <rect key="frame" x="16" y="148" width="343" height="49"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="LNk-jV-0Hb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Memory Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idu-HY-jiu">
+                                <rect key="frame" x="20" y="205" width="335" height="61"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="H39-YV-s4c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="0eK-o8-RiN" firstAttribute="trailing" secondItem="UfC-r2-Xbk" secondAttribute="trailingMargin" id="5IK-n2-jox"/>
+                            <constraint firstItem="Idu-HY-jiu" firstAttribute="leading" secondItem="UfC-r2-Xbk" secondAttribute="leadingMargin" id="89L-Zf-nmz"/>
+                            <constraint firstItem="Idu-HY-jiu" firstAttribute="top" secondItem="0eK-o8-RiN" secondAttribute="bottom" constant="8" id="K0q-V4-6xS"/>
                             <constraint firstItem="saF-Gc-rG9" firstAttribute="leading" secondItem="UfC-r2-Xbk" secondAttribute="leadingMargin" constant="-20" id="Sgj-dY-aL0"/>
+                            <constraint firstItem="0eK-o8-RiN" firstAttribute="top" secondItem="9xG-Vx-NSX" secondAttribute="bottom" constant="8" id="ZkK-Wz-eTh"/>
                             <constraint firstItem="saF-Gc-rG9" firstAttribute="top" secondItem="UfC-r2-Xbk" secondAttribute="topMargin" id="i0d-EI-B89"/>
+                            <constraint firstItem="9xG-Vx-NSX" firstAttribute="leading" secondItem="UfC-r2-Xbk" secondAttribute="leadingMargin" id="i8v-a8-PUN"/>
+                            <constraint firstItem="9xG-Vx-NSX" firstAttribute="trailing" secondItem="UfC-r2-Xbk" secondAttribute="trailingMargin" id="l6f-US-jP0"/>
+                            <constraint firstItem="Idu-HY-jiu" firstAttribute="trailing" secondItem="UfC-r2-Xbk" secondAttribute="trailingMargin" id="p4d-qb-8FV"/>
+                            <constraint firstItem="0eK-o8-RiN" firstAttribute="leading" secondItem="UfC-r2-Xbk" secondAttribute="leadingMargin" id="pmW-QE-F38"/>
+                            <constraint firstItem="9xG-Vx-NSX" firstAttribute="top" secondItem="saF-Gc-rG9" secondAttribute="bottom" constant="8" id="qKl-Kh-EmE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="saF-Gc-rG9" secondAttribute="trailing" constant="-20" id="saB-LG-ciQ"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="memberSinceLabel" destination="0eK-o8-RiN" id="iTw-pX-jeP"/>
+                        <outlet property="memoryCountLabel" destination="Idu-HY-jiu" id="wMF-3E-I3G"/>
+                        <outlet property="usernameLabel" destination="9xG-Vx-NSX" id="aYI-5F-KI8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKn-ah-deN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

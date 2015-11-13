@@ -12,10 +12,22 @@ import Parse
 
 class UserProfileViewController: UIViewController{
     var user: PFUser!
-    var memories: [LocalMemory]!
+    var memoryCount = Int()
     
-    func shareOptions(){
-        //TODO: show share options
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var memberSinceLabel: UILabel!
+    @IBOutlet weak var memoryCountLabel: UILabel!
+    
+    override func viewDidLoad() {
+        user = PFUser.currentUser()
+        
+        usernameLabel.text = user.username
+        
+        let date = user.createdAt
+        memberSinceLabel.text = "Member since \(date!.fullDate())"
+        
+        memoryCountLabel.text = "Memories: \(memoryCount)"
     }
     
     
