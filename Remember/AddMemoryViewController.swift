@@ -234,14 +234,6 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         addMemoryView.keyboardHeight = keyboardHeight
     }
     
-    func removeQuote(){
-        
-    }
-    
-    func addNewQuoteSkeleton(){
-        //When a user finishes a quote, create a new quote skeleton automatically
-    }
-    
     //MARK: Saving the Memory
     
     @IBAction func checkMarkButtonAction(sender: AnyObject) {

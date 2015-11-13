@@ -13,7 +13,6 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var memory: LocalMemory!
     var images = [UIImage]()
-    var infoVisible = informationVisible.story
     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     var collectionVC = MemoryCollectionViewController()
     
@@ -71,23 +70,6 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
-    func toggleInformation(){
-        if infoVisible == .story{
-            showQuotes()
-        }
-        else{
-            showStory()
-        }
-    }
-    
-    func showStory(){
-        //TODO: transition over to story, figure out a cool animation
-    }
-    
-    func showQuotes(){
-        //TODO: transition over to quotes, figure out a cool animation
-    }
-    
     func editMemory(){
         let editVC = AddMemoryViewController()
         editVC.memory = memory
@@ -115,9 +97,4 @@ class MemoryViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBAction func backButtonAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-}
-
-enum informationVisible{
-    case story
-    case quotes
 }

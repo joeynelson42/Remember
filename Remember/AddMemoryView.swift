@@ -17,7 +17,6 @@ class AddMemoryView: UIView{
     @IBOutlet weak var endDateView: UIView!
     
     @IBOutlet weak var storyButton: UIButton!
-    @IBOutlet weak var quotesButton: UIButton!
     @IBOutlet weak var story: UITextView!
     @IBOutlet weak var moveStoryDownbutton: UIButton!
     
@@ -108,20 +107,8 @@ class AddMemoryView: UIView{
     //MARK: Story/Quotes
     @IBAction func toggleStory(sender: UIButton) {
         storyButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
-        quotesButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         story.hidden = false
         self.endEditing(true)
-    }
-    
-    
-    @IBAction func toggleQuotes(sender: UIButton) {
-        
-        showComingSoonAlert()
-//        quotesButton.setTitleColor(UIColor.fromHex(0xF5FF93), forState: .Normal)
-//        storyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-//        story.hidden = true
-        self.endEditing(true)
-
     }
 
     func showComingSoonAlert(){
