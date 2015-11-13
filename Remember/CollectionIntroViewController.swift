@@ -15,7 +15,7 @@ class CollectionIntroViewController: UIViewController{
     @IBOutlet weak var collectionView: UIView!
     @IBOutlet weak var navBar: UIView!
     
-    @IBOutlet weak var quote: UILabel!
+    @IBOutlet weak var quote: UIImageView!
     @IBOutlet weak var quoteContainer: UIView!
     
     var animationTimer = NSTimer()

@@ -12,7 +12,7 @@ import UIKit
 class AddIntroViewController: UIViewController{
     
     @IBOutlet weak var tutorialContainer: UIView!
-    @IBOutlet weak var quote: UILabel!
+    @IBOutlet weak var quote: UIImageView!
     @IBOutlet weak var fadeView: UIView!
     @IBOutlet weak var startButton: UIButton!
     
