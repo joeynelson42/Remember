@@ -85,6 +85,11 @@ class MemoryCollectionViewController: UIViewController {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("tutorialVC") as! IntroViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
+    
+    func showSettings(){
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("settingsVC") as! SettingsViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 }
 
 

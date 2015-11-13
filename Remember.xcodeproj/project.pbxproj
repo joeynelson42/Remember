@@ -34,6 +34,7 @@
 		63ABCCA71BF11C4D0020E933 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */; };
 		63ABCCAB1BF1548B0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
 		63ABCCAC1BF1548C0020E933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CF66781BE18FC50042DC37 /* Assets.xcassets */; };
+		63BB4B381BF5CF0600B09F56 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB4B371BF5CF0600B09F56 /* SettingsViewController.swift */; };
 		63C7FCCF1BF159DD00D70721 /* TheR@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C7FCCE1BF159DD00D70721 /* TheR@3x.png */; };
 		63CF666F1BE18FC50042DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF666E1BE18FC50042DC37 /* AppDelegate.swift */; };
 		63CF66771BE18FC50042DC37 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63CF66751BE18FC50042DC37 /* Remember.xcdatamodeld */; };
@@ -120,6 +121,7 @@
 		63ABCCA31BF11B990020E933 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		63ABCCA41BF11B990020E933 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		63ABCCA61BF11C4D0020E933 /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		63BB4B371BF5CF0600B09F56 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		63C7FCCE1BF159DD00D70721 /* TheR@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TheR@3x.png"; sourceTree = "<group>"; };
 		63CF666B1BE18FC50042DC37 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CF666E1BE18FC50042DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				63E0094F1BE1B7CE009A0FA8 /* AddMemoryViewController.swift */,
 				638FFF901BE988E70085FB46 /* NotificationViewController.swift */,
 				63ABCCA01BF11B3A0020E933 /* ImageCarouselViewController.swift */,
+				63BB4B371BF5CF0600B09F56 /* SettingsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				63E009591BE1C4A0009A0FA8 /* UIColor+Remember.swift in Sources */,
 				63E009521BE1B7E1009A0FA8 /* UserProfileViewController.swift in Sources */,
 				63ABCCA71BF11C4D0020E933 /* CarouselCell.swift in Sources */,
+				63BB4B381BF5CF0600B09F56 /* SettingsViewController.swift in Sources */,
 				63ABCCA51BF11B990020E933 /* iCarousel.m in Sources */,
 				638FFF951BE98A080085FB46 /* NotificationCell.swift in Sources */,
 				63E009561BE1C39F009A0FA8 /* LoadingView.swift in Sources */,

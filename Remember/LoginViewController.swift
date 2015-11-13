@@ -43,8 +43,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     @IBAction func signUpButtonAction(sender: AnyObject) {
         self.view.endEditing(true)
         if (loginView.emailTextField.text!.isEmpty || loginView.passwordTextField.text!.isEmpty){
-            let alertController = UIAlertController(title: "Missing Email/Password", message:
-                "Please add email/password", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title: "Missing Username/Password", message:
+                "Please add username/password", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
         }
@@ -60,15 +60,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     func login(email: String, password: String){
         let success = ParseServerProxy.parseProxy.login(email, pass: password)
-        enterApp(success)
+        enterApp(success, failureBlock: {self.displayFailedLogin()})
     }
     
     func signUp(email: String, password: String){
         let success = ParseServerProxy.parseProxy.signUp(email, password: password)
-        enterApp(success)
+        enterApp(success, failureBlock: {self.displayFailedSignUp()})
     }
     
-    func enterApp(success: Bool){
+    func enterApp(success: Bool, failureBlock: () -> Void){
         if success {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
@@ -80,13 +80,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.presentViewController(mainVC, animated: true, completion: nil)
         }
         else{
-            displayFailedLogin()
+            UIView.animateWithDuration(0.3, animations: {
+                self.progressContainer.alpha = 0.0
+                }, completion: {finished in
+                   failureBlock()
+            })
+            
         }
     }
     
     func displayFailedLogin(){
-        let alertController = UIAlertController(title: "Incorrect Email/Password", message:
-            "Please try again", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "We couldn't find your Username/Password!", message:
+            "Please try again,\n If you've forgotten please send an email to nelsonje.dev@gmail.com and we'll get you sorted out!", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func displayFailedSignUp(){
+        let alertController = UIAlertController(title: "Username is already in use!", message:
+            "Great minds think alike, apparently", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }

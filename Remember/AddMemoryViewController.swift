@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate{
     
     var memory: LocalMemory!
     var images = [UIImage]()
@@ -21,6 +21,9 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     var collectionVC = MemoryCollectionViewController()
     var memoryVC = MemoryViewController()
     
+    var swipe = UISwipeGestureRecognizer()
+
+    
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet var addMemoryView: AddMemoryView!
     @IBOutlet weak var progressContainer: UIView!
@@ -31,12 +34,23 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         imagePicker.delegate = self
         registerForKeyboardNotifications()
         addMemoryView.controller = self
-                
+        
+        swipe = UISwipeGestureRecognizer(target: self, action: "moveTextFieldDown")
+
         if let mem = memory{
             editMode = true
             images = memory.images
             addMemoryView.loadMemoryToBeEdited(mem)
         }
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        
+        imageCollectionView.clipsToBounds = false
+    
+        self.imageCollectionView.addGestureRecognizer(lpgr)
         
         
         progressContainer.layer.cornerRadius = 5.0
@@ -72,12 +86,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         else{
             cell.imageView.image = images[indexPath.row]
             
-            if images[indexPath.row].size.height > images[indexPath.row].size.width{
-                cell.orientation = .portrait
-            }
-            else{
-                cell.orientation = .landscape
-            }
+            cell.tag = indexPath.row
         }
         
         cell.layer.borderColor = CGColor.fromHex(0xF8FAA0)
@@ -123,6 +132,51 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             toggleBackgroundPhotoSelect(indexPath)
         }
     }
+    
+    func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        let p = gestureReconizer.locationInView(self.imageCollectionView)
+        let indexPath = self.imageCollectionView.indexPathForItemAtPoint(p)
+        
+        if gestureReconizer.state != UIGestureRecognizerState.Ended {
+            if let index = indexPath {
+                let cell = self.imageCollectionView.cellForItemAtIndexPath(index)
+                
+                UIView.animateWithDuration(0.5, delay: 0.0, options: [], animations: {
+                    cell!.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                    }, completion: nil)
+            }
+        }
+        else{
+            if let index = indexPath {
+                let cell = self.imageCollectionView.cellForItemAtIndexPath(index)
+                
+                UIView.animateWithDuration(0.5, delay: 0.0, options: [], animations: {
+                    cell!.transform = CGAffineTransformMakeScale(0.001, 0.001)
+                    }, completion: {finished in
+                        
+                        if let BGimage = self.addMemoryView.backgroundImageView.image{
+                            if(self.images[index.row] == BGimage){
+                                self.addMemoryView.backgroundImageView.image = nil
+                            }
+                        }
+                        
+                        
+                        self.images.removeAtIndex(index.row)
+                        self.imageCollectionView.reloadData()
+                        
+                })
+                
+                
+            } else {
+                print("Could not find index path")
+            }
+        }
+        
+        
+        
+        
+    }
+    
     
     func toggleBackgroundPhotoSelect(indexPath: NSIndexPath){
         guard let previousBGIndexPath = currentBGIndexPath else{
@@ -186,6 +240,11 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
         super.touchesBegan(touches, withEvent: event)
     }
     
+    func moveTextFieldDown(){
+        self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
+        self.view.endEditing(true)
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         if(textField.placeholder == "Add Title..."){
             textField.attributedPlaceholder = NSAttributedString(string:" ",
@@ -199,11 +258,13 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
                 attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         }
         
-        
         self.addMemoryView.moveContainer(false, keyboardHeight: keyboardHeight)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
+        swipe.direction = .Down
+        self.view.addGestureRecognizer(swipe)
+        
         if(textView.text == "Write the story..."){
             textView.text = ""
         }
@@ -212,6 +273,7 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func textViewDidEndEditing(textView: UITextView) {
+        self.view.removeGestureRecognizer(swipe)
         if(textView.text == ""){
             textView.text = "Write the story..."
         }

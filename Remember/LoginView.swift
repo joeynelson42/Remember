@@ -18,7 +18,7 @@ class LoginView: UIView{
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        emailTextField.attributedPlaceholder = NSAttributedString(string:"Email",
+        emailTextField.attributedPlaceholder = NSAttributedString(string:"Username",
             attributes:[NSForegroundColorAttributeName: UIColor.fromHex(0xFFFFFF, alpha: 0.5)])
         
         

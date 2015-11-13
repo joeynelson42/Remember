@@ -276,6 +276,67 @@ class ParseServerProxy{
             }
         }
     }
+    
+    func deleteUser(){
+        
+        //get all memories and the corresponding images, and delete them
+        
+        var pfMemories = [PFObject]()
+        
+        let query = PFQuery(className: "Memory")
+        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+        
+        do{
+            try pfMemories = query.findObjects()
+        }
+        catch let err as NSError{
+            print("Memory query failed with error: \(err)")
+        }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM:dd:yyyy"
+        
+        for pfMemory in pfMemories{
+            
+            var pfImages = [PFObject]()
+            
+            let query = PFQuery(className: "MemoryImages")
+            query.whereKey("memoryID", equalTo: pfMemory["ID"])
+            
+            do{
+                try pfImages = query.findObjects()
+            }
+            catch let err as NSError{
+                print("MemoryImage query failed with error: \(err)")
+            }
+            
+            do{
+                try pfImages.first?.delete()
+            }
+            catch let err as NSError{
+                print("MemoryImage delete failed with error: \(err)")
+            }
+        }
+        
+        for memory in pfMemories{
+            do{
+                try memory.delete()
+            }
+            catch let err as NSError{
+                print("Memory delete failed with error: \(err)")
+            }
+        }
+        
+        //finally, delete the user
+        do{
+            try PFUser.currentUser()?.delete()
+        }
+        catch let err as NSError{
+            print("User wasn't deleted with error: \(err)")
+        }
+    }
+    
+    
 }
 
 
