@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TheBlackRIcon" highlightedImage="TheR@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="dea-Ct-JCz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TheR.png" highlightedImage="TheR@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="dea-Ct-JCz">
                                 <rect key="frame" x="111" y="199" width="152" height="270"/>
                                 <animations/>
                             </imageView>
@@ -41,7 +41,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TheBlackRIcon" width="144" height="239"/>
+        <image name="TheR.png" width="144" height="239"/>
         <image name="TheR@3x.png" width="207" height="208"/>
     </resources>
 </document>

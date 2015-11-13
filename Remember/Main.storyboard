@@ -46,14 +46,14 @@
                                 <rect key="frame" x="-25" y="-36" width="427" height="743"/>
                                 <animations/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro Quote@1x" translatesAutoresizingMaskIntoConstraints="NO" id="thE-6q-E4S">
-                                <rect key="frame" x="12" y="181" width="351" height="306"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quote2@1x" translatesAutoresizingMaskIntoConstraints="NO" id="thE-6q-E4S">
+                                <rect key="frame" x="52" y="181" width="274" height="231"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="306" id="gr0-At-xXt"/>
+                                    <constraint firstAttribute="height" constant="231" id="gr0-At-xXt"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rememberTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SZl-aM-jTw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteTitle@1x" translatesAutoresizingMaskIntoConstraints="NO" id="SZl-aM-jTw">
                                 <rect key="frame" x="30" y="40" width="315" height="92"/>
                                 <animations/>
                                 <constraints>
@@ -64,7 +64,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="thE-6q-E4S" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="-4" id="1hb-1J-U6t"/>
+                            <constraint firstItem="thE-6q-E4S" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="36" id="1hb-1J-U6t"/>
                             <constraint firstItem="SZl-aM-jTw" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="14" id="27x-rF-N1U"/>
                             <constraint firstItem="Qyu-I5-fiZ" firstAttribute="leading" secondItem="DJ2-uM-B2d" secondAttribute="leadingMargin" constant="-37" id="AAe-XD-5sf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="io8-5H-Gk8" secondAttribute="trailing" constant="-43" id="Ab1-7m-dQm"/>
@@ -72,7 +72,7 @@
                             <constraint firstItem="io8-5H-Gk8" firstAttribute="top" secondItem="DJ2-uM-B2d" secondAttribute="topMargin" constant="-36" id="KIi-4Y-t94"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qyu-I5-fiZ" secondAttribute="trailing" constant="-239" id="MOw-13-oqr"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Qyu-I5-fiZ" secondAttribute="bottom" constant="-4" id="S49-Pz-SvG"/>
-                            <constraint firstItem="thE-6q-E4S" firstAttribute="centerX" secondItem="DJ2-uM-B2d" secondAttribute="centerX" id="Ugh-WZ-cR3"/>
+                            <constraint firstItem="thE-6q-E4S" firstAttribute="centerX" secondItem="DJ2-uM-B2d" secondAttribute="centerX" constant="1.5" id="Ugh-WZ-cR3"/>
                             <constraint firstItem="Qyu-I5-fiZ" firstAttribute="top" secondItem="DJ2-uM-B2d" secondAttribute="topMargin" constant="-64" id="cAV-ae-01G"/>
                             <constraint firstItem="dbU-sa-Ycd" firstAttribute="top" secondItem="io8-5H-Gk8" secondAttribute="bottom" constant="-40" id="jUO-lh-yVZ"/>
                             <constraint firstItem="SZl-aM-jTw" firstAttribute="top" secondItem="mOf-7Y-Jev" secondAttribute="bottom" constant="20" id="oOS-QP-2gU"/>
@@ -2515,13 +2515,13 @@
         <image name="FadeCoverSingle" width="374" height="179"/>
         <image name="GearIcon" width="90" height="90"/>
         <image name="ImageIcon@1x" width="182" height="126"/>
-        <image name="Intro Quote@1x" width="257" height="179"/>
         <image name="Login" width="423" height="108"/>
         <image name="MoveDownIcon" width="246" height="246"/>
         <image name="NotificationIcon" width="90" height="88"/>
         <image name="SideMenuIcon" width="54" height="48"/>
         <image name="TheYellowR" width="113" height="185"/>
         <image name="UserIcon" width="126" height="149"/>
+        <image name="WhiteTitle@1x" width="339" height="77"/>
         <image name="XIcon" width="157" height="157"/>
         <image name="backArrowIcon" width="32" height="49"/>
         <image name="bryanBW.JPG" width="1024" height="1544"/>
@@ -2531,6 +2531,7 @@
         <image name="laurenGraffiti.jpg" width="720" height="960"/>
         <image name="loginBackground" width="1024" height="1544"/>
         <image name="logoutIcon" width="225" height="226"/>
+        <image name="quote2@1x" width="211" height="148"/>
         <image name="rememberTitle" width="1017" height="231"/>
         <image name="signUpbutton" width="423" height="108"/>
         <image name="tutorialAddPhoto@1x" width="86" height="126"/>
