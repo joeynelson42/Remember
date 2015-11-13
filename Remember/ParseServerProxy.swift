@@ -293,15 +293,14 @@ class ParseServerProxy{
             print("Memory query failed with error: \(err)")
         }
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM:dd:yyyy"
-        
         for pfMemory in pfMemories{
             
             var pfImages = [PFObject]()
             
             let query = PFQuery(className: "MemoryImages")
-            query.whereKey("memoryID", equalTo: pfMemory["ID"])
+            //var key = pfMemory["id"]
+            
+            query.whereKey("memoryID", equalTo: pfMemory["memoryID"])
             
             do{
                 try pfImages = query.findObjects()
