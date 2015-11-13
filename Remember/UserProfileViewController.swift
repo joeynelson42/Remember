@@ -20,5 +20,8 @@ class UserProfileViewController: UIViewController{
     
     
     
+    @IBAction func backButtonAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }

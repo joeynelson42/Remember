@@ -100,10 +100,9 @@ class MemoryCollectionView: UIView{
             controller.showTutorial()
         case 2:
             print("Profile tapped")
-            sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})
+            controller.showProfile()
         case 3:
             print("Settings tapped")
-            sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})
             controller.showSettings()
         case 4:
             sideMenuView.tiles[sender.tag].tappedAnimation()

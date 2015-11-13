@@ -90,6 +90,11 @@ class MemoryCollectionViewController: UIViewController {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("settingsVC") as! SettingsViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
+    
+    func showProfile(){
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("userProfileVC") as! UserProfileViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 }
 
 
