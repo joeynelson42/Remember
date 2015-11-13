@@ -31,10 +31,10 @@ class AppIntroViewController: UIViewController{
     }
     
     func animateQuote(){
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(1.0, delay: 0.0, options: [], animations: {
             self.introQuote.alpha = 1.0
-            self.fadeView.alpha = 1.0
-        })
+            self.fadeView.alpha = 0.75
+        }, completion: nil)
     }
 
 }

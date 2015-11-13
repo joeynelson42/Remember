@@ -96,8 +96,8 @@ class MemoryCollectionView: UIView{
             print("Collection tapped")
             sideMenuView.tiles[sender.tag].tappedAnimation({self.dismissMenu()})
         case 1:
-            print("Notifications tapped")
-            sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})
+            print("Tutorial tapped")
+            controller.showTutorial()
         case 2:
             print("Profile tapped")
             sideMenuView.tiles[sender.tag].tappedAnimation({self.showComingSoonAlert()})

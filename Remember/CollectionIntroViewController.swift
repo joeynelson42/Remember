@@ -59,7 +59,7 @@ class CollectionIntroViewController: UIViewController{
         UIView.animateWithDuration(1.0, delay: 0.3, options: [], animations: {
             self.quote.alpha = 1.0
             self.tutorialContainer.alpha = 1.0
-            self.quoteContainer.alpha = 1.0
+            self.quoteContainer.alpha = 0.75
             }, completion: nil)
         }
     
@@ -67,7 +67,7 @@ class CollectionIntroViewController: UIViewController{
         UIView.animateWithDuration(1.0, delay: 0.3, options: [], animations: {
             self.quote.alpha = 1.0
             self.tutorialContainer.alpha = 1.0
-            self.quoteContainer.alpha = 1.0
+            self.quoteContainer.alpha = 0.75
             }, completion: { finished in
                 completion()
         })

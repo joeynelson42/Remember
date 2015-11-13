@@ -1762,8 +1762,11 @@
                                                     <animations/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FadeCoverSingle" translatesAutoresizingMaskIntoConstraints="NO" id="A7Z-fK-UcK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                                    <rect key="frame" x="0.0" y="-11" width="375" height="197"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="197" id="0qQ-dT-d9N"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVR-1C-5JS">
                                                     <rect key="frame" x="8" y="142" width="359" height="39"/>
@@ -1778,7 +1781,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="46" id="hbL-sc-MeY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1815,12 +1818,12 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="Uvb-Am-nqL" secondAttribute="bottom" constant="-8" id="WeC-Pl-ymX"/>
                                             <constraint firstAttribute="bottom" secondItem="7cB-0x-U1E" secondAttribute="bottom" constant="24" id="Xu6-09-MJJ"/>
                                             <constraint firstItem="7cB-0x-U1E" firstAttribute="leading" secondItem="TrI-dk-uBX" secondAttribute="leadingMargin" id="bBC-gK-q5f"/>
-                                            <constraint firstItem="A7Z-fK-UcK" firstAttribute="top" secondItem="MZP-zB-jKO" secondAttribute="top" id="dev-S2-wh6"/>
+                                            <constraint firstItem="A7Z-fK-UcK" firstAttribute="top" secondItem="MZP-zB-jKO" secondAttribute="top" constant="-11" id="dev-S2-wh6"/>
                                             <constraint firstItem="Uvb-Am-nqL" firstAttribute="top" secondItem="TrI-dk-uBX" secondAttribute="topMargin" constant="-8" id="ecL-Ap-uJ2"/>
                                             <constraint firstItem="MZP-zB-jKO" firstAttribute="centerX" secondItem="SVR-1C-5JS" secondAttribute="centerX" id="n1K-Mj-TjL"/>
                                             <constraint firstItem="7cB-0x-U1E" firstAttribute="leading" secondItem="SVR-1C-5JS" secondAttribute="leading" id="qbB-ns-x3c"/>
                                             <constraint firstItem="SVR-1C-5JS" firstAttribute="top" secondItem="7cB-0x-U1E" secondAttribute="bottom" constant="-13" id="rfW-cK-xpf"/>
-                                            <constraint firstItem="A7Z-fK-UcK" firstAttribute="bottom" secondItem="MZP-zB-jKO" secondAttribute="bottom" id="w9N-v9-KAK"/>
+                                            <constraint firstItem="A7Z-fK-UcK" firstAttribute="bottom" secondItem="MZP-zB-jKO" secondAttribute="bottom" constant="7" id="w9N-v9-KAK"/>
                                             <constraint firstItem="7cB-0x-U1E" firstAttribute="trailing" secondItem="TrI-dk-uBX" secondAttribute="trailingMargin" id="zgw-OT-f1o"/>
                                             <constraint firstItem="MZP-zB-jKO" firstAttribute="top" secondItem="TrI-dk-uBX" secondAttribute="top" id="zyA-eH-1jg"/>
                                         </constraints>
@@ -1920,13 +1923,13 @@
                                         <rect key="frame" x="5" y="98" width="85" height="85"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBW-lP-bKe">
-                                                <rect key="frame" x="19" y="21" width="46" height="44"/>
+                                                <rect key="frame" x="17" y="18" width="50" height="50"/>
                                                 <animations/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="46" id="31P-qU-Igg"/>
-                                                    <constraint firstAttribute="height" constant="44" id="mCY-ei-iKd"/>
+                                                    <constraint firstAttribute="width" constant="50" id="31P-qU-Igg"/>
+                                                    <constraint firstAttribute="height" constant="50" id="mCY-ei-iKd"/>
                                                 </constraints>
-                                                <state key="normal" image="NotificationIcon"/>
+                                                <state key="normal" image="questionMarkIcon@1x"/>
                                                 <connections>
                                                     <action selector="tileSelected:" destination="LZk-QK-olM" eventType="touchUpInside" id="MTX-iS-Y0x"/>
                                                 </connections>
@@ -2517,7 +2520,6 @@
         <image name="ImageIcon@1x" width="182" height="126"/>
         <image name="Login" width="423" height="108"/>
         <image name="MoveDownIcon" width="246" height="246"/>
-        <image name="NotificationIcon" width="90" height="88"/>
         <image name="SideMenuIcon" width="54" height="48"/>
         <image name="TheYellowR" width="113" height="185"/>
         <image name="UserIcon" width="126" height="149"/>
@@ -2531,6 +2533,7 @@
         <image name="laurenGraffiti.jpg" width="720" height="960"/>
         <image name="loginBackground" width="1024" height="1544"/>
         <image name="logoutIcon" width="225" height="226"/>
+        <image name="questionMarkIcon@1x" width="424" height="424"/>
         <image name="quote2@1x" width="211" height="148"/>
         <image name="rememberTitle" width="1017" height="231"/>
         <image name="signUpbutton" width="423" height="108"/>

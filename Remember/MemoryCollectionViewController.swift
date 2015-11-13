@@ -78,6 +78,10 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     @IBAction func RButtonAction(sender: AnyObject) {
+        showTutorial()
+    }
+    
+    func showTutorial(){
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("tutorialVC") as! IntroViewController
         self.presentViewController(vc, animated: true, completion: nil)
     }
