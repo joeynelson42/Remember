@@ -15,8 +15,14 @@ class LoginView: UIView{
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        loginButton.imageView?.contentMode = .ScaleAspectFit
+        signUpButton.imageView?.contentMode = .ScaleAspectFit
         
         emailTextField.attributedPlaceholder = NSAttributedString(string:"Username",
             attributes:[NSForegroundColorAttributeName: UIColor.fromHex(0xFFFFFF, alpha: 0.5)])

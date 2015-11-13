@@ -345,6 +345,8 @@ class AddMemoryViewController: UIViewController, UICollectionViewDelegate, UICol
             }
             
             memoryVC.memory = newMemory
+            memoryVC.images = newMemory.images
+            memoryVC.imageCollectionView.reloadData()
             collectionVC.memoryCollectionView.memoryCollection.reloadData()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
